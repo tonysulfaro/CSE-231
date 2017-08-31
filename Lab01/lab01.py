@@ -7,19 +7,19 @@ import math
 print("Hello this program calculates the two roots for a quadratic formula given user input.")
 
 #read in user input as string
-string_a = input("Please enter A:")
-string_b = input("Please enter B:")
-string_c = input("Please enter C:")
+InputA = input("Please enter A:")
+InputB = input("Please enter B:")
+InputC = input("Please enter C:")
 
 #Convert user input from string to float
-float_a = float(string_a)
-float_b = float(string_b)
-float_c = float(string_c)
+A = float(InputA)
+B = float(InputB)
+C = float(InputC)
 
 #calculate positve and negative root if it exists
-plus_quad_calc = (-float_b + math.sqrt(float_b ** 2 - 4 * float_a * float_c)) / 2 * float_a
-minus_quad_calc = (-float_b - math.sqrt(float_b ** 2 - 4 * float_a * float_c)) / 2 * float_a
+PlusQuadCalc = (-B + math.sqrt(B ** 2 - 4 * A * C)) / 2 * A
+MinusQuadCalc = (-B - math.sqrt(B ** 2 - 4 * A * C)) / 2 * A
 
 #display output of calculation
-print("Root #1 = ", plus_quad_calc)
-print("Root #2 = ", minus_quad_calc)
+print("Root #1 = ", PlusQuadCalc)
+print("Root #2 = ", MinusQuadCalc)
