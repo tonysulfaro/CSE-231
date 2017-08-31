@@ -13,15 +13,16 @@ rod_meters = 5.0292
 walking_speed = 3.1 #miles per hour
 
 #calculate units of other measurements
+meters = rod_meters*rods
 furlongs = rods/40
 miles = rods*rod_meters/1609.34
-feet = rod_meters/.3048
-time_to_walk = round(miles/(walking_speed/60),3)
+feet = meters/.3048
+time_to_walk = miles/(walking_speed/60)
 
 #output calculations
 print("Conversions:")
-print("Meters: ", round(rod_meters,3))
-print("Feet: ", feet)
+print("Meters: ", round(meters,3))
+print("Feet: ", round(feet,3))
 print("Miles: ", round(miles,3))
-print("Furlongs: ",furlongs)
-print("Minutes to walk ", rods, " rods: ", time_to_walk)
+print("Furlongs: ",round(furlongs,3))
+print("Minutes to walk ", rods, " rods: ", round(time_to_walk,3))
