@@ -3,9 +3,9 @@
 # Purpose:  This program converts rods to other distances
 
 #prompt for user input for number of rods
-user_rods = input("What will the distance in rods be? ")
-rods = float(user_rods)        #one rod is 5.0292 meters
-print("You input ", rods, " rods.")
+UserRods = input("What will the distance in rods be? ")
+Rods = float(UserRods)        #one rod is 5.0292 meters
+print("You input ", Rods, " rods.")
 print()
 
 #constants for calculations
@@ -13,9 +13,9 @@ RodMeters = 5.0292
 walking_speed = 3.1 #miles per hour
 
 #calculate units of other measurements
-Meters = RodMeters * rods
-Furlongs = rods / 40
-Miles = rods * RodMeters / 1609.34
+Meters = RodMeters * Rods
+Furlongs = Rods / 40
+Miles = Rods * RodMeters / 1609.34
 Feet = Meters / .3048
 TimeToWalk = Miles / (walking_speed / 60)
 
@@ -25,4 +25,4 @@ print("Meters: ", round(Meters, 3))
 print("Feet: ", round(Feet, 3))
 print("Miles: ", round(Miles, 3))
 print("Furlongs: ", round(Furlongs, 3))
-print("Minutes to walk ", rods, " rods: ", round(TimeToWalk, 3))
+print("Minutes to walk ", Rods, " rods: ", round(TimeToWalk, 3))
