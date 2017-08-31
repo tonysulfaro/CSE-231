@@ -22,16 +22,16 @@ print( A )
 AAA = 8
 BBB = 20
 B = BBB // AAA  # Note the double slash
-print( B )
+print( B )      # 8 goes into 20 2 times
 
 AAA = 8
 BBB = 20
-C = BBB % AAA
+C = BBB % AAA   #leftover of putting 8 into 20 is 4
 print( C )
 
 AAA = 2
 BBB = 5
-C = BBB ** AAA
+C = BBB ** AAA  #exponent
 print( C )
 
 F = 5
@@ -39,9 +39,9 @@ F += 1
 print( F )
 
 YYY = 17.9
-H = int(YYY)
+H = int(YYY)    #cating an int cuts off the decimal
 print( H )
 
 ZZZ = 2
-J = float(ZZZ)
+J = float(ZZZ)  #casting to a float adds a decimal to an int
 print( J )
