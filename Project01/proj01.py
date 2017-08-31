@@ -16,12 +16,12 @@ walking_speed = 3.1 #miles per hour
 furlongs = rods/40
 miles = rods*rod_meters/1609.34
 feet = rod_meters/.3048
-time_to_walk = miles/(walking_speed/60)
+time_to_walk = round(miles/(walking_speed/60),3)
 
 #output calculations
 print("Conversions:")
-print("Meters: ", rod_meters)
+print("Meters: ", round(rod_meters,3))
 print("Feet: ", feet)
-print("Miles: ", miles)
+print("Miles: ", round(miles,3))
 print("Furlongs: ",furlongs)
 print("Minutes to walk ", rods, " rods: ", time_to_walk)
