@@ -17,9 +17,9 @@ float_b = float(string_b)
 float_c = float(string_c)
 
 #calculate positve and negative root if it exists
-positive_quad_calc = (-float_b + math.sqrt(float_b**2-4*float_a*float_c))/2*float_a
-negative_quad_calc = (-float_b - math.sqrt(float_b**2-4*float_a*float_c))/2*float_a
+plus_quad_calc = (-float_b + math.sqrt(float_b ** 2 - 4 * float_a * float_c)) / 2 * float_a
+minus_quad_calc = (-float_b - math.sqrt(float_b ** 2 - 4 * float_a * float_c)) / 2 * float_a
 
 #display output of calculation
-print("Root #1 = ", positive_quad_calc)
-print("Root #2 = ", negative_quad_calc)
+print("Root #1 = ", plus_quad_calc)
+print("Root #2 = ", minus_quad_calc)
