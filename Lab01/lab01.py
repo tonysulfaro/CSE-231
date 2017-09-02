@@ -24,8 +24,8 @@ print( "  Coefficient C = ", C )
 
 # **** Replace the following with the calculations of the roots ****
 
-root1 = (-B + math.sqrt(B ** 2 - 4 * A * C)) / 2 * A  # replace 0.0 with the quadratic formula
-root2 = (-B - math.sqrt(B ** 2 - 4 * A * C)) / 2 * A
+root1 = (-B + math.sqrt(B ** 2 - (4 * A * C))) / (2 * A)  # replace 0.0 with the quadratic formula
+root2 = (-B - math.sqrt(B ** 2 - (4 * A * C))) / (2 * A)
 
 
 print( "\nThe roots of the equation:\n" )
