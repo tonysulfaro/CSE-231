@@ -1,16 +1,19 @@
 #constants
+userInput = ""
 odd_sum = 0
 even_sum = 0
 odd_count = 0
 even_count = 0
 positive_int_count = 0
 
-#counter
+#main loop
 while userInput != 0:
+
     #user input
     n_str = input("Input an integer (0 terminates): ")
     userInput = int(n_str)
 
+    #evaluate input and increment counters
     if userInput%2 == 0:
         even_sum += userInput
         even_count += 1
@@ -18,11 +21,11 @@ while userInput != 0:
         odd_sum += userInput
         odd_count += 1
 
+    if userInput > 0:
+        positive_int_count += 1
 
 
-
-
-
+#print counts and sums
 print()
 print("sum of odds:", odd_sum)
 print("sum of evens:", even_sum)
