@@ -1,6 +1,10 @@
 m = int(input("Input the first integer: "))
 n = int(input("Input the second integer: "))
-temp = 0
+gcd = 0
+counter = 0
 
 for x in range(m+n):
-    temp += 1
+    counter += 1
+    if m%counter == 0 and n%counter ==0:
+        gcd = counter
+print(gcd)
