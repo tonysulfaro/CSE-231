@@ -25,7 +25,6 @@ while userInput != 0:
     if userInput > 0:
         positive_int_count += 1
 
-
 #print counts and sums
 print()
 print("sum of odds:", odd_sum)
