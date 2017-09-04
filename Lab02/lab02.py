@@ -14,10 +14,12 @@ while userInput != 0:
     userInput = int(n_str)
 
     #evaluate input and increment counters
-    if userInput%2 == 0:
+    if userInput%2 == 0 and userInput > 0:
         even_sum += userInput
         even_count += 1
-    else:
+    elif userInput%2 == 0 and userInput < 0:
+        even_sum += userInput
+    elif userInput%2 != 0 and userInput > 0:
         odd_sum += userInput
         odd_count += 1
 
