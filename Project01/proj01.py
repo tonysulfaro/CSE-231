@@ -19,7 +19,7 @@ Feet = Meters / .3048
 TimeToWalk = Miles / (walking_speed / 60)
 
 #output calculations (round answers to 3 decimal places)
-print("Conversions:")
+print("Conversions")
 print("Meters:", round(Meters, 3))
 print("Feet:", round(Feet, 3))
 print("Miles:", round(Miles, 3))
