@@ -1,7 +1,3 @@
-n_str = input("Input an integer (0 terminates): ")
-userInput = int(n_str)
-# Good stuff goes here
-
 #constants
 odd_sum = 0
 even_sum = 0
