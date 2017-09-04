@@ -3,8 +3,7 @@
 # Purpose:  This program converts rods to other distances
 
 #prompt for user input for number of rods
-UserRods = input("What will the distance in rods be? ")
-Rods = float(UserRods)        #one rod is 5.0292 meters
+Rods = float(input("Input rods: "))       #one rod is 5.0292 meters
 print("You input ", Rods, " rods.")
 print()
 
