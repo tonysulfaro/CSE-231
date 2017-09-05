@@ -8,10 +8,14 @@ payment = 0
 
 while choice != "q":
 
-    #check price and prompt for user input
-    if price <= 0:
+    # check price and prompt for user input
+    if price == 0:
         choice = input("Please enter a price in the form xx.xx or enter q to quit: ")
         price = float(choice)
+        if price < 0:
+            print("The price you entered was negative or not a number, please try again.")
+            choice = input("Please enter a price in the form xx.xx or enter q to quit: ")
+            price = float(choice)
     elif price > 0:
         1+2
     else:
