@@ -1,12 +1,11 @@
-print("\nWelcome to change-making program.")
-
 quarters = 10
 dimes = 10
 nickels = 10
 pennies = 10
 
 while True:
-
+    print()
+    print("\nWelcome to change-making program.")
     print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
