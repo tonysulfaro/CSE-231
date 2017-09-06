@@ -1,5 +1,4 @@
 number = int(input("Input an int: "))
-oddNum = 1
-for x in range(number):
-    print(oddNum)
-    oddNum += 2
+
+for x in range(1,number,2):
+    print(x)
