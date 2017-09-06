@@ -10,25 +10,35 @@ while True:
     print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
-    in_str = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+    price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+    payment = input("Enter the payment received in (xx.xx) format or 'q' to quit: ")
+
+    if price.isdigit() and price > 0:
+        price = int(float(price)*100)
+    else:
+        print("The value you entered is not a number or negative, please enter a valid value.")
+        price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+    if payment.isdigit() and payment > 0:
+        payment = int(float(price) * 100)
+    else:
+        print("The value you entered is not a number or negative, please enter a valid value.")
+        payment = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
     # if user enters 'q', halt the program
-    if in_str == 'q':
+    if price == 'q' or payment == 'q':
         break
-
-    # Fill in the good stuff here instead of the following print
-    print("Testing:", in_str)
 
 change = payment - price
 print(change)
 quartersBack = change // quarters
 temp = change - quartersBack * quarters
 dimesBack = temp // dimes
-temp = temp - dimesBack * dimes
+tempd = temp - dimesBack * dimes
 nickelsBack = temp // nickels
-temp = temp - nickelsBack * nickels
-penniesBack = temp // pennies
-temp = temp - penniesBack * pennies
+tempn = tempd - nickelsBack * nickels
+penniesBack = tempn // pennies
+tempp = tempn - penniesBack * pennies
 
 print("The change back is:", quartersBack, "quarters",dimesBack, "dimes", nickelsBack, "nickels and",penniesBack, "pennies.")
 
