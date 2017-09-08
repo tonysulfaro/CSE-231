@@ -3,6 +3,7 @@ quarters = 10
 dimes = 10
 nickels = 10
 pennies = 10
+ChangeString = ""
 
 print("\nWelcome to change-making program.")
 print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
@@ -10,7 +11,7 @@ print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
 while True:
 
     #input price and payment amount
-    price = input(u"Enter the purchase price (xx.xx) or 'q' to quit:")
+    price = input(u"Enter the purchase price (xx.xx) or 'q' to quit: ")
     if price.__contains__("q"):
         break
     payment = input(u"Input dollars paid (int):")
@@ -62,6 +63,18 @@ while True:
         print("\nThere is not enough stock to make the change provided. Sorry")
         break
 
+    if quartersBack > 0:
+        ChangeString += str(quarters) + " quarters"
+    if dimesBack > 0:
+        ChangeString += str(dimesBack) + " dimes"
+    if nickelsBack > 0:
+        ChangeString += str(nickelsBack) + " nickels"
+    if penniesBack > 0:
+        ChangeString += str(penniesBack) + " pennies"
+
     #print stock
-    print("The change back is:", quartersBack, "quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
-          "pennies.")
+    print("Collect change below:", ChangeString)#, quartersBack, "Quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
+          #"pennies.")
+
+    print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
+        quarters, dimes, nickels, pennies))
