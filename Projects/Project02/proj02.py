@@ -1,3 +1,6 @@
+#   Tony Sulfaro
+#   9/7/2017
+#   Purpose of this program is to make change given a price and a payment amount
 # starting stock
 quarters = 10
 dimes = 10
@@ -6,7 +9,7 @@ pennies = 10
 ChangeString = ""
 
 print("\nWelcome to change-making program.")
-print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
+print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 while True:
 
@@ -14,7 +17,7 @@ while True:
     price = input(u"Enter the purchase price (xx.xx) or 'q' to quit: ")
     if price.__contains__("q"):
         break
-    payment = input(u"Input dollars paid (int):")
+    payment = input(u"Input dollars paid (int): ")
     if payment.__contains__("q"):
         break
 
@@ -25,11 +28,11 @@ while True:
     #Check for negative values
     if price < 0:
         print("The value you entered is negative, please enter a valid value.")
-        price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit:")) * 100)
+        price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: ")) * 100)
 
     if payment < 0:
         print("The value you entered is negative, please enter a valid value.")
-        payment = int(float(input("Input dollars paid (int):")) * 100)
+        payment = int(float(input("Input dollars paid (int): ")) * 100)
 
     #calculate change
     change = payment - price
@@ -64,13 +67,13 @@ while True:
         break
 
     if quartersBack > 0:
-        ChangeString += str(quarters) + " quarters"
+        ChangeString += str(quartersBack) + " Quarters"
     if dimesBack > 0:
-        ChangeString += str(dimesBack) + " dimes"
+        ChangeString += str(dimesBack) + " Dimes"
     if nickelsBack > 0:
-        ChangeString += str(nickelsBack) + " nickels"
+        ChangeString += str(nickelsBack) + " Nickels"
     if penniesBack > 0:
-        ChangeString += str(penniesBack) + " pennies"
+        ChangeString += str(penniesBack) + " Pennies"
 
     #print stock
     print("Collect change below:\n", ChangeString)#, quartersBack, "Quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
