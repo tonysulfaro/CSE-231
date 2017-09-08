@@ -1,3 +1,4 @@
+# starting stock
 quarters = 10
 dimes = 10
 nickels = 10
@@ -9,22 +10,31 @@ while True:
     print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
+    #input price and payment amount
     price = input(u"Enter the purchase price (xx.xx) or 'q' to quit: ")
+    if price.__contains__("q"):
+        break
     payment = input(u"Enter the payment received in (xx.xx) format or 'q' to quit: ")
+    if payment.__contains__("q"):
+        break
 
-    price = int(float(price)*100)
-    payment = int(float(payment)*100)
+    #convert price and payment to raw cent amount
+    price = int(float(price) * 100)
+    payment = int(float(payment) * 100)
 
+    #Check for negative values
     if price < 0:
         print("The value you entered is negative, please enter a valid value.")
-        price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: "))*100)
+        price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: ")) * 100)
 
     if payment < 0:
         print("The value you entered is negative, please enter a valid value.")
-        payment = int(float(input("Enter the payment amount (xx.xx) or 'q' to quit: "))*100)
+        payment = int(float(input("Enter the payment amount (xx.xx) or 'q' to quit: ")) * 100)
 
+    #calculate change
     change = payment - price
 
+    #calculate exact change back
     quartersBack = change // 25
     change = change % 25
     quarters = quarters - quartersBack
@@ -53,5 +63,6 @@ while True:
         print("\nThere is not enough stock to make the change provided. Sorry")
         break
 
+    #print stock
     print("The change back is:", quartersBack, "quarters", dimesBack, "dimes", nickelsBack, "nickels and", penniesBack,
           "pennies.")
