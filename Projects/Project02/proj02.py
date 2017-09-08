@@ -67,17 +67,17 @@ while True:
         break
 
     if quartersBack > 0:
-        ChangeString += str(quartersBack) + " Quarters"
+        ChangeString += "Quarters: " + str(quartersBack)
     if dimesBack > 0:
-        ChangeString += str(dimesBack) + " Dimes"
+        ChangeString += "Dimes: " + str(dimesBack)
     if nickelsBack > 0:
-        ChangeString += str(nickelsBack) + " Nickels"
+        ChangeString += "Nickels: " + str(nickelsBack)
     if penniesBack > 0:
-        ChangeString += str(penniesBack) + " Pennies"
+        ChangeString += "Pennies: " + str(penniesBack)
 
     #print stock
-    print("Collect change below:\n", ChangeString)#, quartersBack, "Quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
-          #"pennies.")
+    print("Collect change below: ")
+    print(ChangeString)
 
     print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
