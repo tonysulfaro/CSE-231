@@ -76,7 +76,11 @@ while True:
         ChangeString += "Pennies: " + str(penniesBack)
 
     #print stock
-    print("Collect change below: ")
+    if payment == price:
+        print("No change.")
+    else:
+        print("Collect change below: ")
+
     print(ChangeString)
 
     print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
