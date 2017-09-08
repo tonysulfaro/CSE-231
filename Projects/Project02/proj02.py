@@ -25,15 +25,18 @@ while True:
         break
 
     change = payment - price
-    print(change)
-    quartersBack = change // quarters
-    temp = change - quartersBack * quarters
-    dimesBack = temp // dimes
-    tempd = temp - dimesBack * dimes
-    nickelsBack = temp // nickels
-    tempn = tempd - nickelsBack * nickels
-    penniesBack = tempn // pennies
-    tempp = tempn - penniesBack * pennies
+
+    quartersBack = change // 25
+    change = change % 25
+
+    dimesBack = change // 10
+    change = change % 10
+
+    nickelsBack = change // 5
+    change = change % 5
+
+    penniesBack = change // 1
+    change = change % 1
 
     print("The change back is:", quartersBack, "quarters", dimesBack, "dimes", nickelsBack, "nickels and", penniesBack,
           "pennies.")
