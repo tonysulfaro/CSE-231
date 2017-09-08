@@ -73,8 +73,8 @@ while True:
         ChangeString += str(penniesBack) + " pennies"
 
     #print stock
-    print("Collect change below:", ChangeString)#, quartersBack, "Quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
+    print("Collect change below:\n", ChangeString)#, quartersBack, "Quarters", dimesBack, "dimes", nickelsBack, "nickles and", penniesBack,
           #"pennies.")
 
-    print("\nStock: {} quarters, {} dimes, {} nickles, and {} pennies".format(
+    print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
