@@ -40,10 +40,12 @@ while True:
     #calculate exact change back
     quartersBack = change // 25
     change = change % 25
-    quarters = quarters - quartersBack
+    #quarters = quarters - quartersBack
     if quartersBack > quarters:
         print("\nThere is not enough stock to make the change provided. Sorry")
         break
+    else:
+        quarters = quarters - quartersBack
 
     dimesBack = change // 10
     change = change % 10
