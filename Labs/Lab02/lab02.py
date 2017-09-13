@@ -23,8 +23,8 @@ while userInput != 0:
             odd_sum += userInput
             odd_count += 1
 
-    else:
-        print("You entered a negative number. It will not be recorded.")
+    #else:
+        #print("You entered a negative number. It will not be recorded.")
 
         # user input
     n_str = input("Input an integer (0 terminates): ")
