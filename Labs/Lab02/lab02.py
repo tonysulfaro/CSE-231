@@ -8,7 +8,7 @@ positive_int_count = 0
 n_str = input("Input an integer (0 terminates): ")
 userInput = int(n_str)
 #main loop
-while type(userInput) == int and userInput != 0:
+while userInput != 0:
 
     #evaluate input and increment counters
     if userInput > 0:
