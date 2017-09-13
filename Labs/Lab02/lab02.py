@@ -14,18 +14,22 @@ while userInput != 0:
     userInput = int(n_str)
 
     #evaluate input and increment counters
-    if userInput%2 == 0 and userInput > 0:
-        even_sum += userInput
-        even_count += 1
-
-    elif userInput%2 != 0 and userInput > 0:
-        odd_sum += userInput
-        odd_count += 1
-
     if userInput > 0:
+
         positive_int_count += 1
 
-#print counts and sums
+        if userInput%2 == 0:
+            even_sum += userInput
+            even_count += 1
+
+        elif userInput%2 != 0:
+            odd_sum += userInput
+            odd_count += 1
+
+    if userInput < 0:
+        print("You entered a negative number. It will not be recorded.")
+
+#print counts of values
 print()
 print("sum of odds:", odd_sum)
 print("sum of evens:", even_sum)
