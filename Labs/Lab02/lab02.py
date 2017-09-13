@@ -26,7 +26,7 @@ while userInput != 0:
             odd_sum += userInput
             odd_count += 1
 
-    if userInput < 0:
+    else:
         print("You entered a negative number. It will not be recorded.")
 
 #print counts of values
