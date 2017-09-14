@@ -16,6 +16,7 @@ print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
 price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+print(price)
 
 if price == 'q':
     quit()
