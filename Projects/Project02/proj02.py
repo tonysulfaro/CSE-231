@@ -5,6 +5,10 @@ quarters = 10
 dimes = 10
 nickels = 10
 pennies = 10
+quartersBack = 0
+dimesBack = 0
+nickelsBack = 0
+penniesBack = 0
 ChangeString = ""
 
 print("\nWelcome to change-making program.")
@@ -20,6 +24,10 @@ payment = int(float(input("Input dollars paid (int): "))*100)
 while price != 'q' or payment != 'q':
 
     if price != 'q' and payment != 'q':
+        quartersBack = 0
+        dimesBack = 0
+        nickelsBack = 0
+        penniesBack = 0
 
 
         # Check for negative values
@@ -35,24 +43,29 @@ while price != 'q' or payment != 'q':
         change = payment - price
 
         # calculate exact change back maybe use a while loop??
-        quartersBack = change // 25
-        change = change % 25
-        quarters = quarters - quartersBack
 
-        dimesBack = change // 10
-        change = change % 10
-        dimes = dimes - dimesBack
+        while quarters > 0 and change >= 25:
+            change = change -25
+            quartersBack += 1
+            quarters -= 1
 
-        nickelsBack = change // 5
-        change = change % 5
-        nickels = nickels - nickelsBack
+        while dimes > 0 and change >= 10:
+            change -= 10
+            dimesBack += 1
+            dimes -= 1
 
-        penniesBack = change // 1
-        change = change % 1
-        pennies = pennies - penniesBack
+        while nickels > 0 and change >= 5:
+            change -= 5
+            nickelsBack += 1
+            nickels -= 1
 
-        # idk where this is supposed to go yet
-        #print("\nThere is not enough stock to make the change provided. Sorry")
+        while pennies > 0 and change >= 1:
+            change -= 1
+            penniesBack += 1
+            pennies -= 1
+
+        if change > 0:
+            print("\nThere is not enough stock to make the change provided. Sorry")
 
 
         if quartersBack > 0:
@@ -71,6 +84,7 @@ while price != 'q' or payment != 'q':
             print("Collect change below: ")
 
         print(ChangeString)
+        changeString = ""
 
         print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
             quarters, dimes, nickels, pennies))
