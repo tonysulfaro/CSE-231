@@ -1,6 +1,5 @@
-#   Tony Sulfaro
-#   9/7/2017
-#   Purpose of this program is to make change given a price and a payment amount
+# Project 2
+
 # starting stock
 quarters = 10
 dimes = 10
