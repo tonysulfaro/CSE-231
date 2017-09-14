@@ -15,11 +15,20 @@ print("\nWelcome to change-making program.")
 print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
-price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: "))*100)
+price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+if type(price) is str:
+    int(float(price))*100
+else:
+    quit()
 
 
-payment = int(float(input("Input dollars paid (int): "))*100)
+payment = input("Input dollars paid (int): ")
 
+if type(payment) is str:
+    int(float(payment))*100
+else:
+    quit()
 
 while price != 'q' or payment != 'q':
 
@@ -33,11 +42,21 @@ while price != 'q' or payment != 'q':
         # Check for negative values
         if price < 0:
             print("The value you entered is negative, please enter a valid value.")
-            price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: ")) * 100)
+            price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+            if type(price) != str:
+                int(float(price)) * 100
+            else:
+                break
 
         if payment < 0:
             print("The value you entered is negative, please enter a valid value.")
-            payment = int(float(input("Input dollars paid (int): ")) * 100)
+            payment = input("Input dollars paid (int): ")
+
+            if type(payment) != str:
+                int(float(payment)) * 100
+            else:
+                break
 
         # calculate change
         change = payment - price
@@ -90,6 +109,16 @@ while price != 'q' or payment != 'q':
             quarters, dimes, nickels, pennies))
 
     #input price and payment amount
-    price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: ")) * 100)
+    price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
-    payment = int(float(input("Input dollars paid (int): ")) * 100)
+    if type(price) is str:
+        int(float(price)) * 100
+    else:
+        quit()
+
+    payment = input("Input dollars paid (int): ")
+
+    if type(payment) is str:
+        int(float(payment)) * 100
+    else:
+        quit()
