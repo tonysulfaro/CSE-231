@@ -36,33 +36,19 @@ while price != 'q' or payment != 'q':
         # calculate exact change back
         quartersBack = change // 25
         change = change % 25
-        # quarters = quarters - quartersBack
-        if quartersBack > quarters:
-            print("\nThere is not enough stock to make the change provided. Sorry")
-            break
-        else:
-            quarters = quarters - quartersBack
+        quarters = quarters - quartersBack
 
         dimesBack = change // 10
         change = change % 10
         dimes = dimes - dimesBack
-        if dimesBack > dimes:
-            print("\nThere is not enough stock to make the change provided. Sorry")
-            break
 
         nickelsBack = change // 5
         change = change % 5
         nickels = nickels - nickelsBack
-        if nickelsBack > nickels:
-            print("\nThere is not enough stock to make the change provided. Sorry")
-            break
 
         penniesBack = change // 1
         change = change % 1
         pennies = pennies - penniesBack
-        if penniesBack > pennies:
-            print("\nThere is not enough stock to make the change provided. Sorry")
-            break
 
         if quartersBack > 0:
             ChangeString += "Quarters: " + str(quartersBack)
