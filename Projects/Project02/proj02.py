@@ -34,7 +34,7 @@ while price != 'q' or payment != 'q':
         # calculate change
         change = payment - price
 
-        # calculate exact change back
+        # calculate exact change back maybe use a while loop??
         quartersBack = change // 25
         change = change % 25
         quarters = quarters - quartersBack
