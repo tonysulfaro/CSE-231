@@ -17,16 +17,16 @@ print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
 
 price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
-if type(price) is str:
-    int(float(price))*100
-else:
+if price == 'q':
     quit()
+else:
+    price = int(float(price)) * 100
 
 
 payment = input("Input dollars paid (int): ")
 
-if type(payment) is str:
-    int(float(payment))*100
+if payment != "q":
+    payment = int(float(payment))*100
 else:
     quit()
 
@@ -85,6 +85,7 @@ while price != 'q' or payment != 'q':
 
         if change > 0:
             print("\nThere is not enough stock to make the change provided. Sorry")
+            break
 
 
         if quartersBack > 0:
@@ -111,14 +112,14 @@ while price != 'q' or payment != 'q':
     #input price and payment amount
     price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
-    if type(price) is str:
-        int(float(price)) * 100
+    if type(price) is not str:
+        price = int(float(price)) * 100
     else:
         quit()
 
     payment = input("Input dollars paid (int): ")
 
-    if type(payment) is str:
-        int(float(payment)) * 100
+    if type(payment) is not str:
+        payment = int(float(payment)) * 100
     else:
         quit()
