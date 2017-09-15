@@ -22,6 +22,14 @@ if price == 'q':
 else:
     price = int(float(price)* 100)
 
+if price < 0:
+    print("Error: purchase price must be non-negative.")
+    print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
+        quarters, dimes, nickels, pennies))
+    price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+    if type(price) != str:
+        int(float(price)) * 100
 
 payment = input("Input dollars paid (int): ")
 
@@ -29,6 +37,13 @@ if payment == "q":
     quit()
 else:
     payment = int(float(payment)* 100)
+
+if payment < 0:
+    print("Error: purchase price must be non-negative.")
+    payment = input("Input dollars paid (int): ")
+
+    if type(payment) != str:
+        int(float(payment)) * 100
 
 if payment < price:
     print("Error: insufficient payment.")
@@ -45,6 +60,8 @@ while price != 'q' or payment != 'q':
         # Check for negative values
         if price < 0:
             print("Error: purchase price must be non-negative.")
+            print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
+                quarters, dimes, nickels, pennies))
             price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
             if type(price) != str:
