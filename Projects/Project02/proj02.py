@@ -26,10 +26,10 @@ else:
 
 payment = input("Input dollars paid (int): ")
 
-if payment != "q":
-    payment = int(float(payment))*100
-else:
+if payment == "q":
     quit()
+else:
+    payment = int(float(payment)) * 100
 
 while price != 'q' or payment != 'q':
 
