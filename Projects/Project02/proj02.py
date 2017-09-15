@@ -21,7 +21,8 @@ print(price)
 if price == 'q':
     quit()
 else:
-    price = int(float(price)) * 100
+    price = int(float(price)* 100)
+    print(price)
 
 
 payment = input("Input dollars paid (int): ")
@@ -29,7 +30,8 @@ payment = input("Input dollars paid (int): ")
 if payment == "q":
     quit()
 else:
-    payment = int(float(payment)) * 100
+    payment = int(float(payment)* 100)
+    print(payment)
 
 while price != 'q' or payment != 'q':
 
@@ -61,6 +63,7 @@ while price != 'q' or payment != 'q':
 
         # calculate change
         change = payment - price
+        print(change)
 
         # calculate exact change back maybe use a while loop??
 
@@ -114,13 +117,13 @@ while price != 'q' or payment != 'q':
     price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
     if type(price) is not str:
-        price = int(float(price)) * 100
+        price = int(float(price)* 100)
     else:
         quit()
 
     payment = input("Input dollars paid (int): ")
 
     if type(payment) is not str:
-        payment = int(float(payment)) * 100
+        payment = int(float(payment)* 100)
     else:
         quit()
