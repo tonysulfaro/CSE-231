@@ -34,7 +34,7 @@ if price < 0:
 if type(price) != str:
     int(float(price)) * 100
 
-payment = input("Input dollars paid (int):")
+payment = input("Input dollars paid (int): ")
 
 if payment == "q":
     quit()
