@@ -115,21 +115,20 @@ while price != 'q' or payment != 'q':
             print("\nError: ran out of coins.")
             break
 
-
-        if quartersBack > 0:
-            ChangeString += "Quarters: " + str(quartersBack)
-        if dimesBack > 0:
-            ChangeString += " Dimes: " + str(dimesBack)
-        if nickelsBack > 0:
-            ChangeString += " Nickels: " + str(nickelsBack)
-        if penniesBack > 0:
-            ChangeString += " Pennies: " + str(penniesBack)
-
         # print stock
         if payment == price:
             print("No change.")
         else:
             print("Collect change below: ")
+
+        if quartersBack > 0:
+            print("Quarters: " + str(quartersBack))
+        if dimesBack > 0:
+            print("Dimes: " + str(dimesBack))
+        if nickelsBack > 0:
+            print("Nickels: " + str(nickelsBack))
+        if penniesBack > 0:
+            print("Pennies: " + str(penniesBack))
 
         print(ChangeString)
         changeString = ""
