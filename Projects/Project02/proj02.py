@@ -52,9 +52,6 @@ if payment < 0:
 if type(payment) != str:
     int(float(payment)) * 100
 
-if payment < price:
-    print("Error: insufficient payment.")
-
 while price != 'q' or payment != 'q':
 
     if price != 'q' and payment != 'q':
@@ -131,22 +128,21 @@ while price != 'q' or payment != 'q':
 
             print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
                 quarters, dimes, nickels, pennies))
+
+            # input price and payment amount
+            price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+            if price == 'q':
+                quit()
+            else:
+                price = int(float(price) * 100)
+
+            payment = input("Input dollars paid (int): ")
+
+            if payment == "q":
+                quit()
+            else:
+                payment = int(float(payment) * 100)
         else:
             print("Error: insufficient payment.")
             payment = int(float(input("Input dollars paid (int):")) * 100)
-
-    #input price and payment amount
-
-    price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
-
-    if price == 'q':
-        quit()
-    else:
-        price = int(float(price) * 100)
-
-    payment = input("Input dollars paid (int): ")
-
-    if payment == "q":
-        quit()
-    else:
-        payment = int(float(payment) * 100)
