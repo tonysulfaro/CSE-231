@@ -16,7 +16,6 @@ print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
 
 price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
-print(price)
 
 if price == 'q':
     quit()
@@ -61,7 +60,6 @@ while price != 'q' or payment != 'q':
 
         # calculate change
         change = payment - price
-        print(change)
 
         # calculate exact change back maybe use a while loop??
 
