@@ -22,7 +22,6 @@ if price == 'q':
     quit()
 else:
     price = int(float(price)* 100)
-    print(price)
 
 
 payment = input("Input dollars paid (int): ")
@@ -31,7 +30,6 @@ if payment == "q":
     quit()
 else:
     payment = int(float(payment)* 100)
-    print(payment)
 
 while price != 'q' or payment != 'q':
 
