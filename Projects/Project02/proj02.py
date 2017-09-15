@@ -27,9 +27,13 @@ if price < 0:
     print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
     price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+    if price == 'q':
+        quit()
+    else:
+        price = int(float(price) * 100)
 
-    if type(price) != str:
-        int(float(price)) * 100
+if type(price) != str:
+    int(float(price)) * 100
 
 payment = input("Input dollars paid (int): ")
 
@@ -41,9 +45,13 @@ else:
 if payment < 0:
     print("Error: purchase price must be non-negative.")
     payment = input("Input dollars paid (int): ")
+    if payment == "q":
+        quit()
+    else:
+        payment = int(float(payment) * 100)
 
-    if type(payment) != str:
-        int(float(payment)) * 100
+if type(payment) != str:
+    int(float(payment)) * 100
 
 if payment < price:
     print("Error: insufficient payment.")
