@@ -9,7 +9,6 @@ quartersBack = 0
 dimesBack = 0
 nickelsBack = 0
 penniesBack = 0
-ChangeString = ""
 
 print("\nWelcome to change-making program.")
 print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
@@ -129,9 +128,6 @@ while price != 'q' or payment != 'q':
             print("Nickels: " + str(nickelsBack))
         if penniesBack > 0:
             print("Pennies: " + str(penniesBack))
-
-        print(ChangeString)
-        changeString = ""
 
         print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
             quarters, dimes, nickels, pennies))
