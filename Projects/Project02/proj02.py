@@ -34,7 +34,7 @@ if price < 0:
 if type(price) != str:
     int(float(price)) * 100
 
-payment = input("Input dollars paid (int): ")
+payment = input("Input dollars paid (int):")
 
 if payment == "q":
     quit()
@@ -60,7 +60,7 @@ while price != 'q' or payment != 'q':
         nickelsBack = 0
         penniesBack = 0
 
-        if payment > price:
+        if payment >= price:
             # Check for negative values
             if price < 0:
                 print("Error: purchase price must be non-negative.")
