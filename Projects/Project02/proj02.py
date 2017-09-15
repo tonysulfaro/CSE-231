@@ -30,6 +30,9 @@ if payment == "q":
 else:
     payment = int(float(payment)* 100)
 
+if payment < price:
+    print("Error: insufficient payment.")
+
 while price != 'q' or payment != 'q':
 
     if price != 'q' and payment != 'q':
@@ -124,3 +127,6 @@ while price != 'q' or payment != 'q':
         quit()
     else:
         payment = int(float(payment) * 100)
+
+    if payment < price:
+        print("Error: insufficient payment.")
