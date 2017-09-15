@@ -117,7 +117,7 @@ while price != 'q' or payment != 'q':
         # print stock
         if payment == price:
             print("No change.")
-        else:
+        elif payment > price:
             print("Collect change below: ")
 
         if quartersBack > 0:
@@ -150,3 +150,4 @@ while price != 'q' or payment != 'q':
 
     if payment < price:
         print("Error: insufficient payment.")
+        payment = int(float(input("Input dollars paid (int):")) * 100)
