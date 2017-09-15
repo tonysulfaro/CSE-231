@@ -44,7 +44,7 @@ while price != 'q' or payment != 'q':
 
         # Check for negative values
         if price < 0:
-            print("The value you entered is negative, please enter a valid value.")
+            print("Error: purchase price must be non-negative.")
             price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
             if type(price) != str:
@@ -53,7 +53,7 @@ while price != 'q' or payment != 'q':
                 break
 
         if payment < 0:
-            print("The value you entered is negative, please enter a valid value.")
+            print("Error: purchase price must be non-negative.")
             payment = input("Input dollars paid (int): ")
 
             if type(payment) != str:
