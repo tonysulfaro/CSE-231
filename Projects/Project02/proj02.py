@@ -1,4 +1,22 @@
-# Project 2
+##############################################################
+#  Project 2
+#
+#   Initialize variables
+#
+#   Print Welcome message and stock
+#   prompt for price and payment outside of loop
+#       Check if input is not ideal
+#       Cast to int if input is not string
+#   Mainloop while not q
+#       if price or payment is not q
+#        set changeback to 0 for all coins
+#           if payment >= price
+#               Check if input is non-negative and not string
+#               while loops to increment and degrement stock and changeback for each coin
+#               print stock and changeback
+#
+##############################################################
+
 
 # starting stock
 quarters = 10
