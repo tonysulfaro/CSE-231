@@ -141,6 +141,7 @@ while price != 'q' or payment != 'q':
                 penniesBack += 1
                 pennies -= 1
 
+            #alert if run out of coins and exit
             if change > 0:
                 print("\nError: ran out of coins.")
                 break
