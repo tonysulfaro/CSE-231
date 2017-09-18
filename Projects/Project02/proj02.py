@@ -54,7 +54,7 @@ if price < 0:
 
 #cast the input if its not a string
 if type(price) != str:
-    int(float(price)) * 100
+    price = int(float(price)) * 100
 
 #prompt for payment
 payment = input("Input dollars paid (int): ")
@@ -78,7 +78,7 @@ if payment < 0:
 
 #cast to number if its not a string
 if type(payment) != str:
-    int(float(payment)) * 100
+    payment = int(float(payment)) * 100
 
 #mainloop
 while price != 'q' or payment != 'q':
@@ -103,7 +103,7 @@ while price != 'q' or payment != 'q':
                 price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
                 if type(price) != str:
-                    int(float(price)) * 100
+                    price = int(float(price)) * 100
                 else:
                     break
 
@@ -113,7 +113,7 @@ while price != 'q' or payment != 'q':
                 payment = input("Input dollars paid (int): ")
 
                 if type(payment) != str:
-                    int(float(payment)) * 100
+                    payment = int(float(payment)) * 100
                 else:
                     break
 
