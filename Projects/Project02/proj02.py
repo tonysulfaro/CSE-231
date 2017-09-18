@@ -187,4 +187,3 @@ while price != 'q' or payment != 'q':
         else:
             print("Error: insufficient payment.")
             payment = int(float(input("Input dollars paid (int): ")) * 100)
-            print("test")
