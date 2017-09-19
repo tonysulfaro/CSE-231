@@ -10,9 +10,9 @@
 #   Mainloop while not q
 #       if price or payment is not q
 #        set changeback to 0 for all coins
-#           if payment >= price
+#           given payment >= price
 #               Check if input is non-negative and not string
-#               while loops to increment and degrement stock and changeback for each coin
+#               while loops to increment and decrement stock and changeback for each coin
 #               print stock and changeback
 #
 ############################################################################################
