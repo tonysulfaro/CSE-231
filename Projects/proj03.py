@@ -1,5 +1,6 @@
 # assume a word has at least one vowel
-VOWELS = "aeiou"
+vowels = "aeiou"
+consonants = "bcdfghjklmnpqrstvwxyz"
 
 # your code goes here
 
