@@ -1,89 +1,190 @@
-#   Tony Sulfaro
-#   9/7/2017
-#   Purpose of this program is to make change given a price and a payment amount
+############################################################################################
+#  Project 2
+#
+#   Initialize variables
+#
+#   Print Welcome message and stock
+#   prompt for price and payment outside of loop
+#       Check if input is not ideal
+#       Cast to int if input is not string
+#   Mainloop while not q
+#       if price or payment is not q
+#        set changeback to 0 for all coins
+#           given payment >= price
+#               Check if input is non-negative and not string
+#               while loops to increment and decrement stock and changeback for each coin
+#               print stock and changeback
+#
+############################################################################################
+
+
 # starting stock
 quarters = 10
 dimes = 10
 nickels = 10
 pennies = 10
-ChangeString = ""
+quartersBack = 0
+dimesBack = 0
+nickelsBack = 0
+penniesBack = 0
 
 print("\nWelcome to change-making program.")
 print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
-while True:
 
-    #input price and payment amount
-    price = input(u"Enter the purchase price (xx.xx) or 'q' to quit: ")
-    if price.__contains__("q"):
-        break
-    payment = input(u"Input dollars paid (int): ")
-    if payment.__contains__("q"):
-        break
+price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
 
-    #convert price and payment to raw cent amount
-    price = int(float(price) * 100)
-    payment = int(float(payment) * 100)
+if price == 'q':
+    quit()
+else:
+    price = int(float(price)* 100)
 
-    #Check for negative values
-    if price < 0:
-        print("The value you entered is negative, please enter a valid value.")
-        price = int(float(input("Enter the purchase price (xx.xx) or 'q' to quit: ")) * 100)
-
-    if payment < 0:
-        print("The value you entered is negative, please enter a valid value.")
-        payment = int(float(input("Input dollars paid (int): ")) * 100)
-
-    #calculate change
-    change = payment - price
-
-    #calculate exact change back
-    quartersBack = change // 25
-    change = change % 25
-    #quarters = quarters - quartersBack
-    if quartersBack > quarters:
-        print("\nThere is not enough stock to make the change provided. Sorry")
-        break
-    else:
-        quarters = quarters - quartersBack
-
-    dimesBack = change // 10
-    change = change % 10
-    dimes = dimes - dimesBack
-    if dimesBack > dimes:
-        print("\nThere is not enough stock to make the change provided. Sorry")
-        break
-
-    nickelsBack = change // 5
-    change = change % 5
-    nickels = nickels - nickelsBack
-    if nickelsBack > nickels:
-        print("\nThere is not enough stock to make the change provided. Sorry")
-        break
-
-    penniesBack = change // 1
-    change = change % 1
-    pennies = pennies - penniesBack
-    if penniesBack > pennies:
-        print("\nThere is not enough stock to make the change provided. Sorry")
-        break
-
-    if quartersBack > 0:
-        ChangeString += "Quarters: " + str(quartersBack)
-    if dimesBack > 0:
-        ChangeString += "Dimes: " + str(dimesBack)
-    if nickelsBack > 0:
-        ChangeString += "Nickels: " + str(nickelsBack)
-    if penniesBack > 0:
-        ChangeString += "Pennies: " + str(penniesBack)
-
-    #print stock
-    if payment == price:
-        print("No change.")
-    else:
-        print("Collect change below: ")
-
-    print(ChangeString)
-
+#check for negative price
+if price < 0:
+    print("Error: purchase price must be non-negative.")
     print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
         quarters, dimes, nickels, pennies))
+    price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+    #check if userinput is quit
+    if price == 'q':
+        quit()
+    else:
+        price = int(float(price) * 100)
+
+#cast the input if its not a string
+if type(price) != str:
+    price = int(float(price)) * 100
+
+#prompt for payment
+payment = input("Input dollars paid (int): ")
+
+#quit if input is q
+if payment == "q":
+    quit()
+else:
+    payment = int(float(payment)* 100)
+
+#catch if payment is negative
+if payment < 0:
+    print("Error: purchase price must be non-negative.")
+    payment = input("Input dollars paid (int): ")
+
+    #quit if input is q
+    if payment == "q":
+        quit()
+    else:
+        payment = int(float(payment) * 100)
+
+#cast to number if its not a string
+if type(payment) != str:
+    payment = int(float(payment)) * 100
+
+#mainloop
+while price != 'q' or payment != 'q':
+
+
+    if price != 'q' and payment != 'q':
+
+        #set change back to 0
+        quartersBack = 0
+        dimesBack = 0
+        nickelsBack = 0
+        penniesBack = 0
+
+        #continue only if payment is greater than price
+        if payment >= price:
+
+            # Check for negative values
+            if price < 0:
+                print("Error: purchase price must be non-negative.")
+                print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
+                    quarters, dimes, nickels, pennies))
+                price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+                if type(price) != str:
+                    price = int(float(price)) * 100
+                else:
+                    break
+
+            #check if payment is negative
+            if payment < 0:
+                print("Error: purchase price must be non-negative.")
+                payment = input("Input dollars paid (int): ")
+
+                if type(payment) != str:
+                    payment = int(float(payment)) * 100
+                else:
+                    break
+
+            # calculate change
+            change = payment - price
+
+            # calculate exact change back with a while loop
+            while quarters > 0 and change >= 25:
+                change = change - 25
+                quartersBack += 1
+                quarters -= 1
+
+            while dimes > 0 and change >= 10:
+                change -= 10
+                dimesBack += 1
+                dimes -= 1
+
+            while nickels > 0 and change >= 5:
+                change -= 5
+                nickelsBack += 1
+                nickels -= 1
+
+            while pennies > 0 and change >= 1:
+                change -= 1
+                penniesBack += 1
+                pennies -= 1
+
+            #alert if run out of coins and exit
+            if change > 0:
+                print("\nError: ran out of coins.")
+                break
+
+            # print stock
+            if payment == price:
+                print("No change.")
+            elif payment > price:
+                print("Collect change below: ")
+
+            #print the change back only if there is any for each coin
+            if quartersBack > 0:
+                print("Quarters: " + str(quartersBack))
+            if dimesBack > 0:
+                print("Dimes: " + str(dimesBack))
+            if nickelsBack > 0:
+                print("Nickels: " + str(nickelsBack))
+            if penniesBack > 0:
+                print("Pennies: " + str(penniesBack))
+
+            #print stock
+            print("\nStock: {} quarters, {} dimes, {} nickels, and {} pennies".format(
+                quarters, dimes, nickels, pennies))
+
+            # input price and payment amount
+            price = input("Enter the purchase price (xx.xx) or 'q' to quit: ")
+
+            #quit if its q
+            if price == 'q':
+                quit()
+            else:
+                price = int(float(price) * 100)
+
+            #prompt for payment
+            payment = input("Input dollars paid (int): ")
+
+            #quit if q
+            if payment == "q":
+                quit()
+            else:
+                payment = int(float(payment) * 100)
+
+        #if the payment < price
+        else:
+            print("Error: insufficient payment.")
+            payment = int(float(input("Input dollars paid (int): ")) * 100)
