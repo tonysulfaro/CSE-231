@@ -12,6 +12,8 @@ while word != 'quit':
 
     if word[0] in vowels:
         word = word + "way"
+
+    #if word is one letter consonant
     elif word[0] not in vowels and len(word) == 1:
         word = word + 'ay'
     else:
