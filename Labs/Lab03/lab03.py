@@ -1,16 +1,18 @@
 vowels = "aeiou"
 
+#user input
 word = input("Enter a word ('quit' to quit): ")
 word = word.lower()
 
 if word == 'quit':
     quit()
 
+#mainloop
 while word != 'quit':
 
     if word[0] in vowels:
         word = word + "way"
-    elif len(word) == 0:
+    elif word[0] not in vowels and len(word) == 1:
         word = word + 'ay'
     else:
         for i, ch in enumerate(word):
@@ -23,5 +25,3 @@ while word != 'quit':
     #user input
     word = input("Enter a word ('quit' to quit): ")
     word = word.lower()
-
-
