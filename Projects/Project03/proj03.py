@@ -27,6 +27,9 @@ while vowelCount < 5 and consonantCount < 5:
     vowelCount = len(vowelString)
     consonantCount = len(consonantString)
 
+    if vowelCount >= 5 or consonantCount >= 5:
+        break
+
     word = input("Enter a word.")
     word = word.lower()
 
