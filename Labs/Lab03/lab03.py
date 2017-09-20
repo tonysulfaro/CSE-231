@@ -2,17 +2,24 @@ vowels = "aeiou"
 
 word = input("Enter a word ('quit' to quit): ")
 word = word.lower()
-print(word)
 
 if word == 'quit':
     quit()
 
 while word != 'quit':
 
-    word = input("Enter a word ('quit' to quit): ")
-    word = word.lower()
+    if word[0] in vowels:
+        word = word + "way"
+    else:
+        for i, ch in enumerate(word):
+            if ch in vowels:
+                word = word[i:] + word[:i] + "ay"
+                break
+
     print(word)
 
+    #user input
+    word = input("Enter a word ('quit' to quit): ")
+    word = word.lower()
 
-# Error message used in Mimir test
-# print("Can't convert empty string.  Try again.")
+
