@@ -4,31 +4,34 @@ vowelCount = 0
 consonantCount = 0
 vowelString = ""
 consonantString = ""
+index = 0
 
 word = input("Enter a word.")
 word = word.lower()
 
 # your code goes here
-while len(vowelString) < 5 or len(consonantString) < 5:
+while vowelCount < 5 and consonantCount < 5:
 
     for i, ch in enumerate(word):
         if ch in vowels:
             if ch not in vowelString:
-                vowelCount += 1
                 vowelString += ch
-        else:
-            if ch not in consonantString:
-                consonantCount += 1
-                consonantString += ch
+        if ch in vowels:
+            index = i
 
-    print("\n" + "=" * 12)
-    print("{:8s}{:7s} | {:12s}{:7s}".format("vowels", "length", "consonants", "length"))
-    print(vowelString, vowelCount, consonantString, consonantCount)
+    for i, ch in enumerate(word[index+1:]):
+
+        if ch not in consonantString:
+            consonantString += ch
+
+    vowelCount = len(vowelString)
+    consonantCount = len(consonantString)
 
     word = input("Enter a word.")
     word = word.lower()
 
 # here are two lines of the output -- you need to add a third line
-print("\n"+"="*12)
-print("{:8s}{:7s} | {:12s}{:7s}".format("vowels","length","consonants","length"))
-print(vowelString,vowelCount,consonantString,consonantCount)
+# print vowel and consonant string and their lengths through formatting
+print("\n" + "=" * 12)
+print("{:8s}{:7s} | {:12s}{:7s}".format("vowels", "length", "consonants", "length"))
+print("{:8s}{:<7d} | {:12s}{:<7d}".format(vowelString, len(vowelString), consonantString, len(consonantString)))
