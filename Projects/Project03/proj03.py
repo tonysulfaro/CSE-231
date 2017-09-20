@@ -6,7 +6,7 @@ vowelString = ""
 consonantString = ""
 index = 0
 
-word = input("Input a word:")
+word = input("Input a word: ")
 word = word.lower()
 
 # your code goes here
@@ -30,7 +30,7 @@ while vowelCount < 5 and consonantCount < 5:
     if vowelCount >= 5 or consonantCount >= 5:
         break
 
-    word = input("Input a word:")
+    word = input("Input a word: ")
     word = word.lower()
 
 # here are two lines of the output -- you need to add a third line
