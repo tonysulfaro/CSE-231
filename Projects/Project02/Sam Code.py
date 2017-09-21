@@ -1,3 +1,5 @@
+#This code is mainly here for me to help debug one of my classmate's code
+
 # purchase price and payment will be kept in cents
 
 quarters = 10
