@@ -2,8 +2,6 @@
 
 # purchase price and payment will be kept in cents
 
-#test comment to see if vcs is working
-
 quarters = 10
 dimes = 10
 nickels = 10
