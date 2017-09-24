@@ -1,3 +1,24 @@
+################################################################
+# Project 03
+#
+# Initialize Variables
+# Prompt for User Input
+# Make user input all lowercase
+#
+# Mainloop, While length of vowel and consonant strings <5
+#   enumerate word
+#       if the character is in vowels and not in vowelstring
+#           append it onto the string
+#       Last Vowel is the Index last time it found one
+#   Enumerate word
+#       if character not in consonant string, append it on
+#   If either collection string is greater than 5 then break
+#   Prompt for user input
+#       Make user input lower
+#
+# Print collection statistics with string formatting
+#################################################################
+
 # assume a word has at least one vowel
 vowels = "aeiou"
 vowelString = ""
