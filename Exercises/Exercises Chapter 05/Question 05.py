@@ -1,12 +1,16 @@
-# palindrome function definition goes here
-import string
+#physically hurts to have entire alphabet as a variable
+letters = "abcdefghijklmnopqrstuvwxyz"
 
+# palindrome function definition goes here
 def palindrome(in_str):
+
     string = ""
+    in_str = in_str.lower()
+
     for i,ch in enumerate(in_str):
-        if ch in string.ascii_letters:
+        if ch in letters:
             string += ch
-    print(string)
+
     if string == string[::-1]:
         return True
     else:
