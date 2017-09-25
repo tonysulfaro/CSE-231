@@ -35,6 +35,9 @@ def main():
     string = ""
 
     # call the functions in a loop
+    while get_ch() != "!":
+        get_ch()
+        find_state()
 
     # when user enters an empty string, you should print the results
     print("\nYou entered", string)
