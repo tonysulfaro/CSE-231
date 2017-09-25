@@ -1,3 +1,14 @@
+#########################################################################
+# Project 04
+# Pattern Recognizer
+#
+#
+#
+#
+#
+#
+#########################################################################
+
 def get_ch():
     # prompt for the input in a loop
     ch = input("Enter a character or press the Return key to finish: ")
