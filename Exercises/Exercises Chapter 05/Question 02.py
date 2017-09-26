@@ -16,7 +16,7 @@ print("-"*30)
 print("Count Upper Case and Lower Case")
 print("-"*30)
 
-user_input = input("Enter a string (no punctuation): ")
+user_input = input("Enter a string: ")
 upper, lower = count_case(user_input)
 print("Upper case count: ", upper)
 print("Lower case count: ", lower)
