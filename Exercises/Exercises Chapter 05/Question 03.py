@@ -9,4 +9,4 @@ num = int(input("Enter a number: "))
 if range_test(num):
     print( "{:d} is in range.".format(num))
 else:
-    print("Number you entered is outside the range!")
+    print("The number you entered is outside the range!")
