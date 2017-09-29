@@ -36,9 +36,10 @@ def main():
     # initialize the variables, for example:
     state = 0
     string = ""
+    ch = ''
 
     # call the functions in a loop
-    while get_ch() != "!":
+    while ch != "!":
         ch = get_ch()
         string + ch
         state += 1
