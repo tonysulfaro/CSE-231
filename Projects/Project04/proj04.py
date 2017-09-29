@@ -26,6 +26,7 @@ def get_ch():
 
 
 def find_state(state, ch):
+
     state += 1
 
 
