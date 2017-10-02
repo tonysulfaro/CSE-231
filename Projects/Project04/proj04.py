@@ -26,8 +26,17 @@ def get_ch():
 
 
 def find_state(state, ch):
+    state = 0
 
-    state += 1
+    if ch == 'a' or ch == 'o':
+        state = 0
+        return state
+    elif ch == 'h':
+        state = 1
+        return state
+    else:
+        state = -1
+        return state
 
 
 def main():
@@ -43,13 +52,14 @@ def main():
     while ch != "!":
         ch = get_ch()
         string += ch
-        state += 1
-        find_state(state,ch)
+        state = find_state(state,ch)
 
     # when user enters an empty string, you should print the results
     print("\nYou entered", string)
-    print("You are laughing.")
-    print("You are not laughing.")
+    if state != 3:
+        print("You are laughing.")
+    else:
+        print("You are not laughing.")
 
 
 main()
