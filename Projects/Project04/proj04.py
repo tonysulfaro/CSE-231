@@ -50,7 +50,7 @@ def main():
     ch = ''
 
     # call the functions in a loop
-    while ch != "!":
+    while ch != "":
         ch = get_ch()
         string += ch
         state = find_state(state,ch)
