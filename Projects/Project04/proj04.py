@@ -47,7 +47,7 @@ def main():
     # initialize the variables, for example:
     state = 0
     string = ""
-    ch = ''
+    ch = 'null'
 
     # call the functions in a loop
     while ch != "":
