@@ -12,6 +12,7 @@
 def get_ch():
     # prompt for the input in a loop
     ch = input("Enter a character or press the Return key to finish: ")
+    ch = str(ch)
 
     # in case of invalid input, print the following error message
     if len(ch) > 1:
