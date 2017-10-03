@@ -18,8 +18,6 @@ def get_ch():
     if len(ch) > 1:
         print("Invalid input, please try again.")
         get_ch()
-
-    # return the ch at the end
     elif len(ch) == 1 or ch == "":
         return ch
     else:
@@ -82,8 +80,9 @@ def main():
 
         if ch == '':
             break
-
+        print(string)
         string += ch
+        print(string)
         state = find_state(state,ch)
 
     # when user enters an empty string, you should print the results
@@ -92,5 +91,6 @@ def main():
         print("You are laughing.")
     else:
         print("You are not laughing.")
+
 
 main()
