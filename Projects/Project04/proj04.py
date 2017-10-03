@@ -74,6 +74,7 @@ def main():
     # call the functions in a loop
     while ch != "":
         ch = get_ch()
+        ch = str(ch)
         string += ch
         state = find_state(state,ch)
 
