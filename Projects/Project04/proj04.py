@@ -32,6 +32,9 @@ def find_state(state, ch):
         if ch == 'h':
             state = 1
             return state
+        elif ch == 'a' or ch == 'o':
+            state = 2
+            return state
         else:
             state = 5
             return state
@@ -42,6 +45,12 @@ def find_state(state, ch):
             return state
         elif ch == 'h':
             state = 3
+            return state
+        elif ch == '!':
+            state = 4
+            return state
+        else:
+            state = 5
             return state
 
     if state == 4:

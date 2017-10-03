@@ -21,6 +21,9 @@ def find_state(state, ch):
         elif ch == '!':
             state = 4
             return state
+        else:
+            state = 5
+            return state
 
     if state == 4:
         state = 4
