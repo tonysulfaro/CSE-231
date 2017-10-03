@@ -79,6 +79,10 @@ def main():
     while ch != "":
         ch = get_ch()
         ch = str(ch)
+
+        if ch == '':
+            break
+
         string += ch
         state = find_state(state,ch)
 
