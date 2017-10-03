@@ -18,6 +18,9 @@ def find_state(state, ch):
         elif ch == 'h':
             state = 3
             return state
+        elif ch == '!':
+            state = 4
+            return state
 
     if state == 4:
         state = 4
@@ -27,16 +30,19 @@ def find_state(state, ch):
         state = 5
         return state
 
+state = 1
 ch = input("Enter a Character: ")
 ch = str(ch)
-state = 1
-state = find_state(state,ch)
+if ch == '':
+    quit()
+state = find_state(state, ch)
 print(state)
 
 while input != "":
-    state = find_state(state,ch)
+
     ch = input("Enter a Character: ")
     ch = str(ch)
-    print(state)
     if ch == '':
         break
+    state = find_state(state, ch)
+    print(state)
