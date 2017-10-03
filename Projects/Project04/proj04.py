@@ -80,9 +80,8 @@ def main():
 
         if ch == '':
             break
-        print(string)
+
         string += ch
-        print(string)
         state = find_state(state,ch)
 
     # when user enters an empty string, you should print the results
