@@ -83,6 +83,5 @@ def main():
         print("You are laughing.")
     else:
         print("You are not laughing.")
-    print(state)
 
 main()
