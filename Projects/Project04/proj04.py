@@ -54,8 +54,12 @@ def find_state(state, ch):
             return state
 
     if state == 4:
-        state = 4
-        return state
+        if ch == '!':
+            state = 4
+            return state
+        else:
+            state = 5
+            return state
 
     if state == 5:
         state = 5
