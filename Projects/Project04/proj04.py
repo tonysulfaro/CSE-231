@@ -27,16 +27,29 @@ def get_ch():
 
 
 def find_state(state, ch):
-    state = 0
 
-    if ch == 'a' or ch == 'o':
-        state = 0
+    if state == 1:
+        if ch == 'h':
+            state = 1
+            return state
+        else:
+            state = 5
+            return state
+
+    if state == 2 or state == 3:
+        if ch == 'a' or ch == 'o':
+            state = 2
+            return state
+        elif ch == 'h':
+            state = 3
+            return state
+
+    if state == 4:
+        state = 4
         return state
-    elif ch == 'h':
-        state = 1
-        return state
-    else:
-        state = -1
+
+    if state == 5:
+        state = 5
         return state
 
 
@@ -45,7 +58,7 @@ def main():
     print("Please enter one character at a time.")
 
     # initialize the variables, for example:
-    state = 0
+    state = 1
     string = ""
     ch = 'null'
 
@@ -57,10 +70,10 @@ def main():
 
     # when user enters an empty string, you should print the results
     print("\nYou entered", string)
-    if state != 3:
+    if state == 4:
         print("You are laughing.")
     else:
         print("You are not laughing.")
-
+    print(state)
 
 main()
