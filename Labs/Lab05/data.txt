@@ -1,0 +1,9 @@
+Name        Height(m)   Weight(kg)      
+Joe         1.82        72.57       
+Mary        1.60        63.50       
+Dion        1.90        90.71       
+Kayla       1.72        66.31       
+Jose        1.78        70.23       
+Sofia       1.63        65.12       
+Erik        1.98        92.21       
+Sara        1.57        65.77       
