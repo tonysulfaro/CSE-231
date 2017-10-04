@@ -1,6 +1,6 @@
 # Author:   Tony Sulfaro
 # Date :    8/31/2017
-# Purpose:  This program covers examples given in the pre-lab quiz
+# Purpose:  This program covers examples given in the pre-lab05 quiz
 
 import math
 
