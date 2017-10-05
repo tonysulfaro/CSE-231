@@ -43,6 +43,12 @@ def main():
     print("-------------------")
     print()
     ## read the file
+
+    bestPerforming = ""
+    sales = 0
+    bestROI = 0.0
+    bestROIad = ""
+
     for line in fp:
         print(line)
 
@@ -54,27 +60,30 @@ def main():
         productPrice = float(line[-16:-8].strip())
         productionCost = float(line[-8:].strip())
 
-        print(product)
-        print(ad)
-        print(placementCount)
-        print(placementCost)
-        print(salesNumber)
-        print(productPrice)
-        print(productionCost)
-
         #pass variables onto functions
 
-        revenue(salesNumber, productPrice)
-        cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
-        revenue(salesNumber, productPrice)
-        calculate_ROI(revenue(salesNumber, productPrice),cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
-        totalProductionCost = salesNumber * productionCost
+        totalRevenue = revenue(salesNumber, productPrice)
+        costofGoods = cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
+        roi = calculate_ROI(revenue(salesNumber, productPrice),cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
+        totalProdCost = totalProductionCost = salesNumber * productionCost
+
+
+        if salesNumber > sales:
+            sales = salesNumber
+            bestPerforming = ad
+        if roi > bestROI:
+            bestROI = roi
+            bestROIad = ad
+
 
     ##   extract the data
     ##   print each product's best selling ad sales number, and best ROI
     ##   Here are two print lines to assit with formatting to match Mimir tests
-    ##   print("  {:27s}{:>11s}".format("Best-Performing Ad","sales"))
-    ##   print("  {:27s}{:>11s}".format("Best ROI","percent"))
+        print(product)
+        print("  {:27s}{:>11s}".format("Best-Performing Ad","sales"))
+        print("  {:27s}{:>11d}".format(bestPerforming, sales))
+        print("\n  {:27s}{:>11s}".format("Best ROI","percent"))
+        print("  {:27s}{:>11f}".format(ad, bestROI))
     pass
 
 
