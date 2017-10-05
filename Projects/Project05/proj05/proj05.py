@@ -6,9 +6,14 @@
 def open_file():
     '''prompt for file name, open file, return file pointer'''
     ## Some lines to help with formatting
-    ## filename = input("Input a file name: ")
-    ## print("Unable to open file. Please try again.")
-    pass
+    while True:
+
+        try:
+            filename = input("Input a file name: ") + '.txt'
+        except():
+            print("Unable to open file. Please try again.")
+            continue
+        return filename
     # return fp
 
 
