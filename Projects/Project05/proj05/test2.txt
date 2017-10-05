@@ -1,0 +1,9 @@
+PipBoy 2000                Atomic Radio Ad                  17  100.00     372  499.99   77.02
+PipBoy 2000                Tesla Science Magazine Ad         2  500.00    5013  459.99   77.02
+PipBoy 2000                Capital Post Newspaper Ad        36    2.00     200  499.99   77.02
+PipBoy 2000                Boston Bugle Newspaper Ad        23    3.50    1100  499.99   77.02
+Mister Handy               RobCo Fun Magazine Ad             5  300.00     113 1199.99  372.14
+Mister Handy               Poster                         3200    0.25       1  508.00 1299.99
+Mister Handy               Boston Bugle Newspaper Ad        11    5.00     252 1299.99  372.14
+Abraxo Scouring Powder     Atomic Radio Ad                  27  200.00   30020    3.49    0.11
+Abraxo Scouring Powder     Poster                         3000    0.25   20002    3.99    0.11
