@@ -6,16 +6,17 @@
 def open_file():
     '''prompt for file name, open file, return file pointer'''
     ## Some lines to help with formatting
+    filename = ''
     while True:
 
         try:
-            filename = input("Input a file name: ") + '.txt'
-        except():
+            filename = input("Input a file name including (.txt): ")
+            break
+        except(FileNotFoundError,IOError):
             print("Unable to open file. Please try again.")
             continue
-        return filename
     # return fp
-
+    return filename
 
 def revenue(num_sales, sale_price):
     '''revenue = sales * price'''
@@ -34,13 +35,15 @@ def calculate_ROI(num_ads, ad_price, num_sales, sale_price, production_cost):
 
 def main():
     ## open the file
-
+    fp = open(open_file())
     ## Some print lines to match formatting in Mimir tests
     print()
     print("RobCo AdStats M4000")
     print("-------------------")
     print()
     ## read the file
+    for line in fp:
+        print(line)
     ##   extract the data
     ##   print each product's best selling ad sales number, and best ROI
     ##   Here are two print lines to assit with formatting to match Mimir tests
