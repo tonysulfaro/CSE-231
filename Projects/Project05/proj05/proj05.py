@@ -23,7 +23,6 @@ def revenue(num_sales, sale_price):
     return totalRevenue
 
 
-
 def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
     costsOfGoodsSold = num_ads*ad_price + num_sales*production_cost
     return  costsOfGoodsSold
@@ -62,12 +61,11 @@ def main():
         productionCost = float(line[-8:].strip())
 
         #pass variables onto functions
-
         totalRevenue = revenue(salesNumber, productPrice)
         costofGoods = cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
-        roi = calculate_ROI(revenue(salesNumber, productPrice),cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
-        totalProdCost = totalProductionCost = salesNumber * productionCost
-
+        roi = calculate_ROI(revenue(salesNumber, productPrice),
+                            cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
+        totalProdCost = salesNumber * productionCost
 
         if salesNumber > sales:
             sales = salesNumber
@@ -84,9 +82,7 @@ def main():
         print("  {:27s}{:>11s}".format("Best-Performing Ad","sales"))
         print("  {:27s}{:>11d}".format(bestPerforming, sales))
         print("\n  {:27s}{:>11s}".format("Best ROI","percent"))
-        print("  {:27s}{:>11.2%}".format(ad, bestROI))
-    pass
-
+        print("  {:27s}{:>10.2f}%".format(ad, bestROI))
 
 if __name__ == "__main__":
     main()
