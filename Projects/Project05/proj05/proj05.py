@@ -71,8 +71,9 @@ def main():
         totalProdCost = salesNumber * productionCost
 
 
+        #for the first line in the program
         if state == 0:
-            print("case 1")
+            print("CASE 1")
             if salesNumber > sales:
                 sales = salesNumber
                 bestPerforming = ad
@@ -81,32 +82,42 @@ def main():
                 bestROIad = ad
             currentProduct = product
             state += 1
-        elif state >=1 and product == currentProduct:
-            print("case 2")
-            if salesNumber > sales:
-                sales = salesNumber
-                bestPerforming = ad
-            if roi > bestROI:
-                bestROI = roi
-                bestROIad = ad
 
+        #for all lines != 1
         else:
-            print("case 3")
-            print("\n" + product)
-            print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
-            print("  {:27s}{:>11d}".format(bestPerforming, sales))
-            print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-            print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+            if product == currentProduct:
 
-            bestPerforming = ""
-            sales = 0
-            bestROI = 0.0
-            bestROIad = ""
+                if state >= 1 and product == currentProduct:
+                    print("CASE 2")
+                if salesNumber > sales:
+                    sales = salesNumber
+                    bestPerforming = ad
+                if roi > bestROI:
+                    bestROI = roi
+                    bestROIad = ad
+            else:
+                print("CASE 3")
+                print("\n" + product)
+                print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
+                print("  {:27s}{:>11d}".format(bestPerforming, sales))
+                print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
+                print("  {:27s}{:>10.2f}%".format(ad, bestROI))
 
-            state = 0
-            stateBefore = 0
-            currentProduct = ""
-            currentProduct = product
+                bestPerforming = ""
+                sales = 0
+                bestROI = 0.0
+                bestROIad = ""
+
+                if salesNumber > sales:
+                    sales = salesNumber
+                    bestPerforming = ad
+                if roi > bestROI:
+                    bestROI = roi
+                    bestROIad = ad
+
+                state = 1
+                currentProduct = ""
+                currentProduct = product
 
 
 if __name__ == "__main__":
