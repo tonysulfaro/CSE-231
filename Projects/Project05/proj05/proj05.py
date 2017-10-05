@@ -1,7 +1,4 @@
 ## Skeleton Code for RobCo Advertising Adstravaganza!
-## Initial Commit: when I'm done, I can go eat some Fancy Lads Snack Cakes,
-## maybe drink some cola. Better check in my code first.
-## -- @RCK -- 8/7/77
 
 def open_file():
     '''prompt for file name, open file, return file pointer'''
@@ -71,6 +68,8 @@ def main():
         roi = calculate_ROI(revenue(salesNumber, productPrice),
                             cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
         totalProdCost = salesNumber * productionCost
+
+        find_state(state,product)
 
         if currentProduct != product:
 
