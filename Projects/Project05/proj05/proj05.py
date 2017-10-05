@@ -29,8 +29,8 @@ def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
     return  costsOfGoodsSold
 
 
-def calculate_ROI(num_ads, ad_price, num_sales, sale_price, production_cost):
-    ROI = (sale_price*num_sales - ((num_ads*ad_price)+(production_cost*num_sales))/((num_ads*ad_price)+(production_cost*num_sales))
+def calculate_ROI(totalRevenue, costOfGoodsSold):
+    ROI = (totalRevenue-costOfGoodsSold)/costOfGoodsSold
     return ROI
 
 
@@ -63,10 +63,11 @@ def main():
         print(productionCost)
 
         #pass variables onto functions
-        calculate_ROI(placementCount, salesNumber, salesNumber, productPrice, productionCost)
+
         revenue(salesNumber, productPrice)
         cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
         revenue(salesNumber, productPrice)
+        calculate_ROI(revenue(salesNumber, productPrice),cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
         totalProductionCost = salesNumber * productionCost
 
     ##   extract the data
