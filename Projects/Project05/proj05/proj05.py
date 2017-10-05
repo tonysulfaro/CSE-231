@@ -34,7 +34,8 @@ def calculate_ROI(totalRevenue, costOfGoodsSold):
 
 
 def find_state(state,product):
-    pass
+
+    return state
 
 
 def main():
@@ -47,14 +48,14 @@ def main():
     print()
     ## read the file
 
-
+    state = 1
+    bestPerforming = ""
+    sales = 0
+    bestROI = 0.0
+    bestROIad = ""
+    currentProduct = ""
 
     for line in fp:
-
-        bestPerforming = ""
-        sales = 0
-        bestROI = 0.0
-        bestROIad = ""
 
         product = line[:27].strip()
         ad = line[27:54].strip()
@@ -71,22 +72,24 @@ def main():
                             cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
         totalProdCost = salesNumber * productionCost
 
-        if salesNumber > sales:
-            sales = salesNumber
-            bestPerforming = ad
-        if roi > bestROI:
-            bestROI = roi
-            bestROIad = ad
+        if currentProduct != product:
+
+            if salesNumber > sales:
+                sales = salesNumber
+                bestPerforming = ad
+            if roi > bestROI:
+                bestROI = roi
+                bestROIad = ad
+
+        else:
+            print(state)
+            print("\n" + product)
+            print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
+            print("  {:27s}{:>11d}".format(bestPerforming, sales))
+            print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
+            print("  {:27s}{:>10.2f}%".format(ad, bestROI))
 
 
-    ##   extract the data
-    ##   print each product's best selling ad sales number, and best ROI
-    ##   Here are two print lines to assit with formatting to match Mimir tests
-        print("\n"+product)
-        print("  {:27s}{:>11s}".format("Best-Performing Ad","sales"))
-        print("  {:27s}{:>11d}".format(bestPerforming, sales))
-        print("\n  {:27s}{:>11s}".format("Best ROI","percent"))
-        print("  {:27s}{:>10.2f}%".format(ad, bestROI))
 
 if __name__ == "__main__":
     main()
