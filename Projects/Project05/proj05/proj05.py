@@ -44,13 +44,14 @@ def main():
     print()
     ## read the file
 
-    bestPerforming = ""
-    sales = 0
-    bestROI = 0.0
-    bestROIad = ""
+
 
     for line in fp:
-        print(line)
+
+        bestPerforming = ""
+        sales = 0
+        bestROI = 0.0
+        bestROIad = ""
 
         product = line[:27].strip()
         ad = line[27:54].strip()
@@ -79,11 +80,11 @@ def main():
     ##   extract the data
     ##   print each product's best selling ad sales number, and best ROI
     ##   Here are two print lines to assit with formatting to match Mimir tests
-        print(product)
+        print("\n"+product)
         print("  {:27s}{:>11s}".format("Best-Performing Ad","sales"))
         print("  {:27s}{:>11d}".format(bestPerforming, sales))
         print("\n  {:27s}{:>11s}".format("Best ROI","percent"))
-        print("  {:27s}{:>11f}".format(ad, bestROI))
+        print("  {:27s}{:>11.2%}".format(ad, bestROI))
     pass
 
 
