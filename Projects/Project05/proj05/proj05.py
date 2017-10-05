@@ -33,6 +33,10 @@ def calculate_ROI(totalRevenue, costOfGoodsSold):
     return ROI
 
 
+def find_state(state,product):
+    pass
+
+
 def main():
     ## open the file
     fp = open(open_file())
