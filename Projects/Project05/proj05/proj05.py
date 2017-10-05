@@ -46,7 +46,6 @@ def main():
     ## read the file
 
     state = 0
-    stateBefore = 0
     currentProduct = ""
 
     bestPerforming = ""
@@ -82,7 +81,7 @@ def main():
                 bestROIad = ad
             currentProduct = product
             state += 1
-        elif state == stateBefore and product == currentProduct:
+        elif state >=1 and product == currentProduct:
             print("case 2")
             if salesNumber > sales:
                 sales = salesNumber
@@ -90,7 +89,7 @@ def main():
             if roi > bestROI:
                 bestROI = roi
                 bestROIad = ad
-            stateBefore+=1
+
         else:
             print("case 3")
             print("\n" + product)
@@ -107,9 +106,6 @@ def main():
             state = 0
             stateBefore = 0
             currentProduct = ""
-
-            state+=1
-            stateBefore+=1
             currentProduct = product
 
 
