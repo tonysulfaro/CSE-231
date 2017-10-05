@@ -19,18 +19,19 @@ def open_file():
     return filename
 
 def revenue(num_sales, sale_price):
-    '''revenue = sales * price'''
-    pass
+    totalRevenue = num_sales * sale_price
+    return totalRevenue
+
 
 
 def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
-    '''costs of goods sold = advertising total + production total'''
-    pass
+    costsOfGoodsSold = num_ads*ad_price + num_sales*production_cost
+    return  costsOfGoodsSold
 
 
 def calculate_ROI(num_ads, ad_price, num_sales, sale_price, production_cost):
-    '''ROI = (Revenue - Cost of goods sold)/Cost of goods sold'''
-    pass
+    ROI = (sale_price*num_sales - ((num_ads*ad_price)+(production_cost*num_sales))/((num_ads*ad_price)+(production_cost*num_sales))
+    return ROI
 
 
 def main():
@@ -44,6 +45,30 @@ def main():
     ## read the file
     for line in fp:
         print(line)
+
+        product = line[:27].strip()
+        ad = line[27:54].strip()
+        placementCount = int(line[54:62].strip())
+        placementCost = float(line[-32:-24].strip())
+        salesNumber = int(line[-24:-16].strip())
+        productPrice = float(line[-16:-8].strip())
+        productionCost = float(line[-8:].strip())
+
+        print(product)
+        print(ad)
+        print(placementCount)
+        print(placementCost)
+        print(salesNumber)
+        print(productPrice)
+        print(productionCost)
+
+        #pass variables onto functions
+        calculate_ROI(placementCount, salesNumber, salesNumber, productPrice, productionCost)
+        revenue(salesNumber, productPrice)
+        cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
+        revenue(salesNumber, productPrice)
+        totalProductionCost = salesNumber * productionCost
+
     ##   extract the data
     ##   print each product's best selling ad sales number, and best ROI
     ##   Here are two print lines to assit with formatting to match Mimir tests
