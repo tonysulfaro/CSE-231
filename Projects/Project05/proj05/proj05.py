@@ -7,7 +7,7 @@ def open_file():
     while True:
 
         try:
-            filename = input("Input a file name including (.txt): ")
+            filename = input("Input a file name: ")
             break
         except(FileNotFoundError,IOError):
             print("Unable to open file. Please try again.")
