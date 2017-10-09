@@ -3,16 +3,8 @@
 def open_file():
     '''prompt for file name, open file, return file pointer'''
     ## Some lines to help with formatting
-    filename = ''
-    while True:
+    filename = input("Input a file name: ")
 
-        try:
-            filename = input("Input a file name: ")
-            break
-        except(FileNotFoundError,IOError):
-            print("Unable to open file. Please try again.")
-            continue
-    # return fp
     return filename
 
 def revenue(num_sales, sale_price):
@@ -37,12 +29,16 @@ def find_state(state,product):
 
 def main():
     ## open the file
-    fp = open(open_file())
+    try:
+        fp = open(open_file())
+    except FileNotFoundError:
+        print("Unable to open file. Please try again.")
+        fp = open(open_file())
+
     ## Some print lines to match formatting in Mimir tests
     print()
     print("RobCo AdStats M4000")
     print("-------------------")
-    print()
     ## read the file
 
     state = 0
@@ -128,6 +124,7 @@ def main():
     print("  {:27s}{:>11d}".format(bestPerforming, sales))
     print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
     print("  {:27s}{:>10.2f}%".format(bestROIad, bestROI))
+    print()
     #print("END CASE 3")
 
 if __name__ == "__main__":
