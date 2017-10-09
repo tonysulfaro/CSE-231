@@ -24,7 +24,7 @@ def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
 def calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost):
 
     totalRevenue = salesNumber * productPrice
-    costsOfGoodsSold = placementCount * productPrice + salesNumber * productionCost
+    costsOfGoodsSold = placementCount * placementCost + salesNumber * productionCost
     ROI = (totalRevenue-costsOfGoodsSold)/costsOfGoodsSold
 
     return ROI
