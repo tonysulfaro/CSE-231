@@ -105,7 +105,7 @@ def main():
             print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
             print("  {:27s}{:>11d}".format(bestPerforming, sales))
             print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-            print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+            print("  {:27s}{:>10.2f}%".format(bestROIad, bestROI))
             #print("END CASE 3")
 
             bestPerforming = ""
@@ -127,7 +127,7 @@ def main():
     print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
     print("  {:27s}{:>11d}".format(bestPerforming, sales))
     print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-    print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+    print("  {:27s}{:>10.2f}%".format(bestROIad, bestROI))
     #print("END CASE 3")
 
 if __name__ == "__main__":
