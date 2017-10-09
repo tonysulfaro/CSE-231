@@ -1,25 +1,40 @@
-###########################################################
+##############################################################################
+# Project 05 - RobCo Advertising
 #
+#   Open file function
+#       returns the file name
+#   revenue function
+#       calculates and returns total revenue
+#   cost of good sold function
+#       calculates total cost of producing and advertising and returns it
+#   calculate ROI function
+#       calculates ROI and returns it
+#   Main Method
+#       try to open file with file pointer from file function
+#       except filenotfound error
+#           print error and re-prompt by calling function again
+#       print welcome message
+#       initialize state and current product
+#       initialize product attributes
+#       read each line in the file
+#           seperate variables from the file via slicing
+#           calculate complex values by calling functions
+#           if the current product is different and its not the first line
+#               state is 3 which is print out the info and reset counters
+#           if its the first line
+#               calculate best ads
+#               set state to 1 and set current product = product
+#           if state is 1 and current product = product
+#               calculate best ads
+#               current product is product
+#           else
+#               print product info
+#               reset counters
+#               calculate best ads for next product
+#       print product info for last product
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-###########################################################
+#   Call the main method
+##############################################################################
 
 def open_file():
 
@@ -52,11 +67,6 @@ def calculate_ROI(placementCount, placementCost, salesNumber, productPrice, prod
     return roi
 
 
-def find_state(state,product):
-
-    return state
-
-
 def main():
 
     ## open the file
@@ -75,7 +85,7 @@ def main():
     state = 0
     current_product = ""
 
-    #product attributes
+    #initialize product attributes
     best_performing = ""
     sales = 0
     best_roi = 0.0
@@ -84,6 +94,7 @@ def main():
     #read the file
     for line in fp:
 
+        #seperate each variable from its place in the file
         product = line[:27].strip()
         ad = line[27:54].strip()
         placement_count = int(line[54:62].strip())
@@ -97,6 +108,7 @@ def main():
         roi = calculate_ROI(placement_count, placement_cost, sales_number, product_price, production_cost)
         total_prod_cost = sales_number * production_cost
 
+        #handles if the product is different
         if product != current_product and state != 0:
             state = 3
             #print("New Product")
@@ -116,6 +128,7 @@ def main():
         #for all lines not the first one
         if state == 1 and current_product == product:
 
+            # find best performing ads
             if sales_number > sales:
                 sales = sales_number
                 best_performing = ad
@@ -124,6 +137,7 @@ def main():
                 best_roi_ad = ad
             current_product = product
 
+        #print out stats about the last product
         else:
 
             print("\n" + current_product)
@@ -132,7 +146,7 @@ def main():
             print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
             print("  {:27s}{:>10.2f}%".format(best_roi_ad, best_roi))
 
-
+            #reset values and state
             best_performing = ""
             sales = 0
             best_roi = 0.0
@@ -140,6 +154,7 @@ def main():
             state = 1
             current_product = product
 
+            #find best performing ads
             if sales_number > sales:
                 sales = sales_number
                 best_performing = ad
@@ -147,6 +162,7 @@ def main():
                 best_roi = roi
                 best_roi_ad = ad
 
+    #print stats for last product at end
     print("\n" + current_product)
     print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
     print("  {:27s}{:>11d}".format(best_performing, sales))
