@@ -8,17 +8,25 @@ def open_file():
     return filename
 
 def revenue(num_sales, sale_price):
+
     totalRevenue = num_sales * sale_price
+
     return totalRevenue
 
 
 def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
+
     costsOfGoodsSold = num_ads*ad_price + num_sales*production_cost
+
     return  costsOfGoodsSold
 
 
-def calculate_ROI(totalRevenue, costOfGoodsSold):
-    ROI = (totalRevenue-costOfGoodsSold)/costOfGoodsSold
+def calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost):
+
+    totalRevenue = salesNumber * productPrice
+    costsOfGoodsSold = placementCount * productPrice + salesNumber * productionCost
+    ROI = (totalRevenue-costsOfGoodsSold)/costsOfGoodsSold
+
     return ROI
 
 
@@ -62,8 +70,7 @@ def main():
         # pass variables onto functions
         totalRevenue = revenue(salesNumber, productPrice)
         costofGoods = cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
-        roi = calculate_ROI(revenue(salesNumber, productPrice),
-                            cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
+        roi = calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost)
         totalProdCost = salesNumber * productionCost
 
         if product != currentProduct and state != 0:
