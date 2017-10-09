@@ -72,10 +72,11 @@ def main():
 
         if product != currentProduct and state != 0:
             state = 3
+            #print("New Product")
 
         #for the first line in the program
         if state == 0:
-            print("CASE 1")
+            #print("CASE 1")
             if salesNumber > sales:
                 sales = salesNumber
                 bestPerforming = ad
@@ -88,7 +89,7 @@ def main():
         #for all lines not the first one
         if state == 1 and currentProduct == product:
 
-            print("CASE 2")
+            #print("CASE 2")
 
             if salesNumber > sales:
                 sales = salesNumber
@@ -99,13 +100,13 @@ def main():
             currentProduct = product
 
         else:
-            print("CASE 3")
-            print("\n" + product)
+            #print("CASE 3")
+            print("\n" + currentProduct)
             print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
             print("  {:27s}{:>11d}".format(bestPerforming, sales))
             print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
             print("  {:27s}{:>10.2f}%".format(ad, bestROI))
-            print("END CASE 3")
+            #print("END CASE 3")
 
             bestPerforming = ""
             sales = 0
@@ -121,6 +122,13 @@ def main():
                 bestROI = roi
                 bestROIad = ad
 
+    #print("CASE 3")
+    print("\n" + currentProduct)
+    print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
+    print("  {:27s}{:>11d}".format(bestPerforming, sales))
+    print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
+    print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+    #print("END CASE 3")
 
 if __name__ == "__main__":
     main()
