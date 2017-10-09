@@ -1,33 +1,55 @@
-## Skeleton Code for RobCo Advertising Adstravaganza!
+###########################################################
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+###########################################################
 
 def open_file():
-    '''prompt for file name, open file, return file pointer'''
-    ## Some lines to help with formatting
+
+    #prompt for file name, open file, return file pointer
     filename = input("Input a file name: ")
 
     return filename
 
+
 def revenue(num_sales, sale_price):
 
-    totalRevenue = num_sales * sale_price
+    total_revenue = num_sales * sale_price
 
-    return totalRevenue
+    return total_revenue
 
 
 def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
 
-    costsOfGoodsSold = num_ads*ad_price + num_sales*production_cost
+    costs_of_goods_sold = num_ads*ad_price + num_sales*production_cost
 
-    return  costsOfGoodsSold
+    return costs_of_goods_sold
 
 
 def calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost):
 
-    totalRevenue = salesNumber * productPrice
-    costsOfGoodsSold = placementCount * placementCost + salesNumber * productionCost
-    ROI = (totalRevenue-costsOfGoodsSold)/costsOfGoodsSold
+    total_revenue = salesNumber * productPrice
+    costs_of_goods_sold = placementCount * placementCost + salesNumber * productionCost
+    roi = (total_revenue-costs_of_goods_sold)/costs_of_goods_sold
 
-    return ROI
+    return roi
 
 
 def find_state(state,product):
@@ -36,6 +58,7 @@ def find_state(state,product):
 
 
 def main():
+
     ## open the file
     try:
         fp = open(open_file())
@@ -47,92 +70,89 @@ def main():
     print()
     print("RobCo AdStats M4000")
     print("-------------------")
-    ## read the file
 
+    #variables related to current state
     state = 0
-    currentProduct = ""
+    current_product = ""
 
-    bestPerforming = ""
+    #product attributes
+    best_performing = ""
     sales = 0
-    bestROI = 0.0
-    bestROIad = ""
+    best_roi = 0.0
+    best_roi_ad = ""
 
+    #read the file
     for line in fp:
 
         product = line[:27].strip()
         ad = line[27:54].strip()
-        placementCount = int(line[54:62].strip())
-        placementCost = float(line[-32:-24].strip())
-        salesNumber = int(line[-24:-16].strip())
-        productPrice = float(line[-16:-8].strip())
-        productionCost = float(line[-8:].strip())
+        placement_count = int(line[54:62].strip())
+        placement_cost = float(line[-32:-24].strip())
+        sales_number = int(line[-24:-16].strip())
+        product_price = float(line[-16:-8].strip())
+        production_cost = float(line[-8:].strip())
 
         # pass variables onto functions
-        totalRevenue = revenue(salesNumber, productPrice)
-        costofGoods = cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost)
-        roi = calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost)
-        totalProdCost = salesNumber * productionCost
+        total_revenue = revenue(sales_number, product_price)
+        roi = calculate_ROI(placement_count, placement_cost, sales_number, product_price, production_cost)
+        total_prod_cost = sales_number * production_cost
 
-        if product != currentProduct and state != 0:
+        if product != current_product and state != 0:
             state = 3
             #print("New Product")
 
         #for the first line in the program
         if state == 0:
-            #print("CASE 1")
-            if salesNumber > sales:
-                sales = salesNumber
-                bestPerforming = ad
-            if roi > bestROI:
-                bestROI = roi
-                bestROIad = ad
+
+            if sales_number > sales:
+                sales = sales_number
+                best_performing = ad
+            if roi > best_roi:
+                best_roi = roi
+                best_roi_ad = ad
             state = 1
-            currentProduct = product
+            current_product = product
 
         #for all lines not the first one
-        if state == 1 and currentProduct == product:
+        if state == 1 and current_product == product:
 
-            #print("CASE 2")
-
-            if salesNumber > sales:
-                sales = salesNumber
-                bestPerforming = ad
-            if roi > bestROI:
-                bestROI = roi
-                bestROIad = ad
-            currentProduct = product
+            if sales_number > sales:
+                sales = sales_number
+                best_performing = ad
+            if roi > best_roi:
+                best_roi = roi
+                best_roi_ad = ad
+            current_product = product
 
         else:
-            #print("CASE 3")
-            print("\n" + currentProduct)
+
+            print("\n" + current_product)
             print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
-            print("  {:27s}{:>11d}".format(bestPerforming, sales))
+            print("  {:27s}{:>11d}".format(best_performing, sales))
             print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-            print("  {:27s}{:>10.2f}%".format(bestROIad, bestROI))
-            #print("END CASE 3")
+            print("  {:27s}{:>10.2f}%".format(best_roi_ad, best_roi))
 
-            bestPerforming = ""
+
+            best_performing = ""
             sales = 0
-            bestROI = 0.0
-            bestROIad = ""
+            best_roi = 0.0
+            best_roi_ad = ""
             state = 1
-            currentProduct = product
+            current_product = product
 
-            if salesNumber > sales:
-                sales = salesNumber
-                bestPerforming = ad
-            if roi > bestROI:
-                bestROI = roi
-                bestROIad = ad
+            if sales_number > sales:
+                sales = sales_number
+                best_performing = ad
+            if roi > best_roi:
+                best_roi = roi
+                best_roi_ad = ad
 
-    #print("CASE 3")
-    print("\n" + currentProduct)
+    print("\n" + current_product)
     print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
-    print("  {:27s}{:>11d}".format(bestPerforming, sales))
+    print("  {:27s}{:>11d}".format(best_performing, sales))
     print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-    print("  {:27s}{:>10.2f}%".format(bestROIad, bestROI))
+    print("  {:27s}{:>10.2f}%".format(best_roi_ad, best_roi))
     print()
-    #print("END CASE 3")
 
 if __name__ == "__main__":
     main()
