@@ -70,6 +70,8 @@ def main():
                             cost_of_goods_sold(placementCount, placementCost, salesNumber, productionCost))
         totalProdCost = salesNumber * productionCost
 
+        if product != currentProduct and state != 0:
+            state = 3
 
         #for the first line in the program
         if state == 0:
@@ -80,44 +82,44 @@ def main():
             if roi > bestROI:
                 bestROI = roi
                 bestROIad = ad
+            state = 1
             currentProduct = product
-            state += 1
 
-        #for all lines != 1
+        #for all lines not the first one
+        if state == 1 and currentProduct == product:
+
+            print("CASE 2")
+
+            if salesNumber > sales:
+                sales = salesNumber
+                bestPerforming = ad
+            if roi > bestROI:
+                bestROI = roi
+                bestROIad = ad
+            currentProduct = product
+
         else:
-            if product == currentProduct:
+            print("CASE 3")
+            print("\n" + product)
+            print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
+            print("  {:27s}{:>11d}".format(bestPerforming, sales))
+            print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
+            print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+            print("END CASE 3")
 
-                if state >= 1 and product == currentProduct:
-                    print("CASE 2")
-                if salesNumber > sales:
-                    sales = salesNumber
-                    bestPerforming = ad
-                if roi > bestROI:
-                    bestROI = roi
-                    bestROIad = ad
-            else:
-                print("CASE 3")
-                print("\n" + product)
-                print("  {:27s}{:>11s}".format("Best-Performing Ad", "sales"))
-                print("  {:27s}{:>11d}".format(bestPerforming, sales))
-                print("\n  {:27s}{:>11s}".format("Best ROI", "percent"))
-                print("  {:27s}{:>10.2f}%".format(ad, bestROI))
+            bestPerforming = ""
+            sales = 0
+            bestROI = 0.0
+            bestROIad = ""
+            state = 1
+            currentProduct = product
 
-                bestPerforming = ""
-                sales = 0
-                bestROI = 0.0
-                bestROIad = ""
-
-                if salesNumber > sales:
-                    sales = salesNumber
-                    bestPerforming = ad
-                if roi > bestROI:
-                    bestROI = roi
-                    bestROIad = ad
-
-                state = 1
-                currentProduct = ""
-                currentProduct = product
+            if salesNumber > sales:
+                sales = salesNumber
+                bestPerforming = ad
+            if roi > bestROI:
+                bestROI = roi
+                bestROIad = ad
 
 
 if __name__ == "__main__":
