@@ -46,9 +46,6 @@ def find_state(state, ch):
     #Start of program
     if state == 1:
         if ch == 'h':
-            state = 1
-            return state
-        elif ch == 'a' or ch == 'o':
             state = 2
             return state
         else:
