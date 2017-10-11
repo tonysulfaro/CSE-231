@@ -8,9 +8,15 @@ def main():
     new_list = []
     while input != 'exit':
         input_str = input('Enter value to be added to list: ')
-        list = list.append(input_str)
+        input_str = input_str.lower()
+
+        if input_str == "exit":
+            break
+
+        list.append(input_str)
     new_list = new_list_function(list)
-  for element in new_list:
+    for element in new_list:
+        print(element)
 
   #print values in new list
 
