@@ -37,3 +37,4 @@ mean_list = [total_list[0]/counter,total_list[1]/counter,total_list[2]/counter,t
 
 print("{:20s}{:6.1f}{:6.1f}{:6.1f}{:6.1f}".format("Exam Mean",mean_list[0], mean_list[1], mean_list[2], mean_list[3]))
 
+fp.close()
