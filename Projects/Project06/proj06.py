@@ -55,7 +55,10 @@ def compute_usage(state_list):
     
 def extract_data(data_list, state):
     '''Remember to put a docstring here'''
-    pass
+
+    for line in data_list:
+        if data_list[0] == state:
+            print(line)
 
 def display_data(state_list, state):
     '''Remember to put a docstring here'''
