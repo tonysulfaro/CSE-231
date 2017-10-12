@@ -50,15 +50,29 @@ def read_file(fp):
 
 def compute_usage(state_list):
     '''Remember to put a docstring here'''
-    pass
+
+    usage_list = []
+
+    for line in state_list:
+        county = line[2]
+        population = int(line[6]) * 1000
+        total_water = line[114] + line[115] +line[18] +line[26] +line[35]+line[45]+line[59]
+        per_person_water = total_water/population
+        tup = (county, population, total_water, per_person_water)
+        usage_list.append(tup)
+
+    return usage_list
         
     
 def extract_data(data_list, state):
     '''Remember to put a docstring here'''
+    state_list = []
 
     for line in data_list:
         if data_list[0] == state:
-            print(line)
+            state_list.append(line)
+
+    return state_list
 
 def display_data(state_list, state):
     '''Remember to put a docstring here'''
