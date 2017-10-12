@@ -22,7 +22,7 @@ def open_file():
 def read_file(fp):
     '''Remember to put a docstring here'''
 
-
+    data_list = []
 
     for line in fp:
 
@@ -32,7 +32,7 @@ def read_file(fp):
 
         state = line[0]
         county = line[2]
-        #population = int(line[6])*1000
+        population = int(line[6])*1000
         fresh_water_usage = line[114]
         salt_water_usage = line[115]
         water_usage_public = line[18]
@@ -41,6 +41,12 @@ def read_file(fp):
         water_usage_irrigation = line[45]
         water_usage_livestock = line[59]
         #print(population)
+
+        line_tuple = (state,county,population, fresh_water_usage,salt_water_usage,water_usage_public,
+                      water_usage_domestic,water_usage_industrial,water_usage_irrigation,water_usage_livestock)
+        data_list.append(line_tuple)
+
+    return data_list
 
 def compute_usage(state_list):
     '''Remember to put a docstring here'''
