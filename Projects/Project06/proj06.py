@@ -29,18 +29,27 @@ def read_file(fp):
 
         line = line.strip('\n').strip()
         line = line.split(',')
-        #print(line)
 
+        for x in range(115):
+            try:
+                if line[x] == '':
+                    print(x)
+                    line[x].replace("", 0)
+            except TypeError:
+                pass
+
+
+        #have to catch if there is null value and replace with o
         state = line[0]
         county = line[2]
-        population = int(float(line[6])*1000)
-        fresh_water_usage = line[114]
-        salt_water_usage = line[115]
-        water_usage_public = line[18]
-        water_usage_domestic = line[26]
-        water_usage_industrial = line[35]
-        water_usage_irrigation = line[45]
-        water_usage_livestock = line[59]
+        population = int((float(line[6])*1000))
+        fresh_water_usage = float(line[114])
+        salt_water_usage = float(line[115])
+        water_usage_public = float(line[18])
+        water_usage_domestic = float(line[26])
+        water_usage_industrial = float(line[35])
+        water_usage_irrigation = float(line[45])
+        water_usage_livestock = float(line[59])
 
         line_tuple = (state,county,population, fresh_water_usage,salt_water_usage,water_usage_public,
                       water_usage_domestic,water_usage_industrial,water_usage_irrigation,water_usage_livestock)
@@ -55,7 +64,7 @@ def compute_usage(state_list):
 
     for line in state_list:
         county = line[2]
-        population = int(line[6]) * 1000
+        population = int((float(line[6])*1000))
         total_water = line[114] + line[115] +line[18] +line[26] +line[35]+line[45]+line[59]
         per_person_water = total_water/population
         tup = (county, population, total_water, per_person_water)
@@ -71,17 +80,11 @@ def extract_data(data_list, state):
 
     for line in data_list:
 
-        print(line)
-        line = line.strip("\n").strip()
-        line = line.split(',')
-
         if state == 'ALL':
             state_list.append(line)
-        elif data_list[0] == state:
-            print("YES MI")
+        elif line[0] == state:
             state_list.append(line)
-        else:
-            print("NO")
+
 
     return state_list
 
