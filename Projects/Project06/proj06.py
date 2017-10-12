@@ -27,13 +27,13 @@ def read_file(fp):
 
     for line in fp:
 
-        #line = line.strip('\n').strip()
-        #line = line.split()
+        line = line.strip('\n').strip()
+        line = line.split(',')
         #print(line)
 
         state = line[0]
         county = line[2]
-        population = line[6]
+        population = int(float(line[6])*1000)
         fresh_water_usage = line[114]
         salt_water_usage = line[115]
         water_usage_public = line[18]
@@ -41,11 +41,13 @@ def read_file(fp):
         water_usage_industrial = line[35]
         water_usage_irrigation = line[45]
         water_usage_livestock = line[59]
-        #print(population)
 
         line_tuple = (state,county,population, fresh_water_usage,salt_water_usage,water_usage_public,
                       water_usage_domestic,water_usage_industrial,water_usage_irrigation,water_usage_livestock)
         data_list.append(line_tuple)
+
+    for item in data_list:
+        print(item)
 
     return data_list
 
@@ -125,8 +127,6 @@ def main():
     state_list = extract_data(data_list,state)
     usage_list = compute_usage(state_list)
 
-    for item in data_list:
-        print(item)
 
 if __name__ == "__main__":
     main()
