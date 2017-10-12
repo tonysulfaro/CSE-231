@@ -29,7 +29,7 @@ def read_file(fp):
 
         #line = line.strip('\n').strip()
         #line = line.split()
-        print(line)
+        #print(line)
 
         state = line[0]
         county = line[2]
@@ -116,12 +116,17 @@ def plot_water_usage(some_list, plt_title):
 def main():
 
 # Some strings to help with Mimir testing
-#    print("Water Usage Data from the US and its States and Territories.\n")
-#    state = input("\nEnter state code or 'all' or 'quit': ")
+    print("Water Usage Data from the US and its States and Territories.\n")
+    state = input("\nEnter state code or 'all' or 'quit': ")
 #    answer = input("\nDo you want to plot? ")
 #    print("Error in state code.  Please try again.")
     fp = open_file()
-    read_file(fp)
+    data_list = read_file(fp)
+    state_list = extract_data(data_list,state)
+    usage_list = compute_usage(state_list)
+
+    for item in data_list:
+        print(item)
 
 if __name__ == "__main__":
     main()
