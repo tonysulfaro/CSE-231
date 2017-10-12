@@ -46,9 +46,6 @@ def read_file(fp):
                       water_usage_domestic,water_usage_industrial,water_usage_irrigation,water_usage_livestock)
         data_list.append(line_tuple)
 
-    for item in data_list:
-        print(item)
-
     return data_list
 
 def compute_usage(state_list):
@@ -70,10 +67,14 @@ def compute_usage(state_list):
 def extract_data(data_list, state):
     '''Remember to put a docstring here'''
     state_list = []
+    print(state)
 
     for line in data_list:
         if data_list[0] == state:
+            print("YES MI")
             state_list.append(line)
+        else:
+            print("NO")
 
     return state_list
 
@@ -124,8 +125,11 @@ def main():
 #    print("Error in state code.  Please try again.")
     fp = open_file()
     data_list = read_file(fp)
-    state_list = extract_data(data_list,state)
+    state_list = extract_data(data_list, state)
     usage_list = compute_usage(state_list)
+
+    for item in state_list:
+        print(item)
 
 
 if __name__ == "__main__":
