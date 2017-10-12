@@ -7,19 +7,31 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation","Livestock"]
 def open_file():
     '''Remember to put a docstring here'''
     while True:
+        file_name = input("Enter a file name: ")
         try:
-            file_name = input("Enter a file name: ")
-            fp = open(file_name)
 
+            fp = open(file_name)
+            break
         except FileNotFoundError:
+            print("Error Invalid Input")
             continue
+
+    fp ="Water_Data_2010.csv"
 
     return fp
 
     
 def read_file(fp):
     '''Remember to put a docstring here'''
+
+
+
     for line in fp:
+
+        line = line.strip('\n').strip()
+        line = line.split()
+        print(line)
+
         state = line[0]
         county = line[2]
         population = [6]
@@ -30,6 +42,7 @@ def read_file(fp):
         water_usage_industrial = line[35]
         water_usage_irrigation = line[45]
         water_usage_livestock = line[59]
+        print(population)
 
 def compute_usage(state_list):
     '''Remember to put a docstring here'''
@@ -85,7 +98,8 @@ def main():
 #    state = input("\nEnter state code or 'all' or 'quit': ")
 #    answer = input("\nDo you want to plot? ")
 #    print("Error in state code.  Please try again.")
-    pass
+    fp = open_file()
+    read_file(fp)
 
 if __name__ == "__main__":
     main()
