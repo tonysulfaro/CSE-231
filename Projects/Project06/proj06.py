@@ -6,11 +6,30 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation","Livestock"]
 
 def open_file():
     '''Remember to put a docstring here'''
-    pass
+    while True:
+        try:
+            file_name = input("Enter a file name: ")
+            fp = open(file_name)
+
+        except FileNotFoundError:
+            continue
+
+    return fp
+
     
 def read_file(fp):
     '''Remember to put a docstring here'''
-    pass
+    for line in fp:
+        state = line[0]
+        county = line[2]
+        population = [6]
+        fresh_water_usage = line[114]
+        salt_water_usage = line[115]
+        water_usage_public = line[18]
+        water_usage_domestic = line[26]
+        water_usage_industrial = line[35]
+        water_usage_irrigation = line[45]
+        water_usage_livestock = line[59]
 
 def compute_usage(state_list):
     '''Remember to put a docstring here'''
