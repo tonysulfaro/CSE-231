@@ -7,15 +7,15 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation","Livestock"]
 def open_file():
     '''Remember to put a docstring here'''
     while True:
-        file_name = input("Enter a file name: ")
+        #file_name = input("Enter a file name: ")
         try:
 
-            fp = open(file_name)
+            #fp = open(file_name)
             break
         except FileNotFoundError:
-            print("Error Invalid Input")
+            #print("Error Invalid Input")
             continue
-
+    fp = open("Water_Data_2010.csv")
     return fp
 
     
@@ -70,7 +70,14 @@ def extract_data(data_list, state):
     print(state)
 
     for line in data_list:
-        if data_list[0] == state:
+
+        print(line)
+        line = line.strip("\n").strip()
+        line = line.split(',')
+
+        if state == 'ALL':
+            state_list.append(line)
+        elif data_list[0] == state:
             print("YES MI")
             state_list.append(line)
         else:
@@ -120,7 +127,11 @@ def main():
 
 # Some strings to help with Mimir testing
     print("Water Usage Data from the US and its States and Territories.\n")
-    state = input("\nEnter state code or 'all' or 'quit': ")
+    state = input("\nEnter state code or 'all' or 'quit': ").upper()
+
+    if state == 'QUIT':
+        quit()
+
 #    answer = input("\nDo you want to plot? ")
 #    print("Error in state code.  Please try again.")
     fp = open_file()
