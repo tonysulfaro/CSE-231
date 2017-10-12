@@ -16,8 +16,6 @@ def open_file():
             print("Error Invalid Input")
             continue
 
-    fp ="Water_Data_2010.csv"
-
     return fp
 
     
@@ -28,13 +26,13 @@ def read_file(fp):
 
     for line in fp:
 
-        line = line.strip('\n').strip()
-        line = line.split()
+        #line = line.strip('\n').strip()
+        #line = line.split()
         print(line)
 
         state = line[0]
         county = line[2]
-        population = [6]
+        #population = int(line[6])*1000
         fresh_water_usage = line[114]
         salt_water_usage = line[115]
         water_usage_public = line[18]
@@ -42,7 +40,7 @@ def read_file(fp):
         water_usage_industrial = line[35]
         water_usage_irrigation = line[45]
         water_usage_livestock = line[59]
-        print(population)
+        #print(population)
 
 def compute_usage(state_list):
     '''Remember to put a docstring here'''
