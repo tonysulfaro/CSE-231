@@ -23,6 +23,7 @@ def read_file(fp):
     '''Remember to put a docstring here'''
 
     data_list = []
+    fp.readline()
 
     for line in fp:
 
@@ -32,7 +33,7 @@ def read_file(fp):
 
         state = line[0]
         county = line[2]
-        population = int(line[6])*1000
+        population = line[6]
         fresh_water_usage = line[114]
         salt_water_usage = line[115]
         water_usage_public = line[18]
