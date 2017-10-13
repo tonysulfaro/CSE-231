@@ -142,6 +142,9 @@ def main():
     # Some strings to help with Mimir testing
     print("Water Usage Data from the US and its States and Territories.\n")
 
+    fp = open_file()
+    data_list = read_file(fp)
+
     state = ""
 
     while True:
@@ -155,9 +158,6 @@ def main():
         else:
             print("Error in state code.  Please try again.")
 
-
-    fp = open_file()
-    data_list = read_file(fp)
     state_list = extract_data(data_list, state)
     usage_list = compute_usage(state_list)
 
