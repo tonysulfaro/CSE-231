@@ -25,6 +25,8 @@ def read_file(fp):
     data_list = []
     fp.readline()
 
+    linecount = 0
+
     for line in fp:
 
         line = line.strip('\n').strip()
@@ -32,8 +34,8 @@ def read_file(fp):
 
         for x in range(115):
             try:
-                if line[x] == '':
-                    print(x)
+                if line[x] == '' or line[x]== ' ':
+                    #print(x)
                     line[x].replace("", 0)
             except TypeError:
                 pass
@@ -48,6 +50,9 @@ def read_file(fp):
         water_usage_public = float(line[18])
         water_usage_domestic = float(line[26])
         water_usage_industrial = float(line[35])
+        print(line[45])
+        linecount +=1
+        print(linecount)
         water_usage_irrigation = float(line[45])
         water_usage_livestock = float(line[59])
 
