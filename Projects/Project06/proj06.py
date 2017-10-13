@@ -1,4 +1,4 @@
-# TODO make source header
+
 import pylab
 
 STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
@@ -81,7 +81,6 @@ def extract_data(data_list, state):
     '''Remember to put a docstring here'''
     state_list = []
 
-    #sorting it just because TODO remove this
     data_list = sorted(data_list)
 
     for line in data_list:
