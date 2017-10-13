@@ -85,15 +85,14 @@ def compute_usage(state_list):
         #per_person_water = total_water/population
 
         #this is pretty much verbaitim from project 5
-
         #handles the first line with new county
         if county != current_county and state !=0:
-            print('case1')
+            #print('case1') TODO remove these case prints
             state = 3
 
         #for the first line
         if state == 0:
-            print('case2')
+            #print('case2')
             population_total += population
             total_water += water
             state = 1
@@ -101,7 +100,7 @@ def compute_usage(state_list):
 
         #for all lines after the first one
         if state == 1 and current_county == county:
-            print('case3')
+            #print('case3')
             population_total += population
             total_water += water
             state = 1
@@ -109,8 +108,8 @@ def compute_usage(state_list):
 
         #when product change add cumulative stats into new tuple
         else:
-            print('case4')
-            print(county,population_total,total_water)
+            #print('case4')
+            #print(county,population_total,total_water)
             tup = (county, population_total, total_water)
             usage_list.append(tup)
             population_total = 0
@@ -181,13 +180,24 @@ def main():
 
 # Some strings to help with Mimir testing
     print("Water Usage Data from the US and its States and Territories.\n")
-    state = input("\nEnter state code or 'all' or 'quit': ").upper()
+
+    state = ""
+
+    while True:
+
+        state = input("\nEnter state code or 'all' or 'quit': ").upper()
+
+        if state not in STATES:
+            print("Error in state code.  Please try again.")
+        else:
+            break
+
 
     if state == 'QUIT':
         quit()
 
 #    answer = input("\nDo you want to plot? ")
-#    print("Error in state code.  Please try again.")
+
     fp = open_file()
     data_list = read_file(fp)
     state_list = extract_data(data_list, state)
