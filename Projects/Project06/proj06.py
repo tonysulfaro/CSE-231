@@ -48,7 +48,7 @@ def read_file(fp):
         # have to catch if there is null value and replace with o
         state = line[0]
         county = line[2]
-        population = (float(line[6]))
+        population = (float(line[6])*1000)
         fresh_water_usage = float(line[114])
         salt_water_usage = float(line[115])
         water_usage_public = float(line[18])
@@ -83,7 +83,7 @@ def compute_usage(state_list):
 
         # print(line) TODO take out for debugging
         county = line[1]
-        population = int((float(line[2]) * 1000))
+        population = line[2]
         water = line[3] + line[4] + line[5] + line[6] + line[7] + line[8] + line[9]
         # per_person_water = total_water/population
 
@@ -130,8 +130,10 @@ def extract_data(data_list, state):
     '''Remember to put a docstring here'''
     state_list = []
 
-    for line in data_list:
+    #sorting it just because TODO remove this
+    data_list = sorted(data_list)
 
+    for line in data_list:
         if state == 'ALL':
             state_list.append(line)
         elif line[0] == state:
@@ -153,7 +155,7 @@ def display_data(state_list, state):
     print(header)
 
     for line in usage_list:
-        print("{:22s} {:>22d} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
+        print("{:22s} {:>22.0f} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
 
 
 def plot_water_usage(some_list, plt_title):
@@ -203,13 +205,23 @@ def main():
             print("Error in state code.  Please try again.")
 
 
-    #    answer = input("\nDo you want to plot? ")
-
     fp = open_file()
     data_list = read_file(fp)
     state_list = extract_data(data_list, state)
     usage_list = compute_usage(state_list)
+
+    for item in state_list:
+        print(item)
+
     display_data(state_list, state)
+
+    answer = input("\nDo you want to plot? ").upper()
+
+    if answer == 'YES':
+        #call plot method
+        pass
+    else:
+        pass
 
 
 if __name__ == "__main__":
