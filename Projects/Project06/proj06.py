@@ -158,20 +158,19 @@ def main():
         else:
             print("Error in state code.  Please try again.")
 
-    state_list = extract_data(data_list, state)
-    usage_list = compute_usage(state_list)
+        state_list = extract_data(data_list, state)
+        usage_list = compute_usage(state_list)
 
-    display_data(state_list, state)
+        display_data(state_list, state)
 
-    answer = input("\nDo you want to plot? ").upper()
-    plot_title = "Water Usage in " + state + "for 2010 (Mgal/day)"
+        answer = input("\nDo you want to plot? ").upper()
+        plot_title = "Water Usage in " + state + "for 2010 (Mgal/day)"
 
-    if answer == 'YES':
-        #call plot method
-        plot_water_usage(state_list,plot_title)
-        pass
-    else:
-        pass
+        if answer == 'YES':
+            # call plot method
+            plot_water_usage(state_list, plot_title)
+        else:
+            pass
 
 
 if __name__ == "__main__":
