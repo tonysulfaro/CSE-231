@@ -145,8 +145,6 @@ def main():
     fp = open_file()
     data_list = read_file(fp)
 
-    state = ""
-
     while True:
 
         state = input("\nEnter state code or 'all' or 'quit': ").upper()
@@ -154,7 +152,6 @@ def main():
         if state in STATES or state == 'ALL' or state == 'QUIT':
             if state == 'QUIT':
                 quit()
-            break
         else:
             print("Error in state code.  Please try again.")
 
