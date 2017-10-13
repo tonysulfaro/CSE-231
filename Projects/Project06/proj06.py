@@ -55,6 +55,7 @@ def read_file(fp):
 
         line_tuple = (state, county, population, fresh_water_usage, salt_water_usage, water_usage_public,
                       water_usage_domestic, water_usage_industrial, water_usage_irrigation, water_usage_livestock)
+
         data_list.append(line_tuple)
 
     return data_list
@@ -66,12 +67,11 @@ def compute_usage(state_list):
     usage_list = []
 
     for line in state_list:
-
-        total_water = 0
-        for x in range(3, 8):
-            total_water += line[x]
+        print(line)
+        total_water = line[3]
 
         tup = (line[1], line[2], total_water, total_water/line[2])
+
         usage_list.append(tup)
 
     return usage_list
@@ -85,6 +85,7 @@ def extract_data(data_list, state):
     data_list = sorted(data_list)
 
     for line in data_list:
+
         if state == 'ALL':
             state_list.append(line)
         elif line[0] == state:
@@ -106,7 +107,7 @@ def display_data(state_list, state):
     print(header)
 
     for line in usage_list:
-        print("{:22s} {:>22,d} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
+        print("{:22s} {:>22,d} {:>22.2f} {:>22.4f}".format(line[0], line[1], line[2], line[3]))
 
 
 def plot_water_usage(state_list, plot_title):
