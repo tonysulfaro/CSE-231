@@ -67,9 +67,10 @@ def compute_usage(state_list):
     usage_list = []
 
     for line in state_list:
-        county = line[2]
-        population = int((float(line[6])*1000))
-        total_water = line[114] + line[115] +line[18] +line[26] +line[35]+line[45]+line[59]
+        print(line)
+        county = line[1]
+        population = int((float(line[2])*1000))
+        total_water = line[3] + line[4] +line[5] +line[6] +line[7]+line[8]+line[9]
         per_person_water = total_water/population
         tup = (county, population, total_water, per_person_water)
         usage_list.append(tup)
