@@ -150,8 +150,11 @@ def display_data(state_list, state):
     header = "{:22s} {:>22s} {:>22s} {:>22s}".format("County",
                                                      "Population", "Total (Mgal/day)", "Per Person (Mgal/person)")
 
-    for line in state_list:
-        pass
+    print(title)
+    print(header)
+
+    for line in usage_list:
+        print("{:22s} {:>22f} {:>22f} {:>22s}".format(line[0], line[1], line[2], "Per Person (Mgal/person)"))
 
 
 def plot_water_usage(some_list, plt_title):
@@ -207,9 +210,7 @@ def main():
     data_list = read_file(fp)
     state_list = extract_data(data_list, state)
     usage_list = compute_usage(state_list)
-
-    for item in usage_list:
-        print(item)
+    display_data(state_list, state)
 
 
 if __name__ == "__main__":
