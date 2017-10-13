@@ -74,6 +74,10 @@ def compute_usage(state_list):
 
     for line in state_list:
 
+        print(population_total)
+        print(total_water)
+        print("State",state)
+
         #print(line) TODO take out for debugging
         county = line[1]
         population = int((float(line[2])*1000))
@@ -89,16 +93,16 @@ def compute_usage(state_list):
         #for the first line
         if state == 0:
 
-            population += population_total
-            net_water += total_water
+            population_total += population
+            total_water += net_water
             state = 1
             current_county = county
 
         #for all lines after the first one
         if state == 1 and current_county == county:
 
-            population += population_total
-            net_water += total_water
+            population_total += population
+            total_water += net_water
             current_county = county
 
         #when product change add cumulative stats into new tuple
@@ -109,6 +113,7 @@ def compute_usage(state_list):
             population_total = 0
             total_water = 0
             state = 1
+            current_county = county
 
     return usage_list
         
