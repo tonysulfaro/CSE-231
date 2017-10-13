@@ -18,7 +18,7 @@ def open_file():
         except FileNotFoundError:
             # print("Error Invalid Input")
             continue
-    fp = open("Water_Data_2010.csv")
+    fp = open("Water_Data_2010.csv") #TODO make this user input again instead of hardcoded
     return fp
 
 
@@ -113,7 +113,7 @@ def compute_usage(state_list):
         else:
             # print('case4')
             # print(county,population_total,total_water)
-            tup = (county, population_total, total_water)
+            tup = (county, population_total, total_water, total_water/population_total)
             usage_list.append(tup)
             population_total = 0
             total_water = 0
@@ -129,7 +129,6 @@ def compute_usage(state_list):
 def extract_data(data_list, state):
     '''Remember to put a docstring here'''
     state_list = []
-    print(state)
 
     for line in data_list:
 
@@ -146,7 +145,7 @@ def display_data(state_list, state):
     # Some strings useful for Mimir testing
     usage_list = compute_usage(state_list)
 
-    title = "Water Usage in " + state + " for 2010"
+    title = "{:^88s}".format( "Water Usage in " + state + " for 2010")
     header = "{:22s} {:>22s} {:>22s} {:>22s}".format("County",
                                                      "Population", "Total (Mgal/day)", "Per Person (Mgal/person)")
 
@@ -154,7 +153,7 @@ def display_data(state_list, state):
     print(header)
 
     for line in usage_list:
-        print("{:22s} {:>22f} {:>22f} {:>22s}".format(line[0], line[1], line[2], "Per Person (Mgal/person)"))
+        print("{:22s} {:>22d} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
 
 
 def plot_water_usage(some_list, plt_title):
