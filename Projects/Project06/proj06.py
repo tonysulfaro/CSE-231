@@ -48,7 +48,7 @@ def read_file(fp):
         # have to catch if there is null value and replace with o
         state = line[0]
         county = line[2]
-        population = int((float(line[6]) * 1000))
+        population = (float(line[6]))
         fresh_water_usage = float(line[114])
         salt_water_usage = float(line[115])
         water_usage_public = float(line[18])
