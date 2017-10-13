@@ -81,7 +81,7 @@ def compute_usage(state_list):
         #print(line) TODO take out for debugging
         county = line[1]
         population = int((float(line[2])*1000))
-        net_water = line[3] + line[4] +line[5] +line[6] +line[7]+line[8]+line[9]
+        water = line[3] + line[4] +line[5] +line[6] +line[7]+line[8]+line[9]
         #per_person_water = total_water/population
 
         #this is pretty much verbaitim from project 5
@@ -94,7 +94,7 @@ def compute_usage(state_list):
         if state == 0:
 
             population_total += population
-            total_water += net_water
+            total_water += water
             state = 1
             current_county = county
 
@@ -102,13 +102,13 @@ def compute_usage(state_list):
         if state == 1 and current_county == county:
 
             population_total += population
-            total_water += net_water
+            total_water += water
             current_county = county
 
         #when product change add cumulative stats into new tuple
         else:
-
-            tup = (county, population_total, total_water, total_water/population_total)
+            print(county,population_total,total_water)
+            tup = (county, population_total, total_water, population_total/total_water)
             usage_list.append(tup)
             population_total = 0
             total_water = 0
