@@ -10,15 +10,14 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation", "Livestock"]
 def open_file():
     '''Remember to put a docstring here'''
     while True:
-        # file_name = input("Enter a file name: ")
+        file_name = input("Enter a file name: ")
         try:
 
-            # fp = open(file_name)
+            fp = open(file_name)
             break
         except FileNotFoundError:
-            # print("Error Invalid Input")
+            print("Error Invalid Input")
             continue
-    fp = open("Water_Data_2010.csv") #TODO make this user input again instead of hardcoded
     return fp
 
 
@@ -28,8 +27,6 @@ def read_file(fp):
     data_list = []
     fp.readline()
 
-    # linecount = 0 TODO take out linecounters
-
     for line in fp:
 
         line = line.strip('\n').strip()
@@ -38,7 +35,6 @@ def read_file(fp):
         for x in range(115):
             try:
                 if line[x] == '':
-                    # print(x)
                     line[x] = 0
                 if line[x] == ' ':
                     line[x] = 0
@@ -78,7 +74,6 @@ def compute_usage(state_list):
         tup = (line[1], line[2], total_water, total_water/line[2])
         usage_list.append(tup)
 
-
     return usage_list
 
 
@@ -114,7 +109,7 @@ def display_data(state_list, state):
         print("{:22s} {:>22.0f} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
 
 
-def plot_water_usage(some_list, plt_title):
+def plot_water_usage(state_list, plot_title):
     '''
         Creates a list "y" containing the water usage in Mgal/d of all counties.
         Y should have a length of 5. The list "y" is used to create a pie chart
@@ -126,18 +121,18 @@ def plot_water_usage(some_list, plt_title):
     # accumulate public, domestic, industrial, irrigation, and livestock data
     y = [0, 0, 0, 0, 0]
 
-    for item in some_list:
-        y[0] += item[5]
-        y[1] += item[6]
-        y[2] += item[7]
-        y[3] += item[8]
-        y[4] += item[9]
+    for item in state_list:
+        y[0] += item[3]
+        y[1] += item[4]
+        y[2] += item[5]
+        y[3] += item[6]
+        y[4] += item[7]
 
     total = sum(y)
     y = [round(x / total * 100, 2) for x in y]  # computes the percentages.
 
     color_list = ['b', 'g', 'r', 'c', 'm']
-    pylab.title(plt_title)
+    pylab.title(plot_title)
     pylab.pie(y, labels=USERS, colors=color_list)
     pylab.show()
     # pylab.savefig("plot.png")  # uncomment to save plot to a file
@@ -166,15 +161,14 @@ def main():
     state_list = extract_data(data_list, state)
     usage_list = compute_usage(state_list)
 
-    for item in state_list:
-        print(item)
-
     display_data(state_list, state)
 
     answer = input("\nDo you want to plot? ").upper()
+    plot_title = "Water Usage in " + state + "for 2010 (Mgal/day)"
 
     if answer == 'YES':
         #call plot method
+        plot_water_usage(state_list,plot_title)
         pass
     else:
         pass
