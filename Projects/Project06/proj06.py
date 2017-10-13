@@ -1,4 +1,4 @@
-
+#TODO make source header
 import pylab
 
 STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'}
@@ -25,7 +25,7 @@ def read_file(fp):
     data_list = []
     fp.readline()
 
-    linecount = 0
+    #linecount = 0 TODO take out linecounters
 
     for line in fp:
 
@@ -67,11 +67,13 @@ def compute_usage(state_list):
     usage_list = []
 
     for line in state_list:
-        print(line)
+
+        #print(line) TODO take out for debugging
         county = line[1]
         population = int((float(line[2])*1000))
         total_water = line[3] + line[4] +line[5] +line[6] +line[7]+line[8]+line[9]
         per_person_water = total_water/population
+
         tup = (county, population, total_water, per_person_water)
         usage_list.append(tup)
 
