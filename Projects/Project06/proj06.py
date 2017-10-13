@@ -44,7 +44,7 @@ def read_file(fp):
         # have to catch if there is null value and replace with o
         state = line[0]
         county = line[2]
-        population = (float(line[6])*1000)
+        population = int(float(line[6])*1000)
         fresh_water_usage = float(line[114])
         salt_water_usage = float(line[115])
         water_usage_public = float(line[18])
@@ -106,7 +106,7 @@ def display_data(state_list, state):
     print(header)
 
     for line in usage_list:
-        print("{:22s} {:>22.0f} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
+        print("{:22s} {:>22,d} {:>22.2f} {:>22f}".format(line[0], line[1], line[2], line[3]))
 
 
 def plot_water_usage(state_list, plot_title):
