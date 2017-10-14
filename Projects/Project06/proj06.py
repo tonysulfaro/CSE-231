@@ -16,7 +16,7 @@ def open_file():
             fp = open(file_name)
             break
         except FileNotFoundError:
-            print("Error Invalid Input")
+            print("Unable to open file. Please try again.")
             continue
     return fp
 
