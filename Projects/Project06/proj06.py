@@ -1,5 +1,5 @@
 
-import pylab
+#import pylab
 
 STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
           'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
@@ -10,7 +10,7 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation", "Livestock"]
 def open_file():
     '''Remember to put a docstring here'''
     while True:
-        file_name = input("Enter a file name: ")
+        file_name = input("Input a file name: ")
         try:
 
             fp = open(file_name)
@@ -67,7 +67,7 @@ def compute_usage(state_list):
     usage_list = []
 
     for line in state_list:
-        print(line)
+        #print(line)
         total_water = line[3]
 
         tup = (line[1], line[2], total_water, total_water/line[2])
@@ -132,9 +132,9 @@ def plot_water_usage(state_list, plot_title):
     y = [round(x / total * 100, 2) for x in y]  # computes the percentages.
 
     color_list = ['b', 'g', 'r', 'c', 'm']
-    pylab.title(plot_title)
-    pylab.pie(y, labels=USERS, colors=color_list)
-    pylab.show()
+    #pylab.title(plot_title)
+    #pylab.pie(y, labels=USERS, colors=color_list)
+    #pylab.show()
     # pylab.savefig("plot.png")  # uncomment to save plot to a file
 
 
