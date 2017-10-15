@@ -2,7 +2,7 @@
 def mutate_list(user_list, index_num, v):
     user_list = user_list.insert(user_list,index_num,v)
     return user_list
-    pass
+
 
 #remove_index function goes here
 def remove_index(user_list, index_num):
@@ -10,13 +10,12 @@ def remove_index(user_list, index_num):
     user_list = user_list.remove(user_list[index_num])
     print(len(user_list))
     return user_list
-    pass
 
 #reverse_list function goes here
 def reverse_list(user_list):
     user_list = user_list.reverse()
     return user_list
-    pass
+
 
 
 def main():
