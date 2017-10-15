@@ -30,11 +30,11 @@ def main():
         index_num, v = input().split(",")
         index_num = int(index_num)
         v = int(v)
-        mutate_list(user_list, index_num, v)
+        user_list= mutate_list(user_list, index_num, v)
         print(user_list)
     elif user_choice == 'r':
         index_num = int(input())
-        remove_index(user_list, index_num)
+        user_list = remove_index(user_list, index_num)
         print(user_list)
     elif user_choice == 'R':
         new_list = reverse_list(user_list)
