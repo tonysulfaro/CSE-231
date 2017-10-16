@@ -36,6 +36,7 @@
 #   Call the main method
 ##############################################################################
 
+#open the file and return file pointer
 def open_file():
 
     #prompt for file name, open file, return file pointer
@@ -43,30 +44,30 @@ def open_file():
 
     return filename
 
-
+#calculate total revenue
 def revenue(num_sales, sale_price):
 
     total_revenue = num_sales * sale_price
 
     return total_revenue
 
-
+#calculate cost of goods sold
 def cost_of_goods_sold(num_ads, ad_price, num_sales, production_cost):
 
     costs_of_goods_sold = num_ads*ad_price + num_sales*production_cost
 
     return costs_of_goods_sold
 
+#calculate roi
+def calculate_ROI(placement_count, placement_cost, sales_number, product_price, production_cost):
 
-def calculate_ROI(placementCount, placementCost, salesNumber, productPrice, productionCost):
-
-    total_revenue = salesNumber * productPrice
-    costs_of_goods_sold = placementCount * placementCost + salesNumber * productionCost
+    total_revenue = revenue(sales_number, product_price)
+    costs_of_goods_sold = cost_of_goods_sold(placement_count, placement_cost, sales_number, production_cost)
     roi = (total_revenue-costs_of_goods_sold)/costs_of_goods_sold
 
     return roi
 
-
+#main method
 def main():
 
     ## open the file
