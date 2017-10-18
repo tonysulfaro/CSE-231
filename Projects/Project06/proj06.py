@@ -67,8 +67,10 @@ def compute_usage(state_list):
     usage_list = []
 
     for line in state_list:
-        #print(line)
-        total_water = line[3]
+        print(line)
+
+        #calculate total water usage
+        total_water = line[3] + line[4]
 
         tup = (line[1], line[2], total_water, total_water/line[2])
 
