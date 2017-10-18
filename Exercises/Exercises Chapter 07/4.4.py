@@ -3,15 +3,17 @@ def list_to_tuple(a_list):
 
     a_tuple = ()
 
+    int_list = ""
+
     for item in a_list:
 
         try:
             item = int(item)
             print(item)
-            #a_tuple(item)
+            int_list += str(item)
         except (ValueError, TypeError):
             print("Error. Please enter only integers.")
-
+    a_tuple(int_list)
     return a_tuple
 
 
