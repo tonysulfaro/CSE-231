@@ -43,7 +43,7 @@ def main():
     print("Digit Percent Benford")
     for x in range(len(count)):
         percentages[x] = (count[x]/line_count)*100
-        print("{:3s} {:>10.2f}% ({:>5s}%) ".format(str(x+1)+":",percentages[x],expected_percentages[x]))
+        print("{:3s} {:>10.1f}% ({:>5s}%) ".format(str(x+1)+":",percentages[x],expected_percentages[x]))
 
 
 main()
