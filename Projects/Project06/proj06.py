@@ -1,5 +1,5 @@
 
-#import pylab
+import pylab
 
 STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
           'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
@@ -134,9 +134,9 @@ def plot_water_usage(state_list, plot_title):
     y = [round(x / total * 100, 2) for x in y]  # computes the percentages.
 
     color_list = ['b', 'g', 'r', 'c', 'm']
-    #pylab.title(plot_title)
-    #pylab.pie(y, labels=USERS, colors=color_list)
-    #pylab.show()
+    pylab.title(plot_title)
+    pylab.pie(y, labels=USERS, colors=color_list)
+    pylab.show()
     # pylab.savefig("plot.png")  # uncomment to save plot to a file
 
 
@@ -149,13 +149,18 @@ def main():
 
     while True:
 
-        state = input("\nEnter state code or 'all' or 'quit': ").upper()
+        state = ""
 
-        if state in STATES or state == 'ALL' or state == 'QUIT':
-            if state == 'QUIT':
-                quit()
-        else:
-            print("Error in state code.  Please try again.")
+        while True:
+            state = input("\nEnter state code or 'all' or 'quit': ").upper()
+
+            if state in STATES or state == 'ALL' or state == 'QUIT':
+
+                if state == 'QUIT':
+                    quit()
+                break
+            else:
+                print("Error in state code.  Please try again.")
 
         state_list = extract_data(data_list, state)
         usage_list = compute_usage(state_list)
