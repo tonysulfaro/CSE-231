@@ -2,7 +2,16 @@ import csv
 import pylab
 
 def open_file(message):
-    pass
+    while True:
+        file_name = input("Input a file name: ")
+        try:
+
+            fp = open(file_name)
+            break
+        except FileNotFoundError:
+            print("Unable to open file. Please try again.")
+            continue
+    return fp
             
 def read_ip_location(file):
     pass
