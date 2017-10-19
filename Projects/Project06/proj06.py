@@ -1,4 +1,40 @@
-
+##############################################################################
+# Project 06 - Water Usage Metrics
+#
+#   Open file function
+#       returns the file name
+#   revenue function
+#       calculates and returns total revenue
+#   cost of good sold function
+#       calculates total cost of producing and advertising and returns it
+#   calculate ROI function
+#       calculates ROI and returns it
+#   Main Method
+#       try to open file with file pointer from file function
+#       except filenotfound error
+#           print error and re-prompt by calling function again
+#       print welcome message
+#       initialize state and current product
+#       initialize product attributes
+#       read each line in the file
+#           seperate variables from the file via slicing
+#           calculate complex values by calling functions
+#           if the current product is different and its not the first line
+#               state is 3 which is print out the info and reset counters
+#           if its the first line
+#               calculate best ads
+#               set state to 1 and set current product = product
+#           if state is 1 and current product = product
+#               calculate best ads
+#               current product is product
+#           else
+#               print product info
+#               reset counters
+#               calculate best ads for next product
+#       print product info for last product
+#
+#   Call the main method
+##############################################################################
 import pylab
 
 STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
@@ -44,7 +80,7 @@ def read_file(fp):
         # have to catch if there is null value and replace with o
         state = line[0]
         county = line[2]
-        population = int(float(line[6])*1000)
+        population = round(int(float(line[6])*1000),0)
         fresh_water_usage = float(line[114])
         salt_water_usage = float(line[115])
         water_usage_public = float(line[18])
@@ -72,6 +108,7 @@ def compute_usage(state_list):
         #calculate total water usage
         total_water = line[3] + line[4]
 
+        # append county, population, sum of fresh and salt, and fresh/population
         tup = (line[1], line[2], total_water, line[3]/line[2])
 
         usage_list.append(tup)
