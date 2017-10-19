@@ -1,39 +1,64 @@
 ##############################################################################
-# Project 06 - Water Usage Metrics
+# Project 06 - Water Usage Metrics (Dat long header tho)
+#
+#   Import pylab library
+#
+#   manually define states and categories
 #
 #   Open file function
 #       returns the file name
-#   revenue function
-#       calculates and returns total revenue
-#   cost of good sold function
-#       calculates total cost of producing and advertising and returns it
-#   calculate ROI function
-#       calculates ROI and returns it
-#   Main Method
-#       try to open file with file pointer from file function
-#       except filenotfound error
-#           print error and re-prompt by calling function again
-#       print welcome message
-#       initialize state and current product
-#       initialize product attributes
-#       read each line in the file
-#           seperate variables from the file via slicing
-#           calculate complex values by calling functions
-#           if the current product is different and its not the first line
-#               state is 3 which is print out the info and reset counters
-#           if its the first line
-#               calculate best ads
-#               set state to 1 and set current product = product
-#           if state is 1 and current product = product
-#               calculate best ads
-#               current product is product
-#           else
-#               print product info
-#               reset counters
-#               calculate best ads for next product
-#       print product info for last product
+#   read file function
+#       Initialize empty data list
+#       use fp.readline to skip the header
+#       for each line in the fp
+#           strip the spaces and new line characters
+#           split the line on a comma ","
+#           for x in range last column
+#               if line at index is is null, space, replace with 0
+#           slice each of the geographical info and water info
+#           add them to a tuple and append it onto the list
+#       return the data list of tuples
 #
-#   Call the main method
+#  compute usage function
+#       initialize empty usage list
+#       for each line in the state list
+#           calculate total water used
+#           create a tuple with the county stats and add them to the list
+#       return the usage list of tuples
+#
+#   extract data function
+#       initialize state list empty
+#       for each line in the passed data list
+#       if the state is all then append all the lines to the state list
+#       else then append only the ones with the state on it
+#       return the state list
+#
+#   display data function
+#       takes a state list and a state
+#       uses the usage list to compute usage
+#       print title and header
+#       for each line in usage list print out the info and stats
+#
+#   plot water usage function
+#       initializes a list of categories
+#       adds the amount of water to each of the categories to the list by category
+#       finds total to get percentages
+#       formats pie chart and displays it with category and proportion
+#
+#   main method (this header is almost done I swear!)
+#       print header
+#       open file pointer and read it into the data list
+#       while userinput is not quit
+#               initialize state
+#               while userinput is not correct
+#                   keep asking for state until its in the list,all, or quit
+#               state list is the data list ran through the extract data function that filters it down
+#               usage list is the state list that only has county,population,water usage, and water per person
+#               display data takes the state list and plots water usage proportions
+#               prompt for user input if they want to plot
+#               print plot header and print the pie chart
+#
+#   Call the main method (congrats you made it to the end!, now for the actual code)
 ##############################################################################
 import pylab
 
