@@ -58,7 +58,7 @@
 #               prompt for user input if they want to plot
 #               print plot header and print the pie chart
 #
-#   Call the main method (congrats you made it to the end!, now for the actual code)
+#   Call the main method (congrats, you made it to the end!, now for the actual code)
 ##############################################################################
 import pylab
 
@@ -67,9 +67,8 @@ STATES = {'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI'
           'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'}
 USERS = ["Public", "Domestic", "Industrial", "Irrigation", "Livestock"]
 
-
+# prompt for user to enter a filename then return it if its valid
 def open_file():
-    '''Remember to put a docstring here'''
     while True:
         file_name = input("Input a file name: ")
         try:
@@ -82,17 +81,20 @@ def open_file():
     return fp
 
 
+# read each line in the file and split it on a comma
 def read_file(fp):
-    '''Remember to put a docstring here'''
 
     data_list = []
     fp.readline()
 
     for line in fp:
 
+        #get rid of newlines and spaces and split it
         line = line.strip('\n').strip()
         line = line.split(',')
 
+        #range is until the last field we are looking at
+        #replace the nulls,spaces with 0
         for x in range(115):
             try:
                 if line[x] == '':
@@ -102,7 +104,7 @@ def read_file(fp):
             except TypeError:
                 pass
 
-        # have to catch if there is null value and replace with o
+        # extract the fields from the csv and put them in a tuple
         state = line[0]
         county = line[2]
         population = int(round((float(line[6])*1000),0))
@@ -122,15 +124,14 @@ def read_file(fp):
     return data_list
 
 
+# take the state list and compute a tuple with geographic and water info
 def compute_usage(state_list):
-    '''Remember to put a docstring here'''
 
     usage_list = []
 
     for line in state_list:
-        #print(line)
 
-        #calculate total water usage
+        #calculate total water usage (fresh and salt)
         total_water = line[3] + line[4]
 
         # append county, population, sum of fresh and salt, and fresh/population
@@ -141,8 +142,8 @@ def compute_usage(state_list):
     return usage_list
 
 
+# filter down the dataset to be only of the desired state
 def extract_data(data_list, state):
-    '''Remember to put a docstring here'''
     state_list = []
 
     #data_list = sorted(data_list)
@@ -156,10 +157,8 @@ def extract_data(data_list, state):
 
     return state_list
 
-
+# print out the list of tuples we added in the compute usage function
 def display_data(state_list, state):
-    '''Remember to put a docstring here'''
-    # Some strings useful for Mimir testing
     usage_list = compute_usage(state_list)
 
     title = "{:^88s}".format( "Water Usage in " + state + " for 2010")
@@ -172,7 +171,7 @@ def display_data(state_list, state):
     for line in usage_list:
         print("{:22s} {:>22,d} {:>22.2f} {:>22.4f}".format(line[0], line[1], line[2], line[3]))
 
-
+# plot the usage on a pie chart
 def plot_water_usage(state_list, plot_title):
     '''
         Creates a list "y" containing the water usage in Mgal/d of all counties.
@@ -185,6 +184,7 @@ def plot_water_usage(state_list, plot_title):
     # accumulate public, domestic, industrial, irrigation, and livestock data
     y = [0, 0, 0, 0, 0]
 
+    #add amounts onto their values in the list
     for item in state_list:
         y[0] += item[3]
         y[1] += item[4]
@@ -195,13 +195,14 @@ def plot_water_usage(state_list, plot_title):
     total = sum(y)
     y = [round(x / total * 100, 2) for x in y]  # computes the percentages.
 
+    #pie chart formatting
     color_list = ['b', 'g', 'r', 'c', 'm']
     pylab.title(plot_title)
     pylab.pie(y, labels=USERS, colors=color_list)
     pylab.show()
     # pylab.savefig("plot.png")  # uncomment to save plot to a file
 
-
+# call all other functions in a loop, prompting for user input to dictate flow
 def main():
     # Some strings to help with Mimir testing
     print("Water Usage Data from the US and its States and Territories.\n")
@@ -209,6 +210,7 @@ def main():
     fp = open_file()
     data_list = read_file(fp)
 
+    #while userinput isnt quit
     while True:
 
         state = ""
@@ -224,6 +226,7 @@ def main():
             else:
                 print("Error in state code.  Please try again.")
 
+        #retrieve info from other functions and pass lists between them
         state_list = extract_data(data_list, state)
         usage_list = compute_usage(state_list)
 
