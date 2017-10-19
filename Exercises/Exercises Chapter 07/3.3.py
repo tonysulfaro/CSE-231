@@ -1,19 +1,19 @@
 #mutute_list function goes here
 def mutate_list(user_list, index_num, v):
-    user_list = user_list.insert(user_list,index_num,v)
+    user_list.insert(index_num, v)
     return user_list
 
 
 #remove_index function goes here
 def remove_index(user_list, index_num):
-    print(len(user_list))
-    user_list = user_list.remove(user_list[index_num])
-    print(len(user_list))
+    print("Total elements in list =",len(user_list))
+    user_list.pop(index_num)
+    print("Total elements in list =", len(user_list))
     return user_list
 
 #reverse_list function goes here
 def reverse_list(user_list):
-    user_list = user_list.reverse()
+    user_list.reverse()
     return user_list
 
 
@@ -30,7 +30,7 @@ def main():
         index_num, v = input().split(",")
         index_num = int(index_num)
         v = int(v)
-        user_list= mutate_list(user_list, index_num, v)
+        user_list = mutate_list(user_list, index_num, v)
         print(user_list)
     elif user_choice == 'r':
         index_num = int(input())
