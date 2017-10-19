@@ -83,7 +83,7 @@ def extract_data(data_list, state):
     '''Remember to put a docstring here'''
     state_list = []
 
-    data_list = sorted(data_list)
+    #data_list = sorted(data_list)
 
     for line in data_list:
 
