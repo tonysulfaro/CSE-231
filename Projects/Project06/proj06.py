@@ -69,6 +69,13 @@ USERS = ["Public", "Domestic", "Industrial", "Irrigation", "Livestock"]
 
 # prompt for user to enter a filename then return it if its valid
 def open_file():
+    """
+    prompt for file name
+    try to open the file
+    except FileNotFoundError
+        print error message
+    :return: fp
+    """
     while True:
         file_name = input("Input a file name: ")
         try:
@@ -83,7 +90,20 @@ def open_file():
 
 # read each line in the file and split it on a comma
 def read_file(fp):
+    """
+    :param fp (filepointer):
+    Initialize empty data list
+       use fp.readline to skip the header
+       for each line in the fp
+           strip the spaces and new line characters
+           split the line on a comma ","
+           for x in range last column
+               if line at index is is null, space, replace with 0
+           slice each of the geographical info and water info
+           add them to a tuple and append it onto the list
 
+    :return data_list:
+    """
     data_list = []
     fp.readline()
 
@@ -126,6 +146,14 @@ def read_file(fp):
 
 # take the state list and compute a tuple with geographic and water info
 def compute_usage(state_list):
+    """
+    :param state_list:
+    initialize empty usage list
+       for each line in the state list
+           calculate total water used
+           create a tuple with the county stats and add them to the usage_list
+    :return usage_list:
+    """
 
     usage_list = []
 
@@ -144,6 +172,15 @@ def compute_usage(state_list):
 
 # filter down the dataset to be only of the desired state
 def extract_data(data_list, state):
+    """
+    :param data_list:
+    :param state:
+    initialize state list empty
+       for each line in the passed data list
+       if the state is all then append all the lines to the state list
+       else then append only the ones with the state on it
+    :return state_list:
+    """
     state_list = []
 
     #data_list = sorted(data_list)
@@ -159,6 +196,15 @@ def extract_data(data_list, state):
 
 # print out the list of tuples we added in the compute usage function
 def display_data(state_list, state):
+    """
+    :param state_list:
+    :param state:
+    takes a state list and a state
+    uses the usage list to compute usage
+    print title and header
+    for each line in usage list print out the info and stats
+    :return <none>:
+    """
     usage_list = compute_usage(state_list)
 
     title = "{:^88s}".format( "Water Usage in " + state + " for 2010")
@@ -204,6 +250,20 @@ def plot_water_usage(state_list, plot_title):
 
 # call all other functions in a loop, prompting for user input to dictate flow
 def main():
+    """
+    print header
+       open file pointer and read it into the data list
+       while userinput is not quit
+               initialize state
+               while userinput is not correct
+                   keep asking for state until its in the list,all, or quit
+               state list is the data list ran through the extract data function that filters it down
+               usage list is the state list that only has county,population,water usage, and water per person
+               display data takes the state list and plots water usage proportions
+               prompt for user input if they want to plot
+               print plot header and print the pie chart
+    :return <none>:
+    """
     # Some strings to help with Mimir testing
     print("Water Usage Data from the US and its States and Territories.\n")
 
