@@ -183,8 +183,6 @@ def extract_data(data_list, state):
     """
     state_list = []
 
-    #data_list = sorted(data_list)
-
     for line in data_list:
 
         if state == 'ALL':
