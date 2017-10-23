@@ -14,7 +14,11 @@ def open_file(message):
             
 def read_ip_location(file):
 
+    ip_list = []
+
     for line in file:
+
+        ip = ""
 
         line = line.strip()
         line = line.split(".")
@@ -23,6 +27,15 @@ def read_ip_location(file):
             line[x] = line[x].zfill(3)
 
         print(line)
+
+        for x in range(len(line)):
+
+            ip += str(line[x])
+
+        ip_list.append(ip)
+
+    for item in ip_list:
+        print(item)
 
 def read_ip_attack(file):
     pass
