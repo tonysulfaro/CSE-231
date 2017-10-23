@@ -16,6 +16,10 @@ def read_ip_location(file):
 
     ip_list = []
 
+    #this one splits based on "," to seperate
+    #start ip, end ip, and country code
+
+    #this one is splitting based on "."
     for line in file:
 
         ip = ""
