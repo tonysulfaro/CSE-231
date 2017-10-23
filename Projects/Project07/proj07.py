@@ -5,7 +5,6 @@ def open_file(message):
     while True:
         file_name = input("Input a file name: ")
         try:
-
             fp = open(file_name)
             break
         except FileNotFoundError:
