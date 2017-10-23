@@ -13,7 +13,16 @@ def open_file(message):
     return fp
             
 def read_ip_location(file):
-    pass
+
+    for line in file:
+
+        line = line.strip()
+        line = line.split(".")
+
+        for x in range(3):
+            line[x] = line[x].zfill(3)
+
+        print(line)
 
 def read_ip_attack(file):
     pass
