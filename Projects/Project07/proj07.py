@@ -164,6 +164,7 @@ def main():
         print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
                                                       ip_str, "originated from", country_name))
 
+        #finds the number of times a country was an attacker onto the count_list
         count = 0
         for country in country_data:
 
@@ -175,13 +176,9 @@ def main():
             else:
                 count += 1
 
+        #adds all countries to country_list
         for country in country_data:
             country_list.append(country[0])
-
-    for item in count_list:
-        print(item)
-    print(count_list)
-    print(country_list)
 
     title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
@@ -189,13 +186,28 @@ def main():
     print(title)
     print(header)
 
-    for x in range(249):
+    highest_attack_country = ""
+    highest_attack_number = 0
+
+    n = 1
+    count = 249
+    while n <= 10:
+        for x in range(count):
+            if count_list[x] >= highest_attack_number:
+                highest_attack_number = count_list[x]
+                highest_attack_country = country_list[x]
+
         print("{:<8s} {:>5d}".format(country_list[x], count_list[x]))
+        count_list.pop(highest_attack_number)
+        country_list.pop(highest_attack_number)
+        highest_attack_country = ""
+        highest_attack_number = 0
+        count -= 1
+        n+=1
 
 
     answer = input("\nDo you want to plot? ").upper()
 
 
-    
 if __name__ == "__main__":
     main()
