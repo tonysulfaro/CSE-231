@@ -26,8 +26,8 @@ def read_ip_location(file):
 
         #print all items in line
         #start ip, end ip, country code
-        for x in range(len(line)):
-            print(line[x])
+        #for x in range(len(line)):
+         #   print(line[x])
 
         #extract start ip, end ip, and country code from line
         #split ip on "."
@@ -105,12 +105,29 @@ def read_country_name(file):
     
 def locate_address(ip_list, ip_attack):
 
+    attacker_list = []
 
+    for line in ip_list:
+        start_ip = line[0]
+        end_ip = line[1]
+        country_code = line[2]
 
-    pass
+        if ip_attack >= start_ip and ip_attack <= end_ip:
+            read_ip_location(ip_attack)
+            return country_code
+        else:
+            pass
+
+    return attacker_list
 
 def get_country_name(country_list, code):
-    pass
+
+    for item in country_list:
+        country_name = item[0]
+        country_code = item[1]
+
+        if country_code == code:
+            return country_name
 
 def bar_plot(count_list, countries):
     pylab.figure(figsize=(10,6))
@@ -120,8 +137,11 @@ def bar_plot(count_list, countries):
     pylab.ylabel("Number of attacks")
     
 def main():
-    #file = open_file("Enter the filename for the IP Address location list: ")
-    #ip_data = read_ip_location(file)
+
+    count_list = [0 for i in range(249)]
+
+    file = open_file("Enter the filename for the IP Address location list: ")
+    ip_data = read_ip_location(file)
     
     file = open_file("Enter the filename for the IP Address attacks: ")
     attack_data = read_ip_attack(file)
@@ -129,7 +149,21 @@ def main():
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
 
-    #answer = input("\nDo you want to plot? ")
+    while True:
+
+        for item in attack_data:
+
+            ip_int = item[0]
+            ip_str = item[1]
+
+            country_code = locate_address(ip_int)
+            country_name = get_country_name(country_code)
+
+
+            print("{:22s} {:>22s} {:>22s} {:>22s} ".format("The IP Address: ",
+                                                           ip_str, "originated from ", country_name))
+
+        #answer = input("\nDo you want to plot? ")
     
 if __name__ == "__main__":
     main()
