@@ -126,6 +126,9 @@ def get_country_name(country_list, code):
         if country_code == code:
             return country_name
 
+    return "Kosovo"
+
+
 
 def bar_plot(count_list, countries):
     pylab.figure(figsize=(10,6))
@@ -159,7 +162,7 @@ def main():
             country_name = get_country_name(country_data, country_code)
 
             print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
-                                                          item[1], "originated from ", country_name))
+                                                          ip_str, "originated from ", country_name))
 
         #answer = input("\nDo you want to plot? ")
     
