@@ -138,7 +138,8 @@ def bar_plot(count_list, countries):
     
 def main():
 
-    count_list = [0 for i in range(249)]
+    #not needed yet
+    #count_list = [0 for i in range(249)]
 
     file = open_file("Enter the filename for the IP Address location list: ")
     ip_data = read_ip_location(file)
@@ -156,8 +157,8 @@ def main():
             ip_int = item[0]
             ip_str = item[1]
 
-            country_code = locate_address(ip_int)
-            country_name = get_country_name(country_code)
+            country_code = locate_address(ip_data, ip_int)
+            country_name = get_country_name(country_data,country_code)
 
 
             print("{:22s} {:>22s} {:>22s} {:>22s} ".format("The IP Address: ",
