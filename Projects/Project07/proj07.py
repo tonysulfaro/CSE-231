@@ -167,7 +167,7 @@ def main():
         count = 0
         for country in country_data:
 
-            code = item[0]
+            code = country[0]
 
             if code == country_code:
                 count_list[count] += 1
@@ -189,7 +189,7 @@ def main():
     print(title)
     print(header)
 
-    for x in range(250):
+    for x in range(249):
         print("{:<8s} {:>5d}".format(country_list[x], count_list[x]))
 
 
