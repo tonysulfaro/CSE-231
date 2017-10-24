@@ -213,6 +213,12 @@ def main():
         n += 1
 
     answer = input("\nDo you want to plot? ").upper()
+    if answer == "YES":
+        #bar_plot(count_list, country_list)
+        pass
+    else:
+        pass
+
 
 
 if __name__ == "__main__":
