@@ -55,7 +55,33 @@ def read_ip_location(file):
     return ip_list
 
 def read_ip_attack(file):
-    pass
+
+    ip_list = []
+
+    for line in file:
+
+        ip_int = ''
+        ip_str = ''
+
+        line = line.strip()
+        line += ".xxx"
+        ip_str = line
+        line = line.split(".")
+
+        for x in range(4):
+            line[x] = line[x].zfill(3)
+            if line[x] == "xxx":
+                line[x] = line[x].replace("xxx","000")
+                ip_int += line[x]
+
+            else:
+                ip_int += line[x]
+
+        tup = (int(ip_int), ip_str)
+        ip_list.append(tup)
+
+    for item in ip_list:
+        print(item)
 
 def read_country_name(file):
     pass
@@ -74,8 +100,8 @@ def bar_plot(count_list, countries):
     pylab.ylabel("Number of attacks")
     
 def main():
-    file = open_file("Enter the filename for the IP Address location list: ")
-    ip_data = read_ip_location(file)
+    #file = open_file("Enter the filename for the IP Address location list: ")
+    #ip_data = read_ip_location(file)
     
     file = open_file("Enter the filename for the IP Address attacks: ")
     attack_data = read_ip_attack(file)
