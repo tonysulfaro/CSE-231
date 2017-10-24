@@ -11,32 +11,39 @@ def open_file(message):
             print("Unable to open file. Please try again.")
             continue
     return fp
-            
+
+
 def read_ip_location(file):
 
     ip_list = []
 
     #this one splits based on "," to seperate
     #start ip, end ip, and country code
-
-    #this one is splitting based on "."
     for line in file:
 
-        ip = ""
-
         line = line.strip()
-        line = line.split(".")
-
-        for x in range(3):
-            line[x] = line[x].zfill(3)
-
-        print(line)
+        line = line.split(",")
 
         for x in range(len(line)):
+            print(line[x])
 
-            ip += str(line[x])
+        start_ip = line[0]
+        end_ip = line[1]
+        country_code = line[2]
 
-        ip_list.append(ip)
+        for item in start_ip:
+
+            item.split(".")
+
+            for x in range(4):
+                item[x] = item[x].zfill(3)
+
+            item
+
+        tup = (start_ip, end_ip, country_code)
+
+
+
 
     for item in ip_list:
         print(item)
