@@ -24,6 +24,9 @@ def read_ip_location(file):
         line = line.strip()
         line = line.split(",")
 
+        #print all items in line
+        #start ip, end ip, country code
+        print(len(line))
         for x in range(len(line)):
             print(line[x])
 
@@ -31,19 +34,16 @@ def read_ip_location(file):
         end_ip = line[1]
         country_code = line[2]
 
-        for item in start_ip:
+        start_ip = start_ip.split(".")
 
-            item.split(".")
 
-            for x in range(4):
-                item[x] = item[x].zfill(3)
+        for x in range(len(start_ip)):
+            start_ip[x] = start_ip[x].zfill(3)
 
-            item
+        print(start_ip)
 
         tup = (start_ip, end_ip, country_code)
-
-
-
+        break
 
     for item in ip_list:
         print(item)
