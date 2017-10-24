@@ -116,14 +116,16 @@ def locate_address(ip_list, ip_attack):
         else:
             pass
 
+#gets country name from list that has just code and name
 def get_country_name(country_list, code):
 
     for item in country_list:
-        country_name = item[1]
         country_code = item[0]
+        country_name = item[1]
 
         if country_code == code:
             return country_name
+
 
 def bar_plot(count_list, countries):
     pylab.figure(figsize=(10,6))
@@ -156,10 +158,7 @@ def main():
             country_code = locate_address(ip_data, ip_int)
             country_name = get_country_name(country_data, country_code)
 
-            print(country_code)
-            print(country_name)
-
-            print("{:22s} {:>22s} {:>22s} {:>22s}".format("The IP Address: ",
+            print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
                                                           item[1], "originated from ", country_name))
 
         #answer = input("\nDo you want to plot? ")
