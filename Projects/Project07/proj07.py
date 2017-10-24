@@ -3,12 +3,12 @@ import pylab
 
 def open_file(message):
     while True:
-        file_name = input("Input a file name: ")
+        file_name = input(message)
         try:
             fp = open(file_name)
             break
         except FileNotFoundError:
-            print("Unable to open file. Please try again.")
+            print("File is not found! Try Again!")
             continue
     return fp
 
