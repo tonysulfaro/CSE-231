@@ -168,6 +168,7 @@ def main():
         count = 0
         for country in country_data:
 
+            country_list.append(country[0])
             code = country[0]
 
             if code == country_code:
@@ -176,9 +177,7 @@ def main():
             else:
                 count += 1
 
-        #adds all countries to country_list
-        for country in country_data:
-            country_list.append(country[0])
+
 
     title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
