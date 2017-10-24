@@ -116,6 +116,7 @@ def locate_address(ip_list, ip_attack):
         else:
             pass
 
+
 #gets country name from list that has just code and name
 def get_country_name(country_list, code):
 
@@ -129,14 +130,14 @@ def get_country_name(country_list, code):
     return "Kosovo"
 
 
-
 def bar_plot(count_list, countries):
     pylab.figure(figsize=(10,6))
     pylab.bar(list(range(len(count_list))), count_list, tick_label = countries)
     pylab.title("Countries with highest number of attacks")
     pylab.xlabel("Countries")
     pylab.ylabel("Number of attacks")
-    
+
+
 def main():
 
     #counts the number of times a country was attacked
@@ -217,7 +218,6 @@ def main():
         pass
     else:
         pass
-
 
 
 if __name__ == "__main__":
