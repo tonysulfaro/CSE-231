@@ -105,26 +105,22 @@ def read_country_name(file):
     
 def locate_address(ip_list, ip_attack):
 
-    attacker_list = []
-
     for line in ip_list:
+
         start_ip = line[0]
         end_ip = line[1]
         country_code = line[2]
 
         if ip_attack >= start_ip and ip_attack <= end_ip:
-            read_ip_location(ip_attack)
             return country_code
         else:
             pass
 
-    return attacker_list
-
 def get_country_name(country_list, code):
 
     for item in country_list:
-        country_name = item[0]
-        country_code = item[1]
+        country_name = item[1]
+        country_code = item[0]
 
         if country_code == code:
             return country_name
@@ -158,11 +154,13 @@ def main():
             ip_str = item[1]
 
             country_code = locate_address(ip_data, ip_int)
-            country_name = get_country_name(country_data,country_code)
+            country_name = get_country_name(country_data, country_code)
 
+            print(country_code)
+            print(country_name)
 
-            print("{:22s} {:>22s} {:>22s} {:>22s} ".format("The IP Address: ",
-                                                           ip_str, "originated from ", country_name))
+            print("{:22s} {:>22s} {:>22s} {:>22s}".format("The IP Address: ",
+                                                          item[1], "originated from ", country_name))
 
         #answer = input("\nDo you want to plot? ")
     
