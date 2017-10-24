@@ -152,7 +152,7 @@ def main():
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
 
-    data_filtering_choice = input("Do you want to display all data? ")
+    data_filtering_choice = input("\nDo you want to display all data? ")
 
     for item in attack_data:
         ip_int = item[0]
@@ -192,11 +192,15 @@ def main():
     n = 1
     count = 249
     index = 0
+    #while top number is less than 10
     while n <= 10:
+        #for every entry in both lists
         for x in range(count):
-            if count_list[x] >= highest_attack_number:
+            #if the current one is larger its the new largest
+            if count_list[x] > highest_attack_number:
                 highest_attack_number = count_list[x]
                 highest_attack_country = country_list[x]
+                #print(highest_attack_country,highest_attack_number)
                 index = x
 
         print("{:<8s} {:>5d}".format(country_list[index], count_list[index]))
@@ -206,8 +210,7 @@ def main():
         highest_attack_number = 0
         index = 0
         count -= 1
-        n+=1
-
+        n += 1
 
     answer = input("\nDo you want to plot? ").upper()
 
