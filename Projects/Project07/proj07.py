@@ -159,8 +159,8 @@ def main():
         country_code = locate_address(ip_data, ip_int)
         country_name = get_country_name(country_data, country_code)
 
-        print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
-                                                      ip_str, "originated from ", country_name))
+        print("{:16s} {:<15s} {:>22s} {:<s}".format("The IP Address: ",
+                                                      ip_str, "originated from", country_name))
 
         for item in country_data:
             country_list.append(item[1])
