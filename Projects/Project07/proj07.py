@@ -191,17 +191,20 @@ def main():
 
     n = 1
     count = 249
+    index = 0
     while n <= 10:
         for x in range(count):
             if count_list[x] >= highest_attack_number:
                 highest_attack_number = count_list[x]
                 highest_attack_country = country_list[x]
+                index = x
 
-        print("{:<8s} {:>5d}".format(country_list[x], count_list[x]))
-        count_list.pop(highest_attack_number)
-        country_list.pop(highest_attack_number)
+        print("{:<8s} {:>5d}".format(country_list[index], count_list[index]))
+        count_list.pop(index)
+        country_list.pop(index)
         highest_attack_country = ""
         highest_attack_number = 0
+        index = 0
         count -= 1
         n+=1
 
