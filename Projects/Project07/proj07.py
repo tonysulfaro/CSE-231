@@ -54,6 +54,7 @@ def read_ip_location(file):
 
     return ip_list
 
+
 def read_ip_attack(file):
 
     ip_list = []
@@ -63,11 +64,13 @@ def read_ip_attack(file):
         ip_int = ''
         ip_str = ''
 
+        #strip elements and set the line plus xxx equal to ip_str
         line = line.strip()
         line += ".xxx"
         ip_str = line
         line = line.split(".")
 
+        #if theres an xxx in the line replace it with 000 and add it to ip_int
         for x in range(4):
             line[x] = line[x].zfill(3)
             if line[x] == "xxx":
@@ -80,8 +83,8 @@ def read_ip_attack(file):
         tup = (int(ip_int), ip_str)
         ip_list.append(tup)
 
-    for item in ip_list:
-        print(item)
+    return ip_list
+
 
 def read_country_name(file):
     pass
