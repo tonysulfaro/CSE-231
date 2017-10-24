@@ -152,6 +152,8 @@ def main():
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
 
+    data_filtering_choice = input("Do you want to display all data? ")
+
     for item in attack_data:
         ip_int = item[0]
         ip_str = item[1]
@@ -159,7 +161,7 @@ def main():
         country_code = locate_address(ip_data, ip_int)
         country_name = get_country_name(country_data, country_code)
 
-        print("{:16s} {:<15s} {:>22s} {:<s}".format("The IP Address: ",
+        print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
                                                       ip_str, "originated from", country_name))
 
         for item in country_data:
@@ -170,7 +172,7 @@ def main():
             else:
                 count += 1
 
-    title = "Top 10 Attack Countries"
+    title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
 
     print(title)
