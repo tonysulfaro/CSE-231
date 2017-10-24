@@ -161,7 +161,7 @@ def main():
         print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
                                                       ip_str, "originated from ", country_name))
 
-        answer = input("\nDo you want to plot? ")
+    answer = input("\nDo you want to plot? ")
 
 
     
