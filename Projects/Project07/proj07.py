@@ -26,27 +26,33 @@ def read_ip_location(file):
 
         #print all items in line
         #start ip, end ip, country code
-        print(len(line))
         for x in range(len(line)):
             print(line[x])
 
-        start_ip = line[0]
-        end_ip = line[1]
+        #extract start ip, end ip, and country code from line
+        #split ip on "."
+        start_ip = line[0].split(".")
+        end_ip = line[1].split(".")
         country_code = line[2]
 
-        start_ip = start_ip.split(".")
+        #raw ip to be entered into the tuple
+        raw_start_ip = ''
+        raw_end_ip = ''
 
-
+        #for each item in the ip pad it with zeros
+        #add it to the raw ip string
         for x in range(len(start_ip)):
             start_ip[x] = start_ip[x].zfill(3)
+            raw_start_ip += start_ip[x]
 
-        print(start_ip)
+        for x in range(len(end_ip)):
+            end_ip[x] = end_ip[x].zfill(3)
+            raw_end_ip += end_ip[x]
 
-        tup = (start_ip, end_ip, country_code)
-        break
+        tup = (int(raw_start_ip), int(raw_end_ip), country_code)
+        ip_list.append(tup)
 
-    for item in ip_list:
-        print(item)
+    return ip_list
 
 def read_ip_attack(file):
     pass
