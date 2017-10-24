@@ -197,7 +197,7 @@ def main():
         #for every entry in both lists
         for x in range(count):
             #if the current one is larger its the new largest
-            if count_list[x] > highest_attack_number:
+            if count_list[x] >= highest_attack_number:
                 highest_attack_number = count_list[x]
                 highest_attack_country = country_list[x]
                 #print(highest_attack_country,highest_attack_number)
