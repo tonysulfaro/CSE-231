@@ -139,19 +139,14 @@ def bar_plot(count_list, countries):
     
 def main():
 
-    #not needed yet
-    #count_list = [0 for i in range(249)]
+    #counts the number of times a country was attacked
+    count_list = [0 for i in range(249)]
 
     file = open_file("Enter the filename for the IP Address location list: ")
     ip_data = read_ip_location(file)
     
     file = open_file("Enter the filename for the IP Address attacks: ")
     attack_data = read_ip_attack(file)
-
-    count = 0
-    for item in attack_data:
-        count+=1
-        print(count)
     
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
@@ -166,7 +161,7 @@ def main():
         print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
                                                       ip_str, "originated from ", country_name))
 
-        # answer = input("\nDo you want to plot? ")
+        answer = input("\nDo you want to plot? ")
 
 
     
