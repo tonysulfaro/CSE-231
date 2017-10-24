@@ -164,13 +164,24 @@ def main():
         print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
                                                       ip_str, "originated from", country_name))
 
-        for item in country_data:
-            country_list.append(item[1])
-            count = 1
-            if item[0] == country_code:
+        count = 0
+        for country in country_data:
+
+            code = item[0]
+
+            if code == country_code:
                 count_list[count] += 1
+                count += 1
             else:
                 count += 1
+
+        for country in country_data:
+            country_list.append(country[0])
+
+    for item in count_list:
+        print(item)
+    print(count_list)
+    print(country_list)
 
     title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
@@ -178,13 +189,9 @@ def main():
     print(title)
     print(header)
 
-    index = 0
-    for item in count_list:
-        if item != 0:
-            print("{:<8s} {:>5d}".format(country_list[index], count_list[index]))
-            index += 1
-        else:
-            index += 1
+    for x in range(250):
+        print("{:<8s} {:>5d}".format(country_list[x], count_list[x]))
+
 
     answer = input("\nDo you want to plot? ").upper()
 
