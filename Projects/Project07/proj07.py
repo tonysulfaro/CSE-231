@@ -87,9 +87,26 @@ def read_ip_attack(file):
 
 
 def read_country_name(file):
-    pass
+
+    country_list = []
+
+    for line in file:
+
+        #basically get the country list and make a list out of it
+        line = line.strip().split(";")
+        full_name = line[0]
+        country_code = line[1]
+
+        tup = (country_code, full_name)
+        country_list.append(tup)
+
+    return country_list
+
     
 def locate_address(ip_list, ip_attack):
+
+
+
     pass
 
 def get_country_name(country_list, code):
@@ -116,5 +133,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-    
-
