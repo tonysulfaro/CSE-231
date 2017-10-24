@@ -147,24 +147,28 @@ def main():
     
     file = open_file("Enter the filename for the IP Address attacks: ")
     attack_data = read_ip_attack(file)
+
+    count = 0
+    for item in attack_data:
+        count+=1
+        print(count)
     
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
 
-    while True:
+    for item in attack_data:
+        ip_int = item[0]
+        ip_str = item[1]
 
-        for item in attack_data:
+        country_code = locate_address(ip_data, ip_int)
+        country_name = get_country_name(country_data, country_code)
 
-            ip_int = item[0]
-            ip_str = item[1]
+        print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
+                                                      ip_str, "originated from ", country_name))
 
-            country_code = locate_address(ip_data, ip_int)
-            country_name = get_country_name(country_data, country_code)
+        # answer = input("\nDo you want to plot? ")
 
-            print("{:22s} {:<22s} {:>22s} {:<22s}".format("The IP Address: ",
-                                                          ip_str, "originated from ", country_name))
 
-        #answer = input("\nDo you want to plot? ")
     
 if __name__ == "__main__":
     main()
