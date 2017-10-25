@@ -192,11 +192,10 @@ def main():
     highest_attack_country = ""
     highest_attack_number = 0
 
-    n = 1
     count = 249
     index = 0
     #while top number is less than 10
-    while n <= 10:
+    for x in range(10):
         #for every entry in both lists
         for x in range(count):
             #if the current one is larger its the new largest
@@ -215,7 +214,6 @@ def main():
         highest_attack_number = 0
         index = 0
         count -= 1
-        n += 1
 
 
     answer = input("\nDo you want to plot? ").upper()
