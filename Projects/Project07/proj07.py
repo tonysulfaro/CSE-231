@@ -182,7 +182,6 @@ def main():
                 count += 1
 
 
-
     title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
 
