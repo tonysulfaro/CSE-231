@@ -5,11 +5,11 @@ from operator import itemgetter
 
 def add_word( word_map, word ):
 
-    # YOUR COMMENT
+    # if the word isnt in the word map, add it in and set count to 0
     if word not in word_map:
         word_map[ word ] = 0
 
-    # YOUR COMMENT
+    # increment word count for that word by 1
     word_map[ word ] += 1
 
 
@@ -17,26 +17,30 @@ def build_map( in_file, word_map ):
 
     for line in in_file:
 
-        # YOUR COMMENT
+        #split the word on a space
         word_list = line.split()
 
         for word in word_list:
 
-            # YOUR COMMENT
-            word = word.strip().strip(string.punctuation)
-            add_word( word_map, word )
+            #add word to word list
+            word = word.strip().strip(string.punctuation).lower()
+            if word != "":
+                add_word( word_map, word )
         
 
 def display_map( word_map ):
 
     word_list = list()
 
-    # YOUR COMMENT
+    # for each word and its count in the wordmap
+    # append it onto the word list
     for word, count in word_map.items():
         word_list.append( (word, count) )
 
+    word_list = sorted(word_list, reverse= True)
+
     # YOUR COMMENT
-    freq_list = sorted( word_list, key=itemgetter(1) )
+    freq_list = sorted( word_list, key=itemgetter(1), reverse= True )
 
     print( "\n{:15s}{:5s}".format( "Word", "Count" ) )
     print( "-"*20 )
