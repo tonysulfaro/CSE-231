@@ -143,6 +143,8 @@ def main():
     #counts the number of times a country was attacked
     count_list = [0 for i in range(249)]
     country_list = []
+    top_ten_attack_numbers = []
+    top_ten_attack_country = []
 
     file = open_file("Enter the filename for the IP Address location list: ")
     ip_data = read_ip_location(file)
@@ -205,6 +207,8 @@ def main():
                 index = x
 
         print("{:<8s} {:>5d}".format(country_list[index], count_list[index]))
+        top_ten_attack_country.append(country_list[index])
+        top_ten_attack_numbers.append(count_list[index])
         count_list.pop(index)
         country_list.pop(index)
         highest_attack_country = ""
@@ -216,7 +220,7 @@ def main():
 
     answer = input("\nDo you want to plot? ").upper()
     if answer == "YES":
-        #bar_plot(count_list, country_list)
+        bar_plot(top_ten_attack_numbers, top_ten_attack_country)
         pass
     else:
         pass
