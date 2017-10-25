@@ -167,6 +167,7 @@ def main():
 
         #finds the number of times a country was an attacker onto the count_list
         count = 0
+        country_data = sorted(country_data)
         for country in country_data:
 
             country_list.append(country[0])
@@ -211,6 +212,7 @@ def main():
         index = 0
         count -= 1
         n += 1
+
 
     answer = input("\nDo you want to plot? ").upper()
     if answer == "YES":
