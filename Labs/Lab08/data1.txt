@@ -1,0 +1,5 @@
+Name    Score
+Joe     20
+Mary    70
+Rich    50
+Jose    90

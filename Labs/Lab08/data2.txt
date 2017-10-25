@@ -1,0 +1,5 @@
+Name         Score
+Sarah        80
+Ming         20
+Joe          65
+Rich         30
