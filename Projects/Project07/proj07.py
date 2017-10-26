@@ -1,7 +1,44 @@
+########################################################################
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+########################################################################
+
 import csv
 import pylab
 
 def open_file(message):
+    """
+
+    :param message:
+    :return:
+    """
     while True:
         file_name = input(message)
         try:
@@ -14,6 +51,11 @@ def open_file(message):
 
 
 def read_ip_location(file):
+    """
+
+    :param file:
+    :return:
+    """
 
     ip_list = []
 
@@ -56,6 +98,11 @@ def read_ip_location(file):
 
 
 def read_ip_attack(file):
+    """
+
+    :param file:
+    :return:
+    """
 
     ip_list = []
 
@@ -87,6 +134,11 @@ def read_ip_attack(file):
 
 
 def read_country_name(file):
+    """
+
+    :param file:
+    :return:
+    """
 
     country_list = []
 
@@ -104,6 +156,12 @@ def read_country_name(file):
 
     
 def locate_address(ip_list, ip_attack):
+    """
+
+    :param ip_list:
+    :param ip_attack:
+    :return:
+    """
 
     for line in ip_list:
 
@@ -119,6 +177,12 @@ def locate_address(ip_list, ip_attack):
 
 #gets country name from list that has just code and name
 def get_country_name(country_list, code):
+    """
+
+    :param country_list:
+    :param code:
+    :return:
+    """
 
     for item in country_list:
         country_code = item[0]
@@ -131,6 +195,12 @@ def get_country_name(country_list, code):
 
 
 def bar_plot(count_list, countries):
+    """
+
+    :param count_list:
+    :param countries:
+    :return:
+    """
     pylab.figure(figsize=(10,6))
     pylab.bar(list(range(len(count_list))), count_list, tick_label = countries)
     pylab.title("Countries with highest number of attacks")
@@ -139,6 +209,10 @@ def bar_plot(count_list, countries):
 
 
 def main():
+    """
+
+    :return:
+    """
 
     #counts the number of times a country was attacked
     count_list = [0 for i in range(249)]
