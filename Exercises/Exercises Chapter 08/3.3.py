@@ -1,21 +1,24 @@
+import string
 #build_wordlist() function goes here
 def build_wordlist(fp):
     word_list = []
 
     for line in fp:
+
+        line = line.strip().strip(string.punctuation).lower()
         line = line.split(" ")
-        line = line.replace((",",".",":"),"")
+        if line in word_list:
+            pass
+        else:
+            word_list.append(line)
+
+    return word_list
 
 
-
-        word_list.append(line)
-
-#find_unique() function goes here
 
 def main():
     infile = open("test.txt", 'r')
     word_list = build_wordlist(infile)
-    new_wordlist = find_unique(word_list)
-    new_wordlist.sort()
-    print(new_wordlist)
+    new_wordlist = sorted(word_list)
+    print(word_list)
 main()
