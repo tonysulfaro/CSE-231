@@ -194,10 +194,12 @@ def read_country_name(file):
     
 def locate_address(ip_list, ip_attack):
     """
-
-    :param ip_list:
-    :param ip_attack:
-    :return:
+    for each line in the file pointer
+        define the ip ranges and country codes
+        if the attacking ip is in between the range then return country code
+    :param ip_list - list of ip address ranges and country code:
+    :param ip_attack - attacking ip as an integer:
+    :return country_code - country code as a string:
     """
 
     for line in ip_list:
@@ -215,10 +217,11 @@ def locate_address(ip_list, ip_attack):
 #gets country name from list that has just code and name
 def get_country_name(country_list, code):
     """
-
-    :param country_list:
-    :param code:
-    :return:
+    for item in the country list
+        if the code in the list matches the code provided then return the name
+    :param country_list - list of country names and their codes:
+    :param code - country code as string:
+    :return country_name - full country name:
     """
 
     for item in country_list:
@@ -233,10 +236,11 @@ def get_country_name(country_list, code):
 
 def bar_plot(count_list, countries):
     """
-
-    :param count_list:
-    :param countries:
-    :return:
+    define display attributes
+    display plot
+    :param count_list - list of attack counts:
+    :param countries - list of countries:
+    :return <none> :
     """
     pylab.figure(figsize=(10,6))
     pylab.bar(list(range(len(count_list))), count_list, tick_label = countries)
@@ -247,7 +251,34 @@ def bar_plot(count_list, countries):
 
 def main():
     """
-    see header above in source header
+    initialize empty country and count lists
+       prompt for ip address location list and store fp
+       prompt for ip attack lists and store as fp
+       prompt for country code lists and store as fp
+       prompt if user wants to display all attack data
+           if yes then print attack data as it is generated
+           if no generate the data but dont print it
+       for item in the attack data fp
+           get the country code with locate address function
+           get country name after getting country code
+           print the attack information if user entered yes to disp data
+           sort the country data
+
+           for country in country data
+               add the country code to the country list
+               if it appears in the attack increment the index in count_list
+       print title and header for top 10 attackers
+       initialize indexes
+       for x in range 10 (goes down the list to pick top 10 attackers)
+           for x in range count of items in count and country lists
+               if the count at index x is higher than highest attack then its the new highest
+               highest attack country of x is now the highest attack country as well
+           print highest attacker and their count
+           add the entries to the top 10 lists
+           pop the entries out of the list
+           reset highest attack numbers and country
+       prompt if the user wants to plot the data
+       if yes then pass the data to the bar plot function
     :return <none> :
     """
 
