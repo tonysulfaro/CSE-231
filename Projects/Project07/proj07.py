@@ -1,4 +1,41 @@
-########################################################################
+###############################################################################
+#   import pylab library for plotting
+#   open file function
+#       takes message as parameter to prompt user for a filename
+#       opens the file if it can and returns the file pointer
+#   read ip location function
+#       takes the file pointer and reads in all the country ranges into a list
+#           ranges are range of integers and a country code
+#       returns country range list
+#   read ip attack function
+#       reads attack information and converts them to integers
+#       with zfill and adding on 000 to serve as the 4th ip range
+#       return ip list with ip as string and as an int
+#   read country name function
+#       open the country name file pointer and read all contents
+#       return list of tuples of country code and country name
+#   locate address function
+#       take the ip list and an attack ip and see which range the ip falls in
+#       if it falls in the range return the country code that its between
+#       else check the next country
+#   get country name function
+#       takes a country code and country list
+#       checks each value until the code given and code in list match up
+#       if they do return the country name
+#   bar plot function
+#       takes a list of countries and counts and plots them with pylab lib
+#   main method
+#       initialize empty country and count lists
+#       prompt for ip address location list and store fp
+#       prompt for ip attack lists and store as fp
+#       prompt for country code lists and store as fp
+#       prompt if user wants to display all attack data
+#           if yes then print attack data as it is generated
+#           if no generate the data but dont print it
+#       for item in the attack data fp
+#           get the country code with locate address function
+#           get country name after getting country code
+#           print the attack information if user entered yes to disp data
 #
 #
 #
@@ -11,32 +48,17 @@
 #
 #
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-########################################################################
+###############################################################################
 
 import pylab
 
 def open_file(message):
     """
-
-    :param message:
-    :return:
+    prompts for input with the given prompt passed as message
+    catches if file isnt there and prompts again
+    exits when it can open the file
+    :param message - prompt as string:
+    :return fp - file pointer:
     """
     while True:
         file_name = input(message)
@@ -209,8 +231,8 @@ def bar_plot(count_list, countries):
 
 def main():
     """
-    
-    :return:
+    see header above in source header
+    :return <none> :
     """
 
     #counts the number of times a country was attacked
