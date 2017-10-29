@@ -30,7 +30,6 @@
 #
 ########################################################################
 
-import csv
 import pylab
 
 def open_file(message):
@@ -206,11 +205,11 @@ def bar_plot(count_list, countries):
     pylab.title("Countries with highest number of attacks")
     pylab.xlabel("Countries")
     pylab.ylabel("Number of attacks")
-
+    pylab.show()
 
 def main():
     """
-
+    
     :return:
     """
 
@@ -229,7 +228,7 @@ def main():
     file = open_file("Enter the filename for the country codes: ")
     country_data = read_country_name(file)
 
-    data_filtering_choice = input("\nDo you want to display all data? ")
+    data_filtering_choice = input("\nDo you want to display all data? ").lower()
 
     for item in attack_data:
         ip_int = item[0]
@@ -238,7 +237,9 @@ def main():
         country_code = locate_address(ip_data, ip_int)
         country_name = get_country_name(country_data, country_code)
 
-        print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
+        if data_filtering_choice == 'yes':
+
+         print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
                                                       ip_str, "originated from", country_name))
 
         #finds the number of times a country was an attacker onto the count_list
