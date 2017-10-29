@@ -36,18 +36,24 @@
 #           get the country code with locate address function
 #           get country name after getting country code
 #           print the attack information if user entered yes to disp data
+#           sort the country data
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+#           for country in country data
+#               add the country code to the country list
+#               if it appears in the attack increment the index in count_list
+#       print title and header for top 10 attackers
+#       initialize indexes
+#       for x in range 10 (goes down the list to pick top 10 attackers)
+#           for x in range count of items in count and country lists
+#               if the count at index x is higher than highest attack then its the new highest
+#               highest attack country of x is now the highest attack country as well
+#           print highest attacker and their count
+#           add the entries to the top 10 lists
+#           pop the entries out of the list
+#           reset highest attack numbers and country
+#       prompt if the user wants to plot the data
+#       if yes then pass the data to the bar plot function
+#   Call main
 ###############################################################################
 
 import pylab
@@ -73,9 +79,13 @@ def open_file(message):
 
 def read_ip_location(file):
     """
-
-    :param file:
-    :return:
+    for each line in the file pointer
+        strip it and split on a comma
+        split items 0,1 on "." because they are an ip
+        zfill the ip and then make them ints
+        add the new ip integers and country code to tuple and append to list
+    :param file - file pointer of country ranges and codes:
+    :return ip_list - list of tuples with ip range and country code:
     """
 
     ip_list = []
@@ -86,11 +96,6 @@ def read_ip_location(file):
 
         line = line.strip()
         line = line.split(",")
-
-        #print all items in line
-        #start ip, end ip, country code
-        #for x in range(len(line)):
-         #   print(line[x])
 
         #extract start ip, end ip, and country code from line
         #split ip on "."
@@ -112,6 +117,7 @@ def read_ip_location(file):
             end_ip[x] = end_ip[x].zfill(3)
             raw_end_ip += end_ip[x]
 
+        #start and end ip addresses and country code
         tup = (int(raw_start_ip), int(raw_end_ip), country_code)
         ip_list.append(tup)
 
@@ -120,9 +126,13 @@ def read_ip_location(file):
 
 def read_ip_attack(file):
     """
-
-    :param file:
-    :return:
+    initialize empty ip list
+    for each line in the file pointer of attacks
+    strip the line and add xxx onto it
+    split on the "." for an ip and fill each set with zeros
+    add tuple of ip string and numbers to a list
+    :param file - file pointer of attacks:
+    :return ip_list - list of ip attack tuples:
     """
 
     ip_list = []
@@ -156,9 +166,15 @@ def read_ip_attack(file):
 
 def read_country_name(file):
     """
-
-    :param file:
-    :return:
+    initialize empty country list
+    for each line in the file pointer
+        strip and split on ";"
+        first item is the full country name
+        second is the code
+        add both items to a tuple
+        append the tuple to the list
+    :param file - file pointer of country name file:
+    :return country_list - list of country codes and their full name as a tuple:
     """
 
     country_list = []
