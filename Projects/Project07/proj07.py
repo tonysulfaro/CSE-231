@@ -152,7 +152,7 @@ def read_ip_attack(file):
         for x in range(4):
             line[x] = line[x].zfill(3)
             if line[x] == "xxx":
-                line[x] = line[x].replace("xxx","000")
+                line[x] = line[x].replace("xxx", "000")
                 ip_int += line[x]
 
             else:
