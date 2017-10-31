@@ -1,10 +1,23 @@
 import pylab as py
 
 def open_file():
-    '''Remember to put a docstring here'''
-    #input("Input a file name: ")
-    #print("Unable to open file. Please try again.")
-    pass
+    """
+    prompts for input with the given prompt passed as message
+    catches if file isnt there and prompts again
+    exits when it can open the file
+    :param message - prompt as string:
+    :return fp - file pointer:
+    """
+    while True:
+        file_name = input("Enter a file name: ")
+        try:
+            fp = open(file_name)
+            break
+        except FileNotFoundError:
+            print("Unable to open file. Please try again.")
+            continue
+    return fp
+
 
 def update_dictionary(dictionary, year, hurricane_name, data):
     '''Remember to put a docstring here'''
