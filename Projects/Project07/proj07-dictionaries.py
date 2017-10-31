@@ -299,6 +299,8 @@ def main():
 
     data_filtering_choice = input("\nDo you want to display all data? ").lower()
 
+    attack_dict = dict()
+
     for item in attack_data:
         ip_int = item[0]
         ip_str = item[1]
@@ -311,6 +313,10 @@ def main():
          print("{:15s} {:<15s} {:>18s} {:<s}".format("The IP Address:",
                                                       ip_str, "originated from", country_name))
 
+        #dictionary shit
+        if country_code not in attack_dict:
+            attack_dict[country_code] = 0
+        attack_dict[country_code] += 1
 
         #finds the number of times a country was an attacker onto the count_list
         count = 0
@@ -325,6 +331,8 @@ def main():
                 count += 1
             else:
                 count += 1
+    for item in attack_dict:
+        print(item, attack_dict[item])
 
     title = "\nTop 10 Attack Countries"
     header = "{:<8s} {:>5s}".format("Country", "Count")
