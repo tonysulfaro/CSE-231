@@ -27,7 +27,17 @@ def compare_files( file1, file2 ):
 
     # Build two sets:
     #   all of the unique words in file1
+    file1_words =  build_word_set(file1)
+
     #   all of the unique words in file2
+    file2_words = build_word_set(file2)
+
+    unique_words = file1_words.union(file2_words)
+    print(unique_words)
+    unique_word_count = len(unique_words)
+    intersect = file1_words.intersection(file2_words)
+    print(intersect)
+    unique_word_in_both_count = len(intersect)
 
     # Display the total number of unique words between the
     # two files.  If a word appears in both files, it should
