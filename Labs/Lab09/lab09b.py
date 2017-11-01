@@ -19,8 +19,11 @@ def build_word_index( input_file ):
 
         for word in word_lst:
 
-            if word != "" and word not in word_map:
-                word_map[word] = line_no
+            if word != "":
+                if word not in word_map:
+                    word_map[word] = {line_no}
+                else:
+                    word_map[word].add(line_no)
 
     print(word_map)
     return word_map                    
