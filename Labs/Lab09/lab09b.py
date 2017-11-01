@@ -3,13 +3,26 @@ import string
 
 def build_word_index( input_file ):
 
-    word_map = {}
+    word_map = dict()
     line_no = 0
     
     for line in input_file:
-        pass
-        # Missing code
-                       
+        line_no += 1
+        # YOUR COMMENT
+        word_lst = line.strip().split()
+
+        # YOUR COMMENT
+        word_lst = [w.lower().strip(string.punctuation) for w in word_lst]
+
+
+        print(word_lst)
+
+        for word in word_lst:
+
+            if word != "" and word not in word_map:
+                word_map[word] = line_no
+
+    print(word_map)
     return word_map                    
 
 def print_word_index( word_map ):
@@ -28,7 +41,7 @@ def print_word_index( word_map ):
 
 def main():
     
-    filename = input( "Name of file to be processed: " )
+    filename = 'document1.txt'#input( "Name of file to be processed: " )
 
     try:
         file = open( filename, "r" )
