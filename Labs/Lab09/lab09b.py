@@ -15,7 +15,7 @@ def build_word_index( input_file ):
         word_lst = [w.lower().strip(string.punctuation) for w in word_lst]
 
 
-        print(word_lst)
+
 
         for word in word_lst:
 
@@ -25,7 +25,7 @@ def build_word_index( input_file ):
                 else:
                     word_map[word].add(line_no)
 
-    print(word_map)
+
     return word_map                    
 
 def print_word_index( word_map ):
