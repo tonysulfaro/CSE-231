@@ -1,4 +1,5 @@
 import pylab as py
+import string
 
 def open_file():
     """
@@ -28,7 +29,20 @@ def create_dictionary(fp):
     data_dictionary = dict()
 
     for line in fp:
+        print(line)
+
         line = line.strip().split(" ")
+        line = [w.lower().strip(string.punctuation) for w in line]
+
+        print(line)
+
+
+
+        #remove null values from line list
+        line = [x for x in line if x] #https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
+
+
+        print(line)
 
         year = line[0]
         hurricane_name = line[1]
