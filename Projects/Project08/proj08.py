@@ -23,9 +23,26 @@ def update_dictionary(dictionary, year, hurricane_name, data):
     '''Remember to put a docstring here'''
     pass
     
-def create_dictionary():
-    '''Remember to put a docstring here'''
-    pass
+def create_dictionary(fp):
+
+    data_dictionary = dict()
+
+    for line in fp:
+        line = line.strip().split()
+
+        year = line[0]
+        hurricane_name = line[1]
+        lat = float(line[3])
+        lon = float(line[4])
+        date = line[5]
+        wind = float(line[6])
+        pressure = float(line[7])
+
+        tup = (lat, lon, date, wind, pressure)
+
+        update_dictionary(data_dictionary, year, hurricane_name, tup)
+
+
 
 def display_table(dictionary, year):
     '''Remember to put a docstring here'''
