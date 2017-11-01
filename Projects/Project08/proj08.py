@@ -20,9 +20,9 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
-    '''Remember to put a docstring here'''
-    pass
-    
+    dictionary.update(year, hurricane_name, data)
+    return dictionary
+
 def create_dictionary(fp):
 
     data_dictionary = dict()
@@ -51,8 +51,19 @@ def display_table(dictionary, year):
     #print("{:15s}{:>15s}{:>20s}{:>15s}".format("Name","Coordinates","Wind Speed (knots)","Date"))
 
 def get_years(dictionary):
-    '''Remember to put a docstring here'''
-    pass    
+
+    year_list = list()
+
+    for year in dictionary.items():
+        year_list.append(year)
+
+    sorted(year_list)
+
+    min_year = year_list[0]
+    max_year = year_list[-1]
+    range = max_year - min_year
+
+    return min_year, max_year
         
 def prepare_plot(dictionary, year):
     '''Remember to put a docstring here'''
