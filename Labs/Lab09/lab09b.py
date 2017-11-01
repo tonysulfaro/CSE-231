@@ -7,7 +7,7 @@ def build_word_index( input_file ):
     line_no = 0
     
     for line in input_file:
-
+        pass
         # Missing code
                        
     return word_map                    
