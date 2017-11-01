@@ -9,7 +9,7 @@ def open_file():
     :return fp - file pointer:
     """
     while True:
-        file_name = input("Enter a file name: ")
+        file_name = 'storm_track1.txt'#input("Enter a file name: ")
         try:
             fp = open(file_name)
             break
@@ -28,7 +28,7 @@ def create_dictionary(fp):
     data_dictionary = dict()
 
     for line in fp:
-        line = line.strip().split()
+        line = line.strip().split(" ")
 
         year = line[0]
         hurricane_name = line[1]
@@ -61,7 +61,6 @@ def get_years(dictionary):
 
     min_year = year_list[0]
     max_year = year_list[-1]
-    year_range = max_year - min_year
 
     return min_year, max_year
         
@@ -105,7 +104,7 @@ def plot_map(year, size, names, coordinates):
     
 
      # Set the legend at the bottom of the plot
-    py.legend(bbox_to_anchor=(0.,-0.5,1.,0.102),loc=0, ncol=3,mode='expand',\
+    py.legend(bbox_to_anchor=(0.,-0.5,1.,0.102),loc=0, ncol=3,mode='expand',
               borderaxespad=0., fontsize=10)
     
     # Set the labels and titles of the plot
@@ -130,7 +129,7 @@ def plot_wind_chart(year,size,names,max_speed):
         py.plot(range(size),cat_limit[i],COLORS[i],label="category-{:d}".format(i+1))
         
     # Set the legend for the categories
-    py.legend(bbox_to_anchor=(1.05, 1.),loc=2,\
+    py.legend(bbox_to_anchor=(1.05, 1.),loc=2,
               borderaxespad=0., fontsize=10)
     
     py.xticks(range(size),names,rotation='vertical') # Set the x-axis to be the names
@@ -146,14 +145,31 @@ def plot_wind_chart(year,size,names,max_speed):
 
 def main():
     '''Remember to put a docstring here'''
-    #print("Hurricane Record Software")
-    #print("Records from {:4s} to {:4s}".format(min_year, max_year))
-    #input("Enter the year to show hurricane data or 'quit': ")
-    #input("\nDo you want to plot? ")
-    #names, coordinates, max_speed = prepare_plot(dictionary, year)
-    #plot_map(year, size, names, coordinates)
-    #plot_wind_chart(year, size, names, max_speed)
-    #print("Error with the year key! Try another year")
+    fp = open_file()
+    data_dictionary = create_dictionary(fp)
+    min_year, max_year = get_years(data_dictionary)
+
+
+    print("Hurricane Record Software")
+    print("Records from {:4s} to {:4s}".format(min_year, max_year))
+
+    #handles valid date range
+    while True:
+        selected_year = input("Enter the year to show hurricane data or 'quit': ")
+        try:
+            int(selected_year)
+            if selected_year >= min_year and selected_year <= max_year:
+                break
+            else:
+                continue
+        except (TypeError, ValueError):
+            print("Error invalid year.")
+
+    input("\nDo you want to plot? ")
+    names, coordinates, max_speed = prepare_plot(data_dictionary, year)
+    plot_map(year, size, names, coordinates)
+    plot_wind_chart(year, size, names, max_speed)
+    print("Error with the year key! Try another year")
     pass
     
 if __name__ == "__main__":
