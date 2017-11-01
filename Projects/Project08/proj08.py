@@ -20,7 +20,7 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
-    dictionary.update(year, hurricane_name, data)
+    dictionary.update({year: {hurricane_name: data}})
     return dictionary
 
 def create_dictionary(fp):
@@ -61,7 +61,7 @@ def get_years(dictionary):
 
     min_year = year_list[0]
     max_year = year_list[-1]
-    range = max_year - min_year
+    year_range = max_year - min_year
 
     return min_year, max_year
         
