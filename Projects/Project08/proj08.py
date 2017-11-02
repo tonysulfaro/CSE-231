@@ -22,8 +22,12 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
-    dictionary.update({year: {hurricane_name: (data)}})
 
+    dictionary.update({year: {hurricane_name: []}})
+    data_list = list(dictionary[year][hurricane_name])
+    data_list.append(data)
+    print(dictionary[year][hurricane_name])
+    print(dictionary[year])
     return dictionary
 
 
@@ -35,8 +39,7 @@ def create_dictionary(fp):
         line = line.strip().split(" ")
 
         # remove null values from line list
-        line = [x for x in line if
-                x]  # https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
+        line = [x for x in line if x]  # https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
 
         # truncate line up to everything before pressure
         line = line[:8]
