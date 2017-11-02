@@ -34,15 +34,11 @@ def create_dictionary(fp):
 
         line = line.strip().split(" ")
 
-        #print(line)
-
         #remove null values from line list
         line = [x for x in line if x] #https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
-        #print(line)
 
         #truncate line up to everything before pressure
         line = line[:8]
-        print(line)
 
         year = line[0]
         hurricane_name = line[1]
@@ -76,9 +72,9 @@ def get_years(dictionary):
 
     year_list = list()
 
-    for year in dictionary.items():
-        print(year)
+    for year, data in dictionary.items():
         year_list.append(year)
+
 
     sorted(year_list)
 
@@ -120,7 +116,7 @@ def plot_map(year, size, names, coordinates):
     
     
     # plot each hurricane's trajectory
-    for i,key in enumerate(names):
+    for i, key in enumerate(names):
         lat = [ lat for lat,lon in coordinates[i] ]
         lon = [ lon for lat,lon in coordinates[i] ]
         py.plot(lon,lat,color=colors[i],label=key)
@@ -170,9 +166,11 @@ def main():
     '''Remember to put a docstring here'''
     fp = open_file()
     data_dictionary = create_dictionary(fp)
-    print(data_dictionary)
+    #print(data_dictionary)
+
     date_range = get_years(data_dictionary)
-    print(date_range)
+    min_year = date_range[0]
+    max_year = date_range[1]
 
 
     print("Hurricane Record Software")
