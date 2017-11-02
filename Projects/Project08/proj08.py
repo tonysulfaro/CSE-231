@@ -63,6 +63,8 @@ def create_dictionary(fp):
 
         data_dictionary = update_dictionary(data_dictionary, year, hurricane_name, tup)
 
+    return data_dictionary
+
 
 def display_table(dictionary, year):
     '''Remember to put a docstring here'''
