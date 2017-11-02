@@ -77,6 +77,7 @@ def get_years(dictionary):
     year_list = list()
 
     for year in dictionary.items():
+        print(year)
         year_list.append(year)
 
     sorted(year_list)
@@ -170,7 +171,8 @@ def main():
     fp = open_file()
     data_dictionary = create_dictionary(fp)
     print(data_dictionary)
-    min_year, max_year = get_years(data_dictionary)
+    date_range = get_years(data_dictionary)
+    print(date_range)
 
 
     print("Hurricane Record Software")
