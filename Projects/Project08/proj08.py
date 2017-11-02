@@ -21,7 +21,9 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
-    dictionary.update({year: {hurricane_name: data}})
+
+    dictionary .update({year: {hurricane_name: data}})
+
     return dictionary
 
 def create_dictionary(fp):
@@ -59,7 +61,7 @@ def create_dictionary(fp):
 
         tup = (lat, lon, date, wind, pressure)
 
-        update_dictionary(data_dictionary, year, hurricane_name, tup)
+        data_dictionary = update_dictionary(data_dictionary, year, hurricane_name, tup)
 
 
 def display_table(dictionary, year):
@@ -98,7 +100,7 @@ def plot_map(year, size, names, coordinates):
     max_longitude, max_latitude = 180, 90
     
     # Set the background image on the plot
-    py.imshow(img,extent=[-max_longitude,max_longitude,\
+    py.imshow(img,extent=[-max_longitude,max_longitude,
                           -max_latitude,max_latitude])
     
     # Set the corners of the map to cover the Atlantic Region
@@ -165,6 +167,7 @@ def main():
     '''Remember to put a docstring here'''
     fp = open_file()
     data_dictionary = create_dictionary(fp)
+    print(data_dictionary)
     min_year, max_year = get_years(data_dictionary)
 
 
