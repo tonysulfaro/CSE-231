@@ -24,8 +24,8 @@ def open_file():
 def update_dictionary(dictionary, year, hurricane_name, data):
 
     dictionary.update({year: {hurricane_name: []}})
-    for year, dict in dictionary.items():
-        for name, values in dict.items():
+    for year, weather_data in dictionary.items():
+        for name, values in weather_data.items():
             values.append(data)
     return dictionary
 
@@ -39,7 +39,7 @@ def create_dictionary(fp):
 
         # remove null values from line list
         line = [x for x in line if x]  # https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
-
+        print(line)
         # truncate line up to everything before pressure
         line = line[:8]
 
@@ -61,7 +61,7 @@ def create_dictionary(fp):
         tup = (lat, lon, date, wind, pressure)
 
         data_dictionary = update_dictionary(data_dictionary, year, hurricane_name, tup)
-    print(data_dictionary)
+
     return data_dictionary
 
 
