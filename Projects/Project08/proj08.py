@@ -22,7 +22,7 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
-    dictionary.update({year: {hurricane_name: data}})
+    dictionary.update({year: {hurricane_name: (data)}})
 
     return dictionary
 
