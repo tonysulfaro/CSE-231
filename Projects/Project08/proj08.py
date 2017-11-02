@@ -29,19 +29,17 @@ def create_dictionary(fp):
     data_dictionary = dict()
 
     for line in fp:
-        print(line)
 
         line = line.strip().split(" ")
-        line = [w.lower().strip(string.punctuation) for w in line]
 
-        print(line)
-
-
+        #print(line)
 
         #remove null values from line list
         line = [x for x in line if x] #https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
+        #print(line)
 
-
+        #truncate line up to everything before pressure
+        line = line[:8]
         print(line)
 
         year = line[0]
@@ -49,13 +47,19 @@ def create_dictionary(fp):
         lat = float(line[3])
         lon = float(line[4])
         date = line[5]
-        wind = float(line[6])
-        pressure = float(line[7])
+        try:
+            wind = float(line[6])
+        except (ValueError, TypeError):
+            wind = 0
+
+        try:
+            pressure = float(line[7])
+        except (ValueError, TypeError):
+            pressure = 0
 
         tup = (lat, lon, date, wind, pressure)
 
         update_dictionary(data_dictionary, year, hurricane_name, tup)
-
 
 
 def display_table(dictionary, year):
