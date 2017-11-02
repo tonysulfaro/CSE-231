@@ -203,8 +203,11 @@ def main():
         except (TypeError, ValueError):
             print("Error invalid year.")
 
+    #plotting hurricane data
     plot_choice = input("\nDo you want to plot? ").lower()
     names, coordinates, max_speed = prepare_plot(data_dictionary, selected_year)
+
+    size = len(names)
     plot_map(selected_year, size, names, coordinates)
     plot_wind_chart(selected_year, size, names, max_speed)
     print("Error with the year key! Try another year")
