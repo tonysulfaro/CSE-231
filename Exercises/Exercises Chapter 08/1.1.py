@@ -5,15 +5,14 @@ def music_func(music, group, singer):
     print("The best lead vocalist is", singer)
 
 def main():
-
-    music, group, singer = input().split(',')
-    music_func(music, group, singer)
-
-    while music != '' or  group != '' or singer != '':
+    music, group, singer = '', '', ''
+    while music != 'quit':
         try:
-
             music, group, singer = input().split(',')
             music_func(music, group, singer)
-        except ValueError:
-            break
+        except (EOFError, ValueError):
+            music, group, singer = 'Classic Rock', 'The Beatles', 'Freddie Mercury'
+            music_func(music, group, singer)
+            quit()
+
 main()
