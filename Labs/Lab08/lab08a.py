@@ -12,7 +12,7 @@ def add_word( word_map, word ):
     # increment word count for that word by 1
     word_map[ word ] += 1
 
-
+#build word map dictionary
 def build_map( in_file, word_map ):
 
     for line in in_file:
