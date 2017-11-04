@@ -27,7 +27,7 @@ def build_map( in_file, word_map ):
             if word != "":
                 add_word( word_map, word )
         
-
+#print out the word map
 def display_map( word_map ):
 
     word_list = list()
