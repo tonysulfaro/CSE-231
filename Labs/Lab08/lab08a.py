@@ -2,7 +2,7 @@
 import string
 from operator import itemgetter
 
-
+#add word to dictionary
 def add_word( word_map, word ):
 
     # if the word isnt in the word map, add it in and set count to 0
