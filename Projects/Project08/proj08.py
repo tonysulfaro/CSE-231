@@ -23,10 +23,8 @@ def open_file():
 
 def update_dictionary(dictionary, year, hurricane_name, data):
 
-    dictionary.update({year: {hurricane_name: []}})
-    for year, weather_data in dictionary.items():
-        for name, values in weather_data.items():
-            values.append(data)
+
+    print(dictionary)
     return dictionary
 
 
