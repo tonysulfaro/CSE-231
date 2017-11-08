@@ -78,7 +78,7 @@ while user_choice != 'n' and len(player2_list) != 0 and len(player1_list) != 0:
         player2_list.append(player2_card)
         player2_list.append(player1_card)
 
-    user_choice = input("Would you like to continue?").lower()
+    user_choice = 'y'
 
 print()
 print(winning_player)
