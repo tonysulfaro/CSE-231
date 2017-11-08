@@ -94,8 +94,7 @@ def display_table(dictionary, selected_year):
                         coordinates = str(tup)
                         date = str(item[2])
 
-                #print("{:15s}{:>15s}{:>20f}{:>15s}".format(hurricane_name, coordinates, wind_speed, date))
-                print(storm_name, coordinates, max_speed, date)
+                print("{:15s}{:>15s}{:>20.2f}{:>15s}".format(storm_name, coordinates, max_speed, date))
 
 
 def get_years(dictionary):
