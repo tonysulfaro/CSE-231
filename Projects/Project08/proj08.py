@@ -219,16 +219,26 @@ def main():
     print("Records from {:4s} to {:4s}".format(min_year, max_year))
 
     # handles valid date range
+    selected_year = input("Enter the year to show hurricane data or 'quit': ")
     while True:
-        selected_year = input("Enter the year to show hurricane data or 'quit': ")
+
         try:
             int(selected_year)
+            #if year is within dict range
             if selected_year >= min_year and selected_year <= max_year:
                 break
-            else:
-                continue
+
+            #if year not within dict range
+            if selected_year <= min_year or selected_year >= max_year:
+                print("Error with the year key! Try another year")
+
         except (TypeError, ValueError):
-            print("Error invalid year.")
+            if selected_year.lower() == 'quit':
+                quit()
+            else:
+                print("Error invalid year.")
+
+        selected_year = input("Enter the year to show hurricane data or 'quit': ")
 
     #print out hurricane data in table
     display_table(data_dictionary, selected_year)
@@ -238,10 +248,12 @@ def main():
     names, coordinates, max_speed = prepare_plot(data_dictionary, selected_year)
 
     size = len(names)
-    plot_map(selected_year, size, names, coordinates)
-    plot_wind_chart(selected_year, size, names, max_speed)
-    print("Error with the year key! Try another year")
-    pass
+
+    if plot_choice == 'yes':
+        plot_map(selected_year, size, names, coordinates)
+        plot_wind_chart(selected_year, size, names, max_speed)
+
+
 
 
 if __name__ == "__main__":
