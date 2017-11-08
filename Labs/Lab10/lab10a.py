@@ -48,14 +48,14 @@ my_deck.display()
 
 def hand(index, hand_name):
     # First card dealt to Player #1
-
+    print("\n")
     player1_card = player1_list.pop( index )
     print(hand_name, " card dealt to player #1:", player1_card )
     print("Player #1 hand", player1_list)
 
 
     # First card dealt to Player #2
-
+    print()
     player2_card = player2_list.pop( index )
     print(hand_name, "card dealt to player #2:", player2_card )
     print("Player #2 hand", player2_list)
