@@ -23,7 +23,7 @@ def open_file():
 
 def update_dictionary(dictionary, year, hurricane_name, data):
 
-    #sweet jesus fuck finally this logic works
+    #finally this logic works
     if year not in dictionary:
         dictionary[year] = {}
     if hurricane_name not in dictionary[year]:
@@ -54,12 +54,12 @@ def create_dictionary(fp):
         date = line[5]
         try:
             wind = float(line[6])
-        except (ValueError, TypeError):
+        except ValueError:
             wind = 0
 
         try:
             pressure = float(line[7])
-        except (ValueError, TypeError):
+        except ValueError:
             pressure = 0
 
         tup = (lat, lon, date, wind, pressure)
