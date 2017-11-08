@@ -88,6 +88,8 @@ def display_table(unsorted_dictionary, selected_year):
         lon = 0
         date = ''
 
+        data = sorted(data)
+
         for item in data:
 
             wind_speed = item[3]
@@ -224,38 +226,51 @@ def main():
 
     # handles valid date range
     selected_year = input("Enter the year to show hurricane data or 'quit': ")
-    while True:
+
+    try:
+        int(selected_year)
+
+        # if year not within dict range
+        if selected_year < min_year or selected_year > max_year:
+            print("Error with the year key! Try another year")
+
+    except (TypeError, ValueError):
+        if selected_year.lower() == 'quit':
+            quit()
+        else:
+            print('Error with the year key! Try another year')
+
+    #mainloop
+    while selected_year != 'quit':
 
         try:
             int(selected_year)
-            #if year is within dict range
-            if selected_year >= min_year and selected_year <= max_year:
-                break
 
             #if year not within dict range
-            if selected_year <= min_year or selected_year >= max_year:
+            if selected_year < min_year or selected_year > max_year:
                 print("Error with the year key! Try another year")
 
         except (TypeError, ValueError):
             if selected_year.lower() == 'quit':
                 quit()
             else:
-                print("Error invalid year.")
+                print('Error with the year key! Try another year')
+
+
+        #print out hurricane data in table
+        display_table(data_dictionary, selected_year)
+
+        #plotting hurricane data
+        plot_choice = input("\nDo you want to plot? ").lower()
+        names, coordinates, max_speed = prepare_plot(data_dictionary, selected_year)
+
+        size = len(names)
+
+        if plot_choice == 'yes':
+            plot_map(selected_year, size, names, coordinates)
+            plot_wind_chart(selected_year, size, names, max_speed)
 
         selected_year = input("Enter the year to show hurricane data or 'quit': ")
-
-    #print out hurricane data in table
-    display_table(data_dictionary, selected_year)
-
-    #plotting hurricane data
-    plot_choice = input("\nDo you want to plot? ").lower()
-    names, coordinates, max_speed = prepare_plot(data_dictionary, selected_year)
-
-    size = len(names)
-
-    if plot_choice == 'yes':
-        plot_map(selected_year, size, names, coordinates)
-        plot_wind_chart(selected_year, size, names, max_speed)
 
 
 if __name__ == "__main__":
