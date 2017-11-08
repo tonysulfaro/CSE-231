@@ -46,28 +46,32 @@ print()
 print( "===== remaining cards in deck =====" )
 my_deck.display()
 
+def hand(index, hand_name):
+    # First card dealt to Player #1
 
-# First card dealt to Player #1
-
-player1_card = player1_list.pop( 0 )
-
-print( "First card dealt to player #1:", player1_card )
-
-
-# First card dealt to Player #2
-
-player2_card = player2_list.pop( 0 )
-
-print( "First card dealt to player #2:", player2_card )
+    player1_card = player1_list.pop( index )
+    print(hand_name, " card dealt to player #1:", player1_card )
+    print("Player #1 hand", player1_list)
 
 
-# Compare the ranks of the two cards
+    # First card dealt to Player #2
 
-print()
-if player1_card.rank() == player2_card.rank():
-    print( "Tie:", player1_card, "and", player2_card, "of equal rank" )
-elif player1_card.rank() > player2_card.rank():
-    print( "Player #1 wins:", player1_card, "of higher rank than", player2_card )
-else:
-    print( "Player #2 wins:", player2_card, "of higher rank than", player1_card )
+    player2_card = player2_list.pop( index )
+    print(hand_name, "card dealt to player #2:", player2_card )
+    print("Player #2 hand", player2_list)
 
+
+
+    # Compare the ranks of the two cards
+
+    print()
+    if player1_card.rank() == player2_card.rank():
+        print( "Tie:", player1_card, "and", player2_card, "of equal rank" )
+    elif player1_card.rank() > player2_card.rank():
+        print( "Player #1 wins:", player1_card, "of higher rank than", player2_card )
+    else:
+        print( "Player #2 wins:", player2_card, "of higher rank than", player1_card )
+
+hand(0,'First')
+hand(0,'Second')
+hand(-1,'Last')
