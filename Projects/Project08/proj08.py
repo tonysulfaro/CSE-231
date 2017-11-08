@@ -12,7 +12,7 @@ def open_file():
     :return fp - file pointer:
     """
     while True:
-        file_name = 'storm_track1.txt'  # input("Enter a file name: ")
+        file_name = input("Input a file name: ")
         try:
             fp = open(file_name)
             break
