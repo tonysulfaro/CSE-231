@@ -24,7 +24,9 @@ def open_file():
 def update_dictionary(dictionary, year, hurricane_name, data):
 
     if year not in dictionary:
-        dictionary[year] = {hurricane_name: list()}
+        dictionary[year] = {}
+    if hurricane_name not in dictionary[year]:
+        dictionary[year][hurricane_name] = list()
 
     dictionary[year][hurricane_name].append(data)
 
