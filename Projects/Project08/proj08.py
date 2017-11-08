@@ -23,6 +23,7 @@ def open_file():
 
 def update_dictionary(dictionary, year, hurricane_name, data):
 
+    #sweet jesus fuck finally this logic works
     if year not in dictionary:
         dictionary[year] = {}
     if hurricane_name not in dictionary[year]:
@@ -30,7 +31,6 @@ def update_dictionary(dictionary, year, hurricane_name, data):
 
     dictionary[year][hurricane_name].append(data)
 
-    print(dictionary)
     return dictionary
 
 
