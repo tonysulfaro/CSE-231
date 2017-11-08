@@ -117,24 +117,30 @@ def get_years(dictionary):
     return min_year, max_year
 
 
-def prepare_plot(dictionary, year):
+def prepare_plot(unsorted_dictionary, year):
 
     names = list()
     max_speed = list()
     coordinates = list()
 
-    #iterates through the dictionary
-    for years, value in dictionary.items():
-        if years == year:
-            for name, data in value.items():
-                first_coordinate = data[0]
-                second_coordinate = data[1]
-                raw_speed = data[3]
+    dictionary = unsorted_dictionary[year]
+    dictionary = sorted(dictionary.items(), key=itemgetter(0))
 
-                names.append(name)
-                max_speed.append(raw_speed)
-                coordinate_pair = (first_coordinate,second_coordinate)
-                coordinates.append(coordinate_pair)
+    #iterates through the dictionary
+    for storm_name, data in dictionary:
+
+        for item in data:
+
+            lat = item[0]
+            lon = item[1]
+            date = str(item[2])
+            wind_speed = item[3]
+
+            names.append(storm_name)
+
+            if wind_speed >= max_speed:
+                max_speed = wind_speed
+
 
     return names, coordinates, max_speed
 
