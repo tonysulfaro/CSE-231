@@ -81,7 +81,8 @@ def display_table(dictionary, selected_year):
             for storm_name, data in hurricane_name.items():
 
                 max_speed = 0
-                coordinates = ''
+                lat = 0
+                lon = 0
                 date = ''
 
                 for item in data:
@@ -90,11 +91,11 @@ def display_table(dictionary, selected_year):
 
                     if wind_speed >= max_speed:
                         max_speed = wind_speed
-                        tup = (item[0], item[1])
-                        coordinates = str(tup)
+                        lat = item[0]
+                        lon = item[1]
                         date = str(item[2])
 
-                print("{:15s}{:>15s}{:>20.2f}{:>15s}".format(storm_name, coordinates, max_speed, date))
+                print("{:15s}({:7.2f},{:8.2f}){:>20.2f}{:>15s}".format(storm_name, lat, lon, max_speed, date))
 
 
 def get_years(dictionary):
