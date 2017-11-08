@@ -1,0 +1,8 @@
+"Keep Going: (Nn) to stop:").lower() == 'n'
+"hand1:"
+"hand2:"
+"Player 1 wins!!!"
+"Player 2 wins!!!"
+"Battle was 1: {}, 2: {}. Player 1 wins battle."
+"Battle was 1: {}, 2: {}. Player 2 wins battle."
+"Battle was 1: {}, 2: {}. Battle was a draw."
