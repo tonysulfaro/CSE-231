@@ -1,4 +1,5 @@
 import pylab as py
+from operator import itemgetter
 import string
 
 
@@ -68,34 +69,36 @@ def create_dictionary(fp):
     return data_dictionary
 
 
-def display_table(dictionary, selected_year):
+def display_table(unsorted_dictionary, selected_year):
     '''Remember to put a docstring here'''
+
+
+    #sort the dictionary alphabetically by storm name
+    dictionary = unsorted_dictionary[selected_year]
+    dictionary = sorted(dictionary.items(), key=itemgetter(0))
 
     print("{:^70s}".format("Peak Wind Speed for the Hurricanes in " + selected_year))
     print("{:15s}{:>15s}{:>20s}{:>15s}".format("Name", "Coordinates", "Wind Speed (knots)", "Date"))
 
-    for year, hurricane_name in dictionary.items():
 
-        if year == selected_year:
+    for storm_name, data in dictionary:
 
-            for storm_name, data in hurricane_name.items():
+        max_speed = 0
+        lat = 0
+        lon = 0
+        date = ''
 
-                max_speed = 0
-                lat = 0
-                lon = 0
-                date = ''
+        for item in data:
 
-                for item in data:
+            wind_speed = item[3]
 
-                    wind_speed = item[3]
+            if wind_speed >= max_speed:
+                max_speed = wind_speed
+                lat = item[0]
+                lon = item[1]
+                date = str(item[2])
 
-                    if wind_speed >= max_speed:
-                        max_speed = wind_speed
-                        lat = item[0]
-                        lon = item[1]
-                        date = str(item[2])
-
-                print("{:15s}({:7.2f},{:8.2f}){:>20.2f}{:>15s}".format(storm_name, lat, lon, max_speed, date))
+        print("{:15s}({:6.2f},{:6.2f}){:>20.2f}{:>15s}".format(storm_name, lat, lon, max_speed, date))
 
 
 def get_years(dictionary):
@@ -253,8 +256,6 @@ def main():
     if plot_choice == 'yes':
         plot_map(selected_year, size, names, coordinates)
         plot_wind_chart(selected_year, size, names, max_speed)
-
-
 
 
 if __name__ == "__main__":
