@@ -43,7 +43,6 @@ def create_dictionary(fp):
 
         # remove null values from line list
         line = [x for x in line if x]  # https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
-        print(line)
         # truncate line up to everything before pressure
         line = line[:8]
 
@@ -69,11 +68,34 @@ def create_dictionary(fp):
     return data_dictionary
 
 
-def display_table(dictionary, year):
+def display_table(dictionary, selected_year):
     '''Remember to put a docstring here'''
-    pass
-    # print("{:^70s}".format("Peak Wind Speed for the Hurricanes in " + year))
-    # print("{:15s}{:>15s}{:>20s}{:>15s}".format("Name","Coordinates","Wind Speed (knots)","Date"))
+
+    print("{:^70s}".format("Peak Wind Speed for the Hurricanes in " + selected_year))
+    print("{:15s}{:>15s}{:>20s}{:>15s}".format("Name", "Coordinates", "Wind Speed (knots)", "Date"))
+
+    for year, hurricane_name in dictionary.items():
+
+        if year == selected_year:
+
+            for storm_name, data in hurricane_name.items():
+
+                max_speed = 0
+                coordinates = ''
+                date = ''
+
+                for item in data:
+
+                    wind_speed = item[3]
+
+                    if wind_speed >= max_speed:
+                        max_speed = wind_speed
+                        tup = (item[0], item[1])
+                        coordinates = str(tup)
+                        date = str(item[2])
+
+                #print("{:15s}{:>15s}{:>20f}{:>15s}".format(hurricane_name, coordinates, wind_speed, date))
+                print(storm_name, coordinates, max_speed, date)
 
 
 def get_years(dictionary):
@@ -100,7 +122,6 @@ def prepare_plot(dictionary, year):
     for years, value in dictionary.items():
         if years == year:
             for name, data in value.items():
-                print(data)
                 first_coordinate = data[0]
                 second_coordinate = data[1]
                 raw_speed = data[3]
@@ -190,6 +211,7 @@ def main():
     data_dictionary = create_dictionary(fp)
     # print(data_dictionary)
 
+    #extract date range from dictionary
     date_range = get_years(data_dictionary)
     min_year = date_range[0]
     max_year = date_range[1]
@@ -208,6 +230,9 @@ def main():
                 continue
         except (TypeError, ValueError):
             print("Error invalid year.")
+
+    #print out hurricane data in table
+    display_table(data_dictionary, selected_year)
 
     #plotting hurricane data
     plot_choice = input("\nDo you want to plot? ").lower()
