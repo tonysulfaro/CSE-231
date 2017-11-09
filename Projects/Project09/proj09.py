@@ -101,6 +101,7 @@ def main():
     # Prompt for a plot
     choice = input("Do you want to plot (yes/no)?: ")
     if choice.lower() == 'yes':
+        pass
         # create x_list and y_list
         #plot_similarity(x_list,y_list,users[0],users[1])
 
