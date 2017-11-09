@@ -1,6 +1,5 @@
 import pylab as py
 from operator import itemgetter
-import string
 
 
 def open_file():
@@ -23,6 +22,18 @@ def open_file():
 
 
 def update_dictionary(dictionary, year, hurricane_name, data):
+    """
+    checks if year from file isnt in dictionary
+        adds it if it is not
+    checks if there is data for each hurricane
+        adds the data if there is not
+    append data to data list inside hurricane dictionary inside year dictionary
+    :param dictionary - dictionary passed by the create_dictionary function:
+    :param year - year as an integer from create_dictionary:
+    :param hurricane_name - string of hurricane name from create_dictionary:
+    :param data - tuple of weather data from create_dictionary:
+    :return dictionary - dictionary updated with new information:
+    """
 
     #finally this logic works
     if year not in dictionary:
@@ -36,6 +47,20 @@ def update_dictionary(dictionary, year, hurricane_name, data):
 
 
 def create_dictionary(fp):
+    """
+    initialize empty dictionary
+    for each line in the filepointer
+        strip and split the line on a space
+        remove empty strings from the line
+        truncate line to data that is needed
+        slice out data from the line
+        replace empty data with 0 for wind and pressure
+        create tuple with sliced data
+        update the dictionary with update_dictionary function and new information as parameters
+    :param fp - filepointer from file provided by user:
+    :return data dictionary - fully populated dictionary from filepointer:
+    """
+
     data_dictionary = dict()
 
     for line in fp:
@@ -70,7 +95,21 @@ def create_dictionary(fp):
 
 
 def display_table(unsorted_dictionary, selected_year):
-    '''Remember to put a docstring here'''
+    """
+    filter dictionary entries by selected year
+    create list of items from sorted dictionary
+    for storm name and data in the dictionary list
+        initialize variables
+        sort data list
+        for item in data list
+            slice out wind speed
+            find max wind speed
+                set coordinates, speed, and dates equal to their constants at top
+        print values of data
+    :param unsorted_dictionary - dictionary that is not sorted passed through by main:
+    :param selected_year - selected year by the user to display:
+    :return <none>:
+    """
 
 
     #sort the dictionary alphabetically by storm name
@@ -80,7 +119,7 @@ def display_table(unsorted_dictionary, selected_year):
     print("{:^70s}".format("Peak Wind Speed for the Hurricanes in " + selected_year))
     print("{:15s}{:>15s}{:>20s}{:>15s}".format("Name", "Coordinates", "Wind Speed (knots)", "Date"))
 
-
+    #iterate over dictionary data list
     for storm_name, data in dictionary:
 
         max_speed = 0
@@ -90,6 +129,7 @@ def display_table(unsorted_dictionary, selected_year):
 
         data = sorted(data)
 
+        #iterate over data list of tuples
         for item in data:
 
             wind_speed = item[3]
@@ -104,6 +144,15 @@ def display_table(unsorted_dictionary, selected_year):
 
 
 def get_years(dictionary):
+    """
+    initialize year list
+    for year, and weather dictionary in dictionary
+        add year to year list
+    sort year list
+    slice out min and max years
+    :param dictionary - unsorted dictionary from filepointer in main:
+    :return min and max years as tuple:
+    """
     year_list = list()
 
     for year, data in dictionary.items():
@@ -118,24 +167,31 @@ def get_years(dictionary):
 
 
 def prepare_plot(unsorted_dictionary, year):
+    """
+    initialize lists
+    sort and filter the dictionary read from the file in main
+    for key storm name and value list of tuples
+        find max wind speed and add do max_speed list
+        find unique hurricane names and add to name list
+        find all coordinates and add to coordinate lists
+    :param unsorted_dictionary - dictionary that is unsorted from main:
+    :param year - integer that specifies the year user would like to see:
+    :return names, coordinates, max_speed - lists of storm data attributes:
+    """
 
+    #initialize lists
     names = list()
     max_speed = list()
     coordinates = list()
 
+    #sort dictionary by storm name
     dictionary = unsorted_dictionary[year]
     dictionary = sorted(dictionary.items(), key=itemgetter(0))
-
-    index = 0
 
     #iterates through the dictionary
     for storm_name, data in dictionary:
 
         max_wind_speed = 0
-        lat = 0
-        lon = 0
-        date = ''
-
         data = sorted(data)
         latlon = list()
 
@@ -143,24 +199,32 @@ def prepare_plot(unsorted_dictionary, year):
 
             wind_speed = item[3]
 
+            #find max wind speed
             if wind_speed >= max_wind_speed:
                 max_wind_speed = wind_speed
+
             lat = item[0]
             lon = item[1]
             cord_pair = (lat, lon)
             latlon.append(cord_pair)
 
+        #append values to lists
         names.append(storm_name)
         max_speed.append(max_wind_speed)
         coordinates.append(latlon)
-
-    list_tup = (names, coordinates, max_speed)
 
     return names, coordinates, max_speed
 
 
 def plot_map(year, size, names, coordinates):
-    '''Remember to put a docstring here'''
+    """
+
+    :param year:
+    :param size:
+    :param names:
+    :param coordinates:
+    :return:
+    """
 
     # The the RGB list of the background image
     img = py.imread("world-map.jpg")
@@ -231,6 +295,12 @@ def plot_wind_chart(year, size, names, max_speed):
 
 
 def select_year(min_year, max_year):
+    """
+
+    :param min_year:
+    :param max_year:
+    :return:
+    """
 
     selected_year = input("Enter the year to show hurricane data or 'quit': ")
 
@@ -253,14 +323,19 @@ def select_year(min_year, max_year):
 
         selected_year = input("Enter the year to show hurricane data or 'quit': ")
 
-
     return selected_year
 
+
+#main method
 def main():
-    '''Remember to put a docstring here'''
+    """
+
+    :return <none>:
+    """
+
+    #open file for writing and initialize dictionary
     fp = open_file()
     data_dictionary = create_dictionary(fp)
-    # print(data_dictionary)
 
     #extract date range from dictionary
     date_range = get_years(data_dictionary)
@@ -270,7 +345,7 @@ def main():
     print("Hurricane Record Software")
     print("Records from {:4s} to {:4s}".format(min_year, max_year))
 
-    # handles valid date range
+    #fetch selected year
     selected_year = select_year(min_year, max_year)
 
     #mainloop
@@ -285,6 +360,7 @@ def main():
 
         size = len(names)
 
+        #plots if user says so
         if plot_choice == 'yes':
             plot_map(selected_year, size, names, coordinates)
             plot_wind_chart(selected_year, size, names, max_speed)
