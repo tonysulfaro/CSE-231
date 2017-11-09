@@ -230,6 +230,30 @@ def plot_wind_chart(year, size, names, max_speed):
     py.show()  # Show the plot
 
 
+def select_year(min_year, max_year):
+
+    selected_year = input("Enter the year to show hurricane data or 'quit': ")
+
+    while selected_year != 'quit':
+
+        try:
+            int(selected_year)
+
+            # if year not within dict range
+            if selected_year < min_year or selected_year > max_year:
+                print("Error with the year key! Try another year")
+
+        except (TypeError, ValueError):
+            if selected_year.lower() == 'quit':
+                quit()
+            else:
+                print('Error with the year key! Try another year')
+
+        selected_year = input("Enter the year to show hurricane data or 'quit': ")
+
+
+    return selected_year
+
 def main():
     '''Remember to put a docstring here'''
     fp = open_file()
@@ -245,37 +269,10 @@ def main():
     print("Records from {:4s} to {:4s}".format(min_year, max_year))
 
     # handles valid date range
-    selected_year = input("Enter the year to show hurricane data or 'quit': ")
-
-    try:
-        int(selected_year)
-
-        # if year not within dict range
-        if selected_year < min_year or selected_year > max_year:
-            print("Error with the year key! Try another year")
-
-    except (TypeError, ValueError):
-        if selected_year.lower() == 'quit':
-            quit()
-        else:
-            print('Error with the year key! Try another year')
+    selected_year = select_year(min_year, max_year)
 
     #mainloop
     while selected_year != 'quit':
-
-        try:
-            int(selected_year)
-
-            #if year not within dict range
-            if selected_year < min_year or selected_year > max_year:
-                print("Error with the year key! Try another year")
-
-        except (TypeError, ValueError):
-            if selected_year.lower() == 'quit':
-                quit()
-            else:
-                print('Error with the year key! Try another year')
-
 
         #print out hurricane data in table
         display_table(data_dictionary, selected_year)
@@ -290,7 +287,7 @@ def main():
             plot_map(selected_year, size, names, coordinates)
             plot_wind_chart(selected_year, size, names, max_speed)
 
-        selected_year = input("Enter the year to show hurricane data or 'quit': ")
+        selected_year = select_year(min_year, max_year)
 
 
 if __name__ == "__main__":
