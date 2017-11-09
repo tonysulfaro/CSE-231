@@ -1,3 +1,57 @@
+#######################################################################################################
+# Project 08 - Hurricane weather data
+#
+#   import pylab and itemgetter
+#
+#   open file function
+#       takes filename and returns filepointer
+#   update dictionary function
+#       takes dictionary, year, hurricane name, and data and updates dictionary with new information
+#       return the updated dictionary
+#   create dictionary function
+#       takes filepointer and reads through file and populates a dictionary with the information
+#       use the update dictionary function to add the new data
+#       return the pupulated dictionary
+#   display table function
+#       takes an unsorted dictionary and selected year
+#       filters the dictionary by user year and makes a data list out of it
+#       find the max wind speed and use that as the record for the print
+#       print out the weather data
+#   get years function
+#       gets the dictionary and reads its keys(years) into a list
+#       slice out max and min year values
+#       return min and max year as tuple
+#   prepare plot function
+#       initialize empty lists
+#       sort and filter dictionary
+#       for each storm name and data in the dictionary list
+#           slice out unique names, coordinates, and speeds and add to list
+#       return lists of names, speeds, and coordinates
+#   plot map function
+#       loads year, name list, coordinate list and length of names
+#       uses lists to scale and plot on image in source folder
+#   plot wind chart function
+#       loads year, name list, coordinate list and length of names
+#       uses lists and information to plot hurricane data on line graph
+#   select year function
+#       prompts for user input
+#       checks if input is a number and if its in the year range
+#       prints error and prompts again if not
+#       returns year as an integer
+#   main function
+#       obtain filepointer from open file
+#       give filepointer to create dictionary where it returns a populated dictionary from the file data
+#       get min and max years
+#       print header
+#       get selected year
+#       while selected year is not quit
+#           display data table
+#           prompt to plot yes or no
+#           if user wants to plot
+#            show both plots
+#           otherwise prompt for a year again to show data for
+#
+#######################################################################################################
 import pylab as py
 from operator import itemgetter
 
