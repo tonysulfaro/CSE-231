@@ -126,23 +126,35 @@ def prepare_plot(unsorted_dictionary, year):
     dictionary = unsorted_dictionary[year]
     dictionary = sorted(dictionary.items(), key=itemgetter(0))
 
+    index = 0
+
     #iterates through the dictionary
     for storm_name, data in dictionary:
 
+        max_wind_speed = 0
+        lat = 0
+        lon = 0
+        date = ''
+
+        data = sorted(data)
+
         for item in data:
 
-            lat = item[0]
-            lon = item[1]
-            date = str(item[2])
             wind_speed = item[3]
 
-            names.append(storm_name)
+            if wind_speed >= max_wind_speed:
+                max_wind_speed = wind_speed
+                lat = item[0]
+                lon = item[1]
+                cord_pair = (lat,lon)
+                coordinates.append(cord_pair)
 
-            if wind_speed >= max_speed:
-                max_speed = wind_speed
+        names.append(storm_name)
+        max_speed.append(max_wind_speed)
 
+    list_tup = (names, coordinates, max_speed)
 
-    return names, coordinates, max_speed
+    return list_tup
 
 
 def plot_map(year, size, names, coordinates):
