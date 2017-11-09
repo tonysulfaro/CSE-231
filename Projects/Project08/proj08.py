@@ -357,7 +357,18 @@ def select_year(min_year, max_year):
 #main method
 def main():
     """
-
+    get filepointer from open_file
+    feed filepoitner to create dictionary and set return to data_dictionary
+    extract date range from dictionary
+    get min and max years
+    print header
+    get selected year
+    while selected year is not quit
+        display data table
+        prompt to plot yes or no
+        if user wants to plot
+            show both plots
+        otherwise prompt for a year again to show data for
     :return <none>:
     """
 
