@@ -238,6 +238,8 @@ def select_year(min_year, max_year):
 
         try:
             int(selected_year)
+            if selected_year >= min_year and selected_year <= max_year:
+                break
 
             # if year not within dict range
             if selected_year < min_year or selected_year > max_year:
