@@ -218,12 +218,19 @@ def prepare_plot(unsorted_dictionary, year):
 
 def plot_map(year, size, names, coordinates):
     """
-
-    :param year:
-    :param size:
-    :param names:
-    :param coordinates:
-    :return:
+    load base image file
+    Set the max values for the latitude and longitude of the map
+    Set the background image on the plot
+    Set the corners of the map to cover the Atlantic Region
+    Show the atlantic ocean region
+    Generate colormap for each hurricane
+    plot hurricanes path on the map
+    display legend and axis labels
+    :param year - integer representation of user selected year:
+    :param size - integer of length of names list:
+    :param names - list of storm names:
+    :param coordinates - list of coordinates as tuples:
+    :return <none>:
     """
 
     # The the RGB list of the background image
@@ -267,7 +274,19 @@ def plot_map(year, size, names, coordinates):
 
 
 def plot_wind_chart(year, size, names, max_speed):
-    '''Remember to put a docstring here'''
+    """
+    Set the value of the category
+    Colors for the category plots
+    Plot the Wind Speed of Hurricane
+    Set the legend for the categories
+    prepare axes
+    show plots
+    :param year - integer of year selected by user:
+    :param size - length of hurricane names list:
+    :param names - list of hurricane names:
+    :param max_speed - list of max speeds for each hurricane:
+    :return <none>:
+    """
 
     # Set the value of the category
     cat_limit = [[v for i in range(size)] for v in [64, 83, 96, 113, 137]]
@@ -296,10 +315,19 @@ def plot_wind_chart(year, size, names, max_speed):
 
 def select_year(min_year, max_year):
     """
-
-    :param min_year:
-    :param max_year:
-    :return:
+    prompt for user input
+    while user input is not quit
+        try to convert to integer
+            if its in year range break
+            if its not in the range throw an error message
+        except value and type errors
+            if input is quit then quit
+            else print key error
+        prompt for user input
+    return selected year
+    :param min_year - integer of min year in dictionary:
+    :param max_year - integer of max year in dictionary:
+    :return selected year - year as an integer:
     """
 
     selected_year = input("Enter the year to show hurricane data or 'quit': ")
