@@ -137,6 +137,7 @@ def prepare_plot(unsorted_dictionary, year):
         date = ''
 
         data = sorted(data)
+        latlon = list()
 
         for item in data:
 
@@ -146,15 +147,16 @@ def prepare_plot(unsorted_dictionary, year):
                 max_wind_speed = wind_speed
                 lat = item[0]
                 lon = item[1]
-                cord_pair = (lat,lon)
-                coordinates.append(cord_pair)
+                cord_pair = (lat, lon)
+                latlon.append(cord_pair)
 
         names.append(storm_name)
         max_speed.append(max_wind_speed)
+        coordinates.append(latlon)
 
     list_tup = (names, coordinates, max_speed)
 
-    return list_tup
+    return names, coordinates, max_speed
 
 
 def plot_map(year, size, names, coordinates):
