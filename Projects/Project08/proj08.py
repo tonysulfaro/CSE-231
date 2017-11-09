@@ -145,10 +145,10 @@ def prepare_plot(unsorted_dictionary, year):
 
             if wind_speed >= max_wind_speed:
                 max_wind_speed = wind_speed
-                lat = item[0]
-                lon = item[1]
-                cord_pair = (lat, lon)
-                latlon.append(cord_pair)
+            lat = item[0]
+            lon = item[1]
+            cord_pair = (lat, lon)
+            latlon.append(cord_pair)
 
         names.append(storm_name)
         max_speed.append(max_wind_speed)
