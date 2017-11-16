@@ -23,12 +23,23 @@ def open_file():
     return fp
 
 def validate_hashtag(s):
-    '''docstring'''
-    pass
+    s = s[1:]
+    if string.punctuation in s:
+        return False
+    else:
+        return True
 
 def get_hashtags(s):
-    '''docstring'''
-    pass
+
+    hashtag_list = list()
+
+    s = s.split(" ")
+
+    for item in s:
+        if item[0] == '#':
+            hashtag_list.append(item)
+
+    return hashtag_list
 
 def read_data(fp):
     '''docstring'''
