@@ -74,7 +74,6 @@ def read_data(fp):
 
         #append 3-entry list to data list
         data_list.append(tweet_list)
-    print(data_list)
 
     return data_list
 
@@ -83,28 +82,42 @@ def get_histogram_tag_count_for_users(data, usernames):
 
     data_dictionary = dict()
 
-    for list in data:
-        for item in list:
-            username = item[0]
-            month = item[1]
-            hashtags = item[2]
+    for lists in data:
 
-            for item in hashtags:
-                if item not in data_dictionary:
-                    data_dictionary[item] = 0
-                data_dictionary[item] += 1
+        username = lists[0]
+        month = lists[1]
+        hashtags = lists[2]
 
-    print(data_dictionary)
+        for tag in hashtags:
+            if tag not in data_dictionary:
+                data_dictionary[tag] = 0
+            data_dictionary[tag] += 1
+
 
     return data_dictionary
 
 def get_tags_by_month_for_users(data ,usernames):
-    '''docstring'''
-    pass
+
+    data_dictionary = dict()
+
+    for lists in data:
+
+        username = lists[]
 
 def get_user_names(L):
-    '''docstring'''
-    pass
+
+    user_names = list()
+
+    for item in L:
+
+        user_name = item[0]
+
+        if user_name not in user_names:
+            user_names.append(user_name)
+
+    user_names = sorted(user_names)
+
+    return user_names
 
 def three_most_common_hashtags_combined(L,usernames):
     '''docstring'''
@@ -146,7 +159,11 @@ def main():
     # Prompt to plot or not and plot if 'yes'
 
     fp = open_file()
-    read_data(fp)
+    data_list = read_data(fp)
+    user_name_list = get_user_names(data_list)
+    get_histogram_tag_count_for_users(data_list, user_name_list)
+
+    quit()
 
    
     print("Top Three Hashtags Combined")
