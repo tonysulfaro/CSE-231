@@ -58,7 +58,6 @@ def read_data(fp):
     for line in fp:
 
         tweet_list = list()
-        hashtag_list = list()
 
         line = line.strip().split(',')
 
@@ -66,11 +65,7 @@ def read_data(fp):
         month_number = int(line[1])
         tweet = line[2]
 
-        tweet = tweet.split(" ")
-
-        for item in tweet:
-            if item[0] == '#':
-                hashtag_list.append(item)
+        hashtag_list = get_hashtags(tweet)
 
         #create 3-entry list of data
         tweet_list.append(user_name)
