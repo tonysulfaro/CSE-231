@@ -5,11 +5,22 @@ import string, calendar, pylab
 MONTH_NAMES = [calendar.month_name[month] for month in range(1,13)]
 
 def open_file():
-    '''docstring'''
-#    filename = input("Input a filename: ")
-#        except FileNotFoundError:
-#            print("Error in input filename. Please try again.")
-    pass
+    """
+        prompts for input with the given prompt passed as message
+        catches if file isnt there and prompts again
+        exits when it can open the file
+        :param message - prompt as string:
+        :return fp - file pointer:
+        """
+    while True:
+        file_name = input("Input a file name: ")
+        try:
+            fp = open(file_name)
+            break
+        except FileNotFoundError:
+            print("Error in input filename. Please try again.")
+            continue
+    return fp
 
 def validate_hashtag(s):
     '''docstring'''
@@ -21,7 +32,23 @@ def get_hashtags(s):
 
 def read_data(fp):
     '''docstring'''
-    pass
+
+    data_list = list()
+
+    for line in fp:
+
+        hashtag_list = list()
+
+        line = line.strip().split(',')
+
+        user_name = line[0]
+        month_number = int(line[1])
+        tweet = line[2]
+
+        hashtag_index = str.find('#')
+
+
+
 
 def get_histogram_tag_count_for_users(data,usernames):
     '''docstring'''
