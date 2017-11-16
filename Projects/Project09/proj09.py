@@ -23,16 +23,20 @@ def open_file():
     return fp
 
 def validate_hashtag(s):
-    s = s[1:]
-    s = set(s)
 
-    if s.intersection(string.punctuation) != set():
-        return False
-    elif len(s) == 1:
-        if s.intersection(string.digits) != set():
+    if "#" in s:
+        s = s[1:]
+        s = set(s)
+
+        if s.intersection(string.punctuation) != set():
             return False
+        elif len(s) == 1:
+            if s.intersection(string.digits) != set():
+                return False
+        else:
+            return True
     else:
-        return True
+        return False
 
 def get_hashtags(s):
 
