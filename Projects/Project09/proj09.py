@@ -24,8 +24,13 @@ def open_file():
 
 def validate_hashtag(s):
     s = s[1:]
-    if string.punctuation in s:
+    s = set(s)
+
+    if s.intersection(string.punctuation) != set():
         return False
+    elif len(s) == 1:
+        if s.intersection(string.digits) != set():
+            return False
     else:
         return True
 
@@ -36,7 +41,7 @@ def get_hashtags(s):
     s = s.split(" ")
 
     for item in s:
-        if item[0] == '#':
+        if validate_hashtag(item):
             hashtag_list.append(item)
 
     return hashtag_list
@@ -125,6 +130,7 @@ def main():
     # Calculate similarity for the two users
     # Print them
     # Prompt to plot or not and plot if 'yes'
+
     fp = open_file()
     read_data(fp)
 
