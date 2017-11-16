@@ -79,11 +79,26 @@ def read_data(fp):
     return data_list
 
 
-def get_histogram_tag_count_for_users(data,usernames):
-    '''docstring'''
-    pass
+def get_histogram_tag_count_for_users(data, usernames):
 
-def get_tags_by_month_for_users(data,usernames):
+    data_dictionary = dict()
+
+    for list in data:
+        for item in list:
+            username = item[0]
+            month = item[1]
+            hashtags = item[2]
+
+            for item in hashtags:
+                if item not in data_dictionary:
+                    data_dictionary[item] = 0
+                data_dictionary[item] += 1
+
+    print(data_dictionary)
+
+    return data_dictionary
+
+def get_tags_by_month_for_users(data ,usernames):
     '''docstring'''
     pass
 
