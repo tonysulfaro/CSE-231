@@ -13,7 +13,7 @@ def open_file():
         :return fp - file pointer:
         """
     while True:
-        file_name = input("Input a file name: ")
+        file_name = "smalldata.csv"#input("Input a file name: ")
         try:
             fp = open(file_name)
             break
@@ -37,6 +37,7 @@ def read_data(fp):
 
     for line in fp:
 
+        tweet_list = list()
         hashtag_list = list()
 
         line = line.strip().split(',')
@@ -45,9 +46,23 @@ def read_data(fp):
         month_number = int(line[1])
         tweet = line[2]
 
-        hashtag_index = str.find('#')
+        #find start of hashtag and end
+        hashtag_index = tweet.find("#")
+        end_hashtag = tweet.find(" ", hashtag_index)
 
+        #if there is no hashtag dont add it to the list
+        if hashtag_index != -1:
+            hashtag_list.append(tweet[hashtag_index:end_hashtag])
 
+        #create 3-entry list of data
+        tweet_list.append(user_name)
+        tweet_list.append(month_number)
+        tweet_list.append(hashtag_list)
+
+        #append 3-entry list to data list
+        data_list.append(tweet_list)
+
+    return data_list
 
 
 def get_histogram_tag_count_for_users(data,usernames):
@@ -100,6 +115,8 @@ def main():
     # Calculate similarity for the two users
     # Print them
     # Prompt to plot or not and plot if 'yes'
+    fp = open_file()
+    read_data(fp)
 
    
     print("Top Three Hashtags Combined")
