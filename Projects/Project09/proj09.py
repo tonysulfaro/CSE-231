@@ -13,7 +13,7 @@ def open_file():
         :return fp - file pointer:
         """
     while True:
-        file_name = input("Input a filename: ") #"smalldata.csv"#
+        file_name = 'smalldata.csv'#input("Input a filename: ")
         try:
             fp = open(file_name)
             break
@@ -156,11 +156,29 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
     return individual_data
 
 
-def similarity(data_lst, user1 ,user2):
+def similarity(data_lst, user1, user2):
     user1_list = get_tags_by_month_for_users(data_lst, user1)
+    print(user1_list[1])
+    print(user1_list[1][1])
     user2_list = get_tags_by_month_for_users(data_lst, user2)
+    intersection_list = list()
     print(user1_list)
     print(user2_list)
+
+    for x in range(len(user1_list)):
+
+        user1_set = user1_list[x+1][x+1]
+        user2_set = user2_list[x+1][x+1]
+
+        print(user1_set, user2_set)
+
+        common = user1_set.intersection(user2_set)
+        print(common)
+
+        tup = (x, common)
+        intersection_list.append(tup)
+
+    return intersection_list
         
 def plot_similarity(x_list,y_list,name1,name2):
     '''Plot y vs. x with name1 and name2 in the title.'''
@@ -225,13 +243,11 @@ def main():
     first_username = ''
     second_username = ''
     while True:  # prompt for and validate user names
-        user_str = input("Input two user names from the list, comma separated: ").lower()
+        user_str = input("Input two user names from the list, comma separated: ")
         user_str = user_str.split(',')
 
         first_username = user_str[0]
         second_username = user_str[1]
-
-        user_name_list = [x.lower() for x in user_name_list]
 
         if first_username not in user_name_list or second_username not in user_name_list:
         # your check to for correct user names goes here
