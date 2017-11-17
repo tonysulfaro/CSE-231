@@ -13,7 +13,7 @@ def open_file():
         :return fp - file pointer:
         """
     while True:
-        file_name = "smalldata.csv"#input("Input a file name: ")
+        file_name = input("Input a file name: ") #"smalldata.csv"#
         try:
             fp = open(file_name)
             break
@@ -82,7 +82,7 @@ def get_histogram_tag_count_for_users(data, usernames):
 
     data_dictionary = dict()
 
-    print(data)
+    #print(data)
 
     for lists in data:
 
@@ -175,14 +175,17 @@ def main():
     user_name_list = get_user_names(data_list)
     get_histogram_tag_count_for_users(data_list, user_name_list)
     get_tags_by_month_for_users(data_list, user_name_list)
-    three_most_common_hashtags_combined(data_list, user_name_list)
+    top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
     three_most_common_hashtags_individuals(data_list, user_name_list)
-
-    quit()
+    print(top_three_combined)
 
    
     print("Top Three Hashtags Combined")
     print("{:>6s} {:<20s}".format("Count","Hashtag"))
+    for item in top_three_combined:
+        combined_count = item[0]
+        combined_hashtag = item[1]
+        print("{:>6d} {:<20s}".format(combined_count, combined_hashtag))
     # your printing loop goes here
     print()
     
@@ -190,12 +193,32 @@ def main():
     print("{:>6s} {:<20s} {:<20s}".format("Count","Hashtag","User"))
     # your printing loop goes here
     print()
+
+    usernames_str = ""
+    for item in user_name_list:
+        usernames_str+= item+','
         
-    #print("Usernames: ", usernames_str)
-    #while True:  # prompt for and validate user names
-        #user_str = input("Input two user names from the list, comma separated: ")
+    print("Usernames: ", usernames_str)
+    first_username = ''
+    second_username = ''
+    while True:  # prompt for and validate user names
+        user_str = input("Input two user names from the list, comma separated: ").lower()
+        user_str = user_str.split(',')
+
+        first_username = user_str[0]
+        second_username = user_str[1]
+
+        print(first_username,second_username)
+
+        user_name_list = [x.lower() for x in user_name_list]
+
+        print(user_name_list)
+
+        if first_username not in user_name_list or second_username not in user_name_list:
         # your check to for correct user names goes here
-        #    print("Error in user names.  Please try again")
+            print("Error in user names.  Please try again")
+        else:
+            break
         
     # calculate similarity here
     print()
