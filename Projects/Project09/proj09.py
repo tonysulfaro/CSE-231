@@ -82,6 +82,8 @@ def get_histogram_tag_count_for_users(data, usernames):
 
     data_dictionary = dict()
 
+    print(data)
+
     for lists in data:
 
         username = lists[0]
@@ -134,16 +136,7 @@ def three_most_common_hashtags_combined(L,usernames):
 
 def three_most_common_hashtags_individuals(data_lst,usernames):
 
-    count_list = list()
-    print(data_lst)
-
-    for lists in data_lst:
-        for item in lists:
-            name = item[0]
-            hashtag_list = item[2]
-
-            if name not in count_list:
-                count_list.append([name, ])
+    pass
 
 
 def similarity(data_lst,user1,user2):
