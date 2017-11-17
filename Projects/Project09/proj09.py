@@ -106,7 +106,7 @@ def get_tags_by_month_for_users(data , usernames):
         month = lists[1]-1
         hashtags = lists[2]
 
-        if username in usernames:
+        if username == usernames:
 
             for tag in hashtags:
                 data_list[month][1].add(tag)
