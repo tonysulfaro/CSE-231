@@ -77,7 +77,6 @@ def read_data(fp):
 
     return data_list
 
-
 def get_histogram_tag_count_for_users(data, usernames):
 
     data_dictionary = dict()
@@ -157,7 +156,6 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
 
     return individual_data
 
-
 def similarity(data_lst, user1, user2):
 
     user1_list = get_tags_by_month_for_users(data_lst, user1)
@@ -176,7 +174,6 @@ def similarity(data_lst, user1, user2):
 
     return intersection_list
 
-
 def plot_similarity(x_list,y_list,name1,name2):
     '''Plot y vs. x with name1 and name2 in the title.'''
     
@@ -189,7 +186,6 @@ def plot_similarity(x_list,y_list,name1,name2):
     # the next line is simply to illustrate how to save the plot
     # leave it commented out in the version you submit
     #pylab.savefig("plot.png")
-
 
 def get_first_second_usernames(user_str, user_name_list):
 
@@ -220,7 +216,6 @@ def get_first_second_usernames(user_str, user_name_list):
 
 
     return first_username, second_username
-
 
 def main():
     # Open the file
