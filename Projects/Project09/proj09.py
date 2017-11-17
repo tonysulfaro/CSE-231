@@ -177,7 +177,6 @@ def main():
     get_tags_by_month_for_users(data_list, user_name_list)
     top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
     three_most_common_hashtags_individuals(data_list, user_name_list)
-    print(top_three_combined)
 
    
     print("Top Three Hashtags Combined")
@@ -208,11 +207,7 @@ def main():
         first_username = user_str[0]
         second_username = user_str[1]
 
-        print(first_username,second_username)
-
         user_name_list = [x.lower() for x in user_name_list]
-
-        print(user_name_list)
 
         if first_username not in user_name_list or second_username not in user_name_list:
         # your check to for correct user names goes here
