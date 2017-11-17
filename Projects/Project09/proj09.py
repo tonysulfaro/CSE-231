@@ -160,16 +160,9 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
 
 def similarity(data_lst, user1, user2):
 
-    print(user1,user2)
-
-    data_lst =  [ ['michiganstateu', 1, ['#MSUPride','#MSU']], ['michiganstateu', 5, ['#Spartans']], ['michiganstateu', 5, ['#MSU']], ['michiganstateu', 5, ['#MothersDay', '#Spartans']], ['MSUnews', 4, ['#ArborDay']], ['MSUnews', 4, ['#MSU']], ['MSUnews', 5, ['#Spartans']], ['MSUnews', 4, ['#MSUPride']], ['MSUnews', 1, ['#MSU', '#MSUPride']], ['MSUnews', 1, ['#MSUPride']], ['MSUnews', 1, ['#MSU', '#MSUPride']]]
-
     user1_list = get_tags_by_month_for_users(data_lst, user1)
     user2_list = get_tags_by_month_for_users(data_lst, user2)
     intersection_list = list()
-
-    print(user1_list)
-    print(user2_list)
 
     for x in range(len(user1_list)):
 
@@ -177,15 +170,13 @@ def similarity(data_lst, user1, user2):
         user2_set = set(user2_list[x][1])
 
         common = (user1_set.intersection(user2_set))
-        print(common)
 
         tup = (x+1, common)
         intersection_list.append(tup)
 
-    print(intersection_list)
-
     return intersection_list
-        
+
+
 def plot_similarity(x_list,y_list,name1,name2):
     '''Plot y vs. x with name1 and name2 in the title.'''
     
@@ -243,7 +234,7 @@ def main():
 
     usernames_str = ""
     for item in user_name_list:
-        usernames_str+= item+','
+        usernames_str += item+', '
         
     print("Usernames: ", usernames_str)
     first_username = ''
@@ -266,9 +257,11 @@ def main():
     print()
     print("Similarities for "+first_username+" and "+second_username)
     print("{:12s}{:6s}".format("Month","Count"))
-
-    # your printing loop goes here
-
+    for item in similarity_list:
+        month_code = item[0]
+        month = calendar.month_name[month_code]
+        hashtag_set = len(item[1])
+        print("{:12s}{:<6d}".format(month, hashtag_set))
     print()
     
     # Prompt for a plot
