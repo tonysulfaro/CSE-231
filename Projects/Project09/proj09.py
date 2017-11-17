@@ -13,7 +13,7 @@ def open_file():
         :return fp - file pointer:
         """
     while True:
-        file_name = 'smalldata.csv'#input("Input a filename: ")
+        file_name = input("Input a filename: ")
         try:
             fp = open(file_name)
             break
@@ -109,8 +109,10 @@ def get_tags_by_month_for_users(data ,usernames):
         month = lists[1]-1
         hashtags = lists[2]
 
-        for tag in hashtags:
-            data_list[month][1].add(tag)
+        if username in usernames:
+
+            for tag in hashtags:
+                data_list[month][1].add(tag)
 
     return data_list
 
@@ -157,11 +159,15 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
 
 
 def similarity(data_lst, user1, user2):
+
+    print(user1,user2)
+
+    data_lst =  [ ['michiganstateu', 1, ['#MSUPride','#MSU']], ['michiganstateu', 5, ['#Spartans']], ['michiganstateu', 5, ['#MSU']], ['michiganstateu', 5, ['#MothersDay', '#Spartans']], ['MSUnews', 4, ['#ArborDay']], ['MSUnews', 4, ['#MSU']], ['MSUnews', 5, ['#Spartans']], ['MSUnews', 4, ['#MSUPride']], ['MSUnews', 1, ['#MSU', '#MSUPride']], ['MSUnews', 1, ['#MSUPride']], ['MSUnews', 1, ['#MSU', '#MSUPride']]]
+
     user1_list = get_tags_by_month_for_users(data_lst, user1)
-    print(user1_list[1])
-    print(user1_list[1][1])
     user2_list = get_tags_by_month_for_users(data_lst, user2)
     intersection_list = list()
+
     print(user1_list)
     print(user2_list)
 
@@ -170,13 +176,13 @@ def similarity(data_lst, user1, user2):
         user1_set = set(user1_list[x][1])
         user2_set = set(user2_list[x][1])
 
-        print(user1_set, user2_set)
-
-        common = (user1_set & user2_set)
+        common = (user1_set.intersection(user2_set))
         print(common)
 
-        tup = (x, common)
+        tup = (x+1, common)
         intersection_list.append(tup)
+
+    print(intersection_list)
 
     return intersection_list
         
