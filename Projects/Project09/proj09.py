@@ -93,7 +93,6 @@ def get_histogram_tag_count_for_users(data, usernames):
                 data_dictionary[tag] = 0
             data_dictionary[tag] += 1
 
-
     return data_dictionary
 
 def get_tags_by_month_for_users(data ,usernames):
@@ -108,8 +107,6 @@ def get_tags_by_month_for_users(data ,usernames):
 
         for tag in hashtags:
             data_list[month][1].add(tag)
-
-    print(data_list)
 
     return data_list
 
@@ -129,13 +126,28 @@ def get_user_names(L):
     return user_names
 
 def three_most_common_hashtags_combined(L,usernames):
-    '''docstring'''
-    pass
+
+    data_dictionary = get_histogram_tag_count_for_users(L, usernames)
+    data_list = sorted([(v, k) for k, v in data_dictionary.items()], reverse= True)[:3]
+
+    return data_list
 
 def three_most_common_hashtags_individuals(data_lst,usernames):
-    '''docstring'''
-    pass
-            
+
+    print(data_lst)
+    user_list = list()
+
+    for user in usernames:
+        dict = get_histogram_tag_count_for_users(data_lst, usernames)
+        dict = sorted([(v, k) for k, v in dict.items()], reverse= True)
+
+        print(dict)
+        #tup = (count, hashtag, user)
+        #user_list.append(tup)
+
+    return user_list
+
+
 def similarity(data_lst,user1,user2):
     '''docstring'''
     pass
@@ -171,7 +183,9 @@ def main():
     data_list = read_data(fp)
     user_name_list = get_user_names(data_list)
     get_histogram_tag_count_for_users(data_list, user_name_list)
-    get_tags_by_month_for_users(data_list, user_name_list)
+    get_tags_list = get_tags_by_month_for_users(data_list, user_name_list)
+    three_most_common_hashtags_combined(data_list, user_name_list)
+    three_most_common_hashtags_individuals(data_list, user_name_list)
 
     quit()
 
