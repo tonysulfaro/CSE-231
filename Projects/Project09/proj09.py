@@ -121,7 +121,6 @@ def get_user_names(L):
     for item in L:
 
         user_name = item[0]
-        print(user_name)
 
         if user_name not in user_names:
             user_names.append(user_name)
@@ -144,19 +143,20 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
     for user in usernames:
 
         highest_counts = get_histogram_tag_count_for_users(data_lst, user)
-        highest_counts = sorted([(v, k) for k, v in highest_counts.items()], reverse=True)[0]
+        highest_counts = sorted([(v, k) for k, v in highest_counts.items()], reverse=True)
 
-        hashtag_count = highest_counts[0]
-        hashtag = highest_counts[1]
-        tup = (hashtag_count, hashtag, user)
-        individual_data.append(tup)
+        for item in highest_counts:
+            hashtag_count = item[0]
+            hashtag = item[1]
+            tup = (hashtag_count, hashtag, user)
+            individual_data.append(tup)
 
-    print(individual_data)
+    individual_data = sorted(individual_data, reverse=True)[:3]
+
     return individual_data
 
 
-def similarity(data_lst,user1,user2):
-    '''docstring'''
+def similarity(data_lst, user1 ,user2):
     pass
         
 def plot_similarity(x_list,y_list,name1,name2):
@@ -193,7 +193,7 @@ def main():
     get_histogram_tag_count_for_users(data_list, user_name_list)
     get_tags_by_month_for_users(data_list, user_name_list)
     top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
-    three_most_common_hashtags_individuals(data_list, user_name_list)
+    top_three_individual = three_most_common_hashtags_individuals(data_list, user_name_list)
 
 
    
@@ -208,7 +208,11 @@ def main():
     
     print("Top Three Hashtags by Individual")
     print("{:>6s} {:<20s} {:<20s}".format("Count","Hashtag","User"))
-    # your printing loop goes here
+    for item in top_three_individual:
+        count = item[0]
+        hashtag = item[1]
+        user_name = item[2]
+        print("{:>6d} {:<20s} {:<20s}".format(count, hashtag, user_name))
     print()
 
     usernames_str = ""
