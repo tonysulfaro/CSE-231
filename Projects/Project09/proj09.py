@@ -13,7 +13,7 @@ def open_file():
         :return fp - file pointer:
         """
     while True:
-        file_name = input("Input a file name: ") #"smalldata.csv"#
+        file_name = input("Input a filename: ") #"smalldata.csv"#
         try:
             fp = open(file_name)
             break
@@ -90,10 +90,12 @@ def get_histogram_tag_count_for_users(data, usernames):
         month = lists[1]
         hashtags = lists[2]
 
-        for tag in hashtags:
-            if tag not in data_dictionary:
-                data_dictionary[tag] = 0
-            data_dictionary[tag] += 1
+        if username in usernames:
+
+            for tag in hashtags:
+                if tag not in data_dictionary:
+                    data_dictionary[tag] = 0
+                data_dictionary[tag] += 1
 
     return data_dictionary
 
@@ -136,7 +138,20 @@ def three_most_common_hashtags_combined(L,usernames):
 
 def three_most_common_hashtags_individuals(data_lst,usernames):
 
-    pass
+    individual_data = list()
+
+    for user in usernames:
+
+        highest_counts = get_histogram_tag_count_for_users(data_lst, user)
+        highest_counts = sorted([(v, k) for k, v in highest_counts.items()], reverse=True)[0]
+
+        hashtag_count = highest_counts[0]
+        hashtag = highest_counts[1]
+        tup = (hashtag_count, hashtag, user)
+        individual_data.append(tup)
+
+    print(individual_data)
+    return individual_data
 
 
 def similarity(data_lst,user1,user2):
@@ -173,10 +188,12 @@ def main():
     fp = open_file()
     data_list = read_data(fp)
     user_name_list = get_user_names(data_list)
+
     get_histogram_tag_count_for_users(data_list, user_name_list)
     get_tags_by_month_for_users(data_list, user_name_list)
     top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
     three_most_common_hashtags_individuals(data_list, user_name_list)
+
 
    
     print("Top Three Hashtags Combined")
@@ -216,10 +233,14 @@ def main():
             break
         
     # calculate similarity here
+    similarity_list = similarity(data_list, first_username, second_username)
     print()
-    #print("Similarities for "+users[0]+" and "+users[1])
+    print("Similarities for "+first_username+" and "+second_username)
     print("{:12s}{:6s}".format("Month","Count"))
+
     # your printing loop goes here
+    for x in range(len(similarity_list)):
+        print("{:12s}{:6d}".format(calendar.month_name[x], similarity_list[x]))
     print()
     
     # Prompt for a plot
