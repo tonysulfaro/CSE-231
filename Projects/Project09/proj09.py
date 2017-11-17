@@ -157,7 +157,10 @@ def three_most_common_hashtags_individuals(data_lst,usernames):
 
 
 def similarity(data_lst, user1 ,user2):
-    pass
+    user1_list = get_tags_by_month_for_users(data_lst, user1)
+    user2_list = get_tags_by_month_for_users(data_lst, user2)
+    print(user1_list)
+    print(user2_list)
         
 def plot_similarity(x_list,y_list,name1,name2):
     '''Plot y vs. x with name1 and name2 in the title.'''
@@ -194,7 +197,6 @@ def main():
     get_tags_by_month_for_users(data_list, user_name_list)
     top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
     top_three_individual = three_most_common_hashtags_individuals(data_list, user_name_list)
-
 
    
     print("Top Three Hashtags Combined")
@@ -244,8 +246,7 @@ def main():
     print("{:12s}{:6s}".format("Month","Count"))
 
     # your printing loop goes here
-    for x in range(len(similarity_list)):
-        print("{:12s}{:6d}".format(calendar.month_name[x], similarity_list[x]))
+
     print()
     
     # Prompt for a plot
