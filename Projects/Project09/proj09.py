@@ -213,7 +213,7 @@ def main():
     top_three_combined = three_most_common_hashtags_combined(data_list, user_name_list)
     top_three_individual = three_most_common_hashtags_individuals(data_list, user_name_list)
 
-   
+    print()
     print("Top Three Hashtags Combined")
     print("{:>6s} {:<20s}".format("Count","Hashtag"))
     for item in top_three_combined:
@@ -235,6 +235,7 @@ def main():
     usernames_str = ""
     for item in user_name_list:
         usernames_str += item+', '
+    usernames_str = usernames_str.strip(string.punctuation)
         
     print("Usernames: ", usernames_str)
     first_username = ''
