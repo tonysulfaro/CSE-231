@@ -134,18 +134,16 @@ def three_most_common_hashtags_combined(L,usernames):
 
 def three_most_common_hashtags_individuals(data_lst,usernames):
 
+    count_list = list()
     print(data_lst)
-    user_list = list()
 
-    for user in usernames:
-        dict = get_histogram_tag_count_for_users(data_lst, usernames)
-        dict = sorted([(v, k) for k, v in dict.items()], reverse= True)
+    for lists in data_lst:
+        for item in lists:
+            name = item[0]
+            hashtag_list = item[2]
 
-        print(dict)
-        #tup = (count, hashtag, user)
-        #user_list.append(tup)
-
-    return user_list
+            if name not in count_list:
+                count_list.append([name, ])
 
 
 def similarity(data_lst,user1,user2):
@@ -183,7 +181,7 @@ def main():
     data_list = read_data(fp)
     user_name_list = get_user_names(data_list)
     get_histogram_tag_count_for_users(data_list, user_name_list)
-    get_tags_list = get_tags_by_month_for_users(data_list, user_name_list)
+    get_tags_by_month_for_users(data_list, user_name_list)
     three_most_common_hashtags_combined(data_list, user_name_list)
     three_most_common_hashtags_individuals(data_list, user_name_list)
 
