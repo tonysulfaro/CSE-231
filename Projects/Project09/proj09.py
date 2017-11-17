@@ -2,7 +2,7 @@
 
 import string, calendar, pylab
 
-MONTH_NAMES = [calendar.month_name[month] for month in range(1,13)]
+MONTH_NAMES = [calendar.month_name[month] for month in range(1, 13)]
 
 def open_file():
     """
@@ -81,8 +81,6 @@ def get_histogram_tag_count_for_users(data, usernames):
 
     data_dictionary = dict()
 
-    #print(data)
-
     for lists in data:
 
         username = lists[0]
@@ -98,7 +96,7 @@ def get_histogram_tag_count_for_users(data, usernames):
 
     return data_dictionary
 
-def get_tags_by_month_for_users(data ,usernames):
+def get_tags_by_month_for_users(data , usernames):
 
     data_list = [(i, set()) for i in range(1,13)]
 
@@ -130,14 +128,14 @@ def get_user_names(L):
 
     return user_names
 
-def three_most_common_hashtags_combined(L,usernames):
+def three_most_common_hashtags_combined(L, usernames):
 
     data_dictionary = get_histogram_tag_count_for_users(L, usernames)
     data_list = sorted([(v, k) for k, v in data_dictionary.items()], reverse= True)[:3]
 
     return data_list
 
-def three_most_common_hashtags_individuals(data_lst,usernames):
+def three_most_common_hashtags_individuals(data_lst, usernames):
 
     individual_data = list()
 
