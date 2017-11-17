@@ -167,12 +167,12 @@ def similarity(data_lst, user1, user2):
 
     for x in range(len(user1_list)):
 
-        user1_set = user1_list[x+1][x+1]
-        user2_set = user2_list[x+1][x+1]
+        user1_set = set(user1_list[x][1])
+        user2_set = set(user2_list[x][1])
 
         print(user1_set, user2_set)
 
-        common = user1_set.intersection(user2_set)
+        common = (user1_set & user2_set)
         print(common)
 
         tup = (x, common)
