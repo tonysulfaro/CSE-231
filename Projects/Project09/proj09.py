@@ -121,6 +121,7 @@ def get_user_names(L):
     for item in L:
 
         user_name = item[0]
+        print(user_name)
 
         if user_name not in user_names:
             user_names.append(user_name)
