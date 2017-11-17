@@ -98,11 +98,20 @@ def get_histogram_tag_count_for_users(data, usernames):
 
 def get_tags_by_month_for_users(data ,usernames):
 
-    data_dictionary = dict()
+    data_list = [(i, set()) for i in range(1,13)]
 
     for lists in data:
 
-        username = lists[]
+        username = lists[0]
+        month = lists[1]-1
+        hashtags = lists[2]
+
+        for tag in hashtags:
+            data_list[month][1].add(tag)
+
+    print(data_list)
+
+    return data_list
 
 def get_user_names(L):
 
@@ -162,6 +171,7 @@ def main():
     data_list = read_data(fp)
     user_name_list = get_user_names(data_list)
     get_histogram_tag_count_for_users(data_list, user_name_list)
+    get_tags_by_month_for_users(data_list, user_name_list)
 
     quit()
 
