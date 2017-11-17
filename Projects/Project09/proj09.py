@@ -191,6 +191,37 @@ def plot_similarity(x_list,y_list,name1,name2):
     #pylab.savefig("plot.png")
 
 
+def get_first_second_usernames(user_str, user_name_list):
+
+    not_correct = True
+    first_username = ''
+    second_username = ''
+
+    while not_correct:
+
+        user_str = input("Input two user names from the list, comma separated: ")
+
+        if ',' in user_str:
+
+            try:
+                user_str = user_str.split(',')
+                first_username = user_str[0].strip()
+                second_username = user_str[1].strip()
+            except TypeError:
+                print("Error in user names.  Please try again")
+
+            if first_username not in user_name_list or second_username not in user_name_list:
+                # your check to for correct user names goes here
+                print("Error in user names.  Please try again")
+            else:
+                break
+        else:
+            print("Error in user names.  Please try again")
+
+
+    return first_username, second_username
+
+
 def main():
     # Open the file
     # Read the data from the file
@@ -238,20 +269,8 @@ def main():
     usernames_str = usernames_str.strip(string.punctuation)
         
     print("Usernames: ", usernames_str)
-    first_username = ''
-    second_username = ''
-    while True:  # prompt for and validate user names
-        user_str = input("Input two user names from the list, comma separated: ")
-        user_str = user_str.split(',')
+    first_username, second_username = get_first_second_usernames(usernames_str, user_name_list)
 
-        first_username = user_str[0]
-        second_username = user_str[1]
-
-        if first_username not in user_name_list or second_username not in user_name_list:
-        # your check to for correct user names goes here
-            print("Error in user names.  Please try again")
-        else:
-            break
         
     # calculate similarity here
     similarity_list = similarity(data_list, first_username, second_username)
