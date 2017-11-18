@@ -1,0 +1,5 @@
+raise RuntimeError("Invalid command: Destination point already taken")
+raise RuntimeError("Invalid command: Origin point does not belong to player")
+raise RuntimeError("Invalid command: Destination is not adjacent")
+raise RuntimeError("Invalid command: Not a valid point")
+raise RuntimeError("Invalid command: Point is in a mill")

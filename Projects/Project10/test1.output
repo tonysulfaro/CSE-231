@@ -1,0 +1,738 @@
+
+  _   _ _              __  __            _       __  __                 _     
+ | \ | (_)_ __   ___  |  \/  | ___ _ __ ( )___  |  \/  | ___  _ __ _ __(_)___ 
+ |  \| | | '_ \ / _ \ | |\/| |/ _ \ '_ \|// __| | |\/| |/ _ \| '__| '__| / __|
+ | |\  | | | | |  __/ | |  | |  __/ | | | \__ \ | |  | | (_) | |  | |  | \__  |_| \_|_|_| |_|\___| |_|  |_|\___|_| |_| |___/ |_|  |_|\___/|_|  |_|  |_|___/
+                                                                                        
+    The game is played on a grid where each intersection is a "point" and
+    three points in a row is called a "mill". Each player has 9 pieces and
+    in Phase 1 the players take turns placing their pieces on the board to 
+    make mills. When a mill (or mills) is made one opponent's piece can be 
+    removed from play. In Phase 2 play continues by moving pieces to 
+    adjacent points. 
+    
+    The game is ends when a player (the loser) has less than three 
+    pieces on the board.
+
+
+
+
+    Game commands (first character is a letter, second is a digit):
+    
+    xx        Place piece at point xx (only valid during Phase 1 of game)
+    xx yy     Move piece from point xx to point yy (only valid during Phase 2)
+    R         Restart the game
+    H         Display this menu of commands
+    Q         Quit the game
+    
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[ ] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[ ] |
+    1 [ ]------[ ]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> a1
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[ ] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[ ] |
+    1 [X]------[ ]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> d1
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[ ] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> f6
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> d3
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> b2
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [ ][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> a4
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][ ]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> c4
+
+
+    7 [ ]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> a7
+
+
+    7 [O]------[ ]------[ ] 
+    6  | [ ]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> b6
+
+
+    7 [O]------[ ]------[ ] 
+    6  | [X]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> d7
+
+
+    7 [O]------[O]------[ ] 
+    6  | [X]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][ ][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> f4
+
+
+    7 [O]------[O]------[ ] 
+    6  | [X]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> e3
+
+
+    7 [O]------[O]------[ ] 
+    6  | [X]---[ ]---[X] |
+    5  |  | [ ][ ][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> d5
+
+
+    7 [O]------[O]------[ ] 
+    6  | [X]---[ ]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> d6
+
+
+    7 [O]------[O]------[ ] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> g7
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> b4
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][O][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[ ]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Place a piece at :> g1
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][O][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[ ] |
+    1 [X]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Place a piece at :> f2
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][O][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[O] |
+    1 [X]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+**** Begin Phase 2: Move pieces by specifying two points
+Move a piece (source,destination) :> f4 g4
+
+A mill was formed!
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][O][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[O] |
+    1 [X]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> b4
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[O] |
+    1 [X]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> f2 d2
+
+A mill was formed!
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [X]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> a1
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> g4 f4
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> a4
+
+Invalid number of points
+Try again.
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> a4 b4
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][O][X]   [ ][X][ ]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> f4 g4
+
+A mill was formed!
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][O][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> d2
+Invalid command: Point is in a mill
+Try again.
+Remove a piece at :> b4
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[O]---[ ] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> d2 f2
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [X]---[ ]---[O] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> b2 d2
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][ ][X]
+    3  |  | [ ][O][O] |  |
+    2  | [ ]---[X]---[O] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> e3 e4
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[O] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> g4 f4
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][X][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[O] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> d1 a1
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][X][ ]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[O] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> f4 g4
+
+A mill was formed!
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[O] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> f2
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[ ] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> d3 f3
+
+Invalid command: Not a valid point
+Try again.
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][O][ ] |  |
+    2  | [ ]---[X]---[ ] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> d3 e3
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[X]---[ ] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> d2 f2
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [O]------[ ]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> a1 d1
+
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> g4 f4
+
+A mill was formed!
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [O][X][ ]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> e4
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> f4 g4
+
+Invalid command: Origin point does not belong to player
+Try again.
+
+    7 [O]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> a7 a4
+
+
+    7 [ ]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> f4 g4
+
+A mill was formed!
+
+    7 [ ]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> a4
+
+    7 [ ]------[O]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> d7 a7
+
+
+    7 [O]------[ ]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][ ][X]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> g4 f4
+
+A mill was formed!
+
+    7 [O]------[ ]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][O] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> e3
+
+    7 [O]------[ ]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [ ][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+O's turn!
+Move a piece (source,destination) :> a7 a4
+
+
+    7 [ ]------[ ]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][X][ ]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+X's turn!
+Move a piece (source,destination) :> f4 g4
+
+A mill was formed!
+
+    7 [ ]------[ ]------[X] 
+    6  | [X]---[O]---[X] |
+    5  |  | [ ][X][ ] |  |
+    4 [O][ ][X]   [ ][ ][X]
+    3  |  | [ ][ ][ ] |  |
+    2  | [ ]---[ ]---[X] |
+    1 [ ]------[O]------[X]
+       a  b  c  d  e  f  g
+
+
+Remove a piece at :> a4
+
+    __        _____ _   _ _   _ _____ ____  _ _ _ 
+    \ \      / /_ _| \ | | \ | | ____|  _ \| | | |
+     \ \ /\ / / | ||  \| |  \| |  _| | |_) | | | |
+      \ V  V /  | || |\  | |\  | |___|  _ <|_|_|_|
+       \_/\_/  |___|_| \_|_| \_|_____|_| \_(_|_|_)
+
+

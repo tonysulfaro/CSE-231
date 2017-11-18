@@ -1,0 +1,51 @@
+a1
+d1
+f6
+d3
+b2
+a4
+c4
+a7
+b6
+d7
+f4
+e3
+d5
+d6
+g7
+b4
+g1
+f2
+f4 g4
+b4
+f2 d2
+a1
+g4 f4
+a4
+a4 b4
+f4 g4
+d2
+b4
+d2 f2
+b2 d2
+e3 e4
+g4 f4
+d1 a1
+f4 g4
+f2
+d3 f3
+d3 e3
+d2 f2
+a1 d1
+g4 f4
+e4
+f4 g4
+a7 a4
+f4 g4
+a4
+d7 a7
+g4 f4
+e3
+a7 a4
+f4 g4
+a4
