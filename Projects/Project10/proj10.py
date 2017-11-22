@@ -76,7 +76,7 @@ def place_piece_and_remove_opponents(board, player, destination):
     initial_mill_count = count_mills(board, player)
 
     if board.points[destination] == " ":
-        board.assingn_piece(destination)
+        board.points[destination] = player
 
     else:
         print("Error, you cannot move there")
@@ -238,12 +238,13 @@ def main():
         while command != 'q' and placed_count != 18:
             try:
                 
-                pass  # stub; delete and replace it with your code
+                place_piece_and_remove_opponents(board, player, command)
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
                 print("{:s}\nTry again.".format(str(error_message)))
             #Prompt again
+            player = "O"
             print(board)
             print(player + "'s turn!")
             if placed_count < 18:
@@ -260,9 +261,11 @@ def main():
         while command != 'q':
             # commands should have two points
             command = command.split()
+            initial_position = command[0]
+            final_position = command[1]
             try:
                 
-                pass  # stub; delete and replace it with your code
+                move_piece(board, player, initial_position, final_position)
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
