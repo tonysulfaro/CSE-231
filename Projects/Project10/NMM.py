@@ -42,6 +42,8 @@ class Board(object):
         """
         Display everything nice and pretty-like.
         This is an ugly function.
+
+        Sheeit you weren't lying that ish ugly af.
         """
 
         s = "\n"

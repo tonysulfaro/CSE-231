@@ -78,7 +78,18 @@ def move_piece(board, player, origin, destination):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    is_adjacent = False
+
+    if board.points[destination] == " ":
+        board.points[destination] = player
+        board.points[origin] = " "
+
+        if is_adjacent:
+            place_piece_and_remove_opponents(board, player, destination)
+
+    else:
+        print("Error, you cannot move there")
     
 def points_not_in_mills(board, player):
     """
@@ -116,7 +127,20 @@ def placed(board,player):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    location_list = list()
+
+    for mill in board.MILLS:
+
+        for place in mill:
+
+            place_value = board.points[place]
+
+            if place_value == player:
+
+                location_list.append(place)
+
+    return location_list
     
 def remove_piece(board, player):
     """
@@ -128,7 +152,20 @@ def is_winner(board, player):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+    x_count = 0
+    o_count = 0
+
+    for mill in board:
+        for place in mill:
+            place_value = board.points[place]
+
+            if place_value == 'x':
+                x_count += 1
+            elif place_value == 'o':
+                o_count += 1
+
+    if x_count == 3 or o_count == 3:
+        return True
    
 def get_other_player(player):
     """
