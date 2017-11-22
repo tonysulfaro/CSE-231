@@ -53,7 +53,6 @@ def count_mills(board, player):
     total_mill_count = 0
 
     for mill in board.MILLS:
-        print(mill)
 
         mill_count = 0
 
@@ -85,7 +84,33 @@ def points_not_in_mills(board, player):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    point_not_mill_list = list()
+    mill_list = list()
+
+
+    for mill in board.MILLS:
+
+        temp_list = list()
+
+        for place in mill:
+
+            place_value = board.points[place]
+
+            if place_value == player:
+                temp_list.append(place)
+                point_not_mill_list.append(place)
+
+        if len(temp_list) == 3:
+            mill_list.extend(temp_list)
+
+    for item in point_not_mill_list:
+        if item in mill_list:
+            point_not_mill_list.remove(item)
+
+    point_not_mill_list = set(point_not_mill_list)-(set(mill_list))
+
+    return point_not_mill_list
 
 def placed(board,player):
     """
@@ -124,6 +149,9 @@ def main():
 
         #TESTING
         count_mills(board, player)
+        points_not_in_mills(board, player)
+
+
         # PHASE 1
         print(player + "'s turn!")
         #placed = 0
