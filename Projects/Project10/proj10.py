@@ -83,6 +83,9 @@ def move_piece(board, player, origin, destination):
         add your function header here.
     """
 
+    current_places = placed(board, player)
+
+
     is_adjacent = False
 
     if board.points[destination] == " ":
@@ -152,7 +155,12 @@ def remove_piece(board, player):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    destination = input("Where would you like to move to?")
+
+    board.points[destination] = player
+
+
            
 def is_winner(board, player):
     """
