@@ -154,7 +154,7 @@ def placed(board,player):
 
     return location_list
     
-def remove_piece(board, player):
+def remove_piece(board, player): #This is mostly finished
     """
         add your function header here.
     """
