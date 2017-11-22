@@ -83,20 +83,23 @@ def move_piece(board, player, origin, destination):
         add your function header here.
     """
 
-    current_places = placed(board, player)
-
-
-    is_adjacent = False
+    initial_mill_count = count_mills(board, player)
 
     if board.points[destination] == " ":
-        board.points[destination] = player
-        board.points[origin] = " "
+        board.assingn_piece(destination)
+        board.clear_place(origin)
 
-        if is_adjacent:
-            place_piece_and_remove_opponents(board, player, destination)
+        #board.points[destination] = player
+        #board.points[origin] = " "
 
     else:
         print("Error, you cannot move there")
+
+    final_mill_count = count_mills(board, player)
+
+    if initial_mill_count != final_mill_count:
+        destination = input("Choose where you want to remove your opponent.")
+        place_piece_and_remove_opponents(board, player, destination)
     
 def points_not_in_mills(board, player):
     """
