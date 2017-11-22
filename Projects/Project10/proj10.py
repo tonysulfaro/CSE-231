@@ -49,7 +49,25 @@ def count_mills(board, player):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    total_mill_count = 0
+
+    for mill in board.MILLS:
+        print(mill)
+
+        mill_count = 0
+
+        for place in mill:
+
+            place_value = board.points[place]
+
+            if place_value == player:
+                mill_count += 1
+
+        if mill_count == 3:
+            total_mill_count += 1
+
+    return total_mill_count
             
 def place_piece_and_remove_opponents(board, player, destination):
     """
@@ -103,7 +121,9 @@ def main():
         print(board)
         player = "X"
         placed_count = 0 # total of pieces placed by "X" or "O", includes pieces placed and then removed by opponent
-        
+
+        #TESTING
+        count_mills(board, player)
         # PHASE 1
         print(player + "'s turn!")
         #placed = 0
