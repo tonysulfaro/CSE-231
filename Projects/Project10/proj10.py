@@ -72,7 +72,11 @@ def place_piece_and_remove_opponents(board, player, destination):
     """
         add your function header here.
     """
-    pass  # stub; delete and replace it with your code
+
+    player_origin = " "
+
+    if board.points[destination] == " ":
+        move_piece(board, player, player_origin, destination)
      
 def move_piece(board, player, origin, destination):
     """
