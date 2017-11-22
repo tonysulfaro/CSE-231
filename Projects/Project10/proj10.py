@@ -73,10 +73,18 @@ def place_piece_and_remove_opponents(board, player, destination):
         add your function header here.
     """
 
-    player_origin = " "
+    initial_mill_count = count_mills(board, player)
 
     if board.points[destination] == " ":
-        move_piece(board, player, player_origin, destination)
+        board.assingn_piece(destination)
+
+    else:
+        print("Error, you cannot move there")
+
+    final_mill_count = count_mills(board, player)
+
+    if initial_mill_count != final_mill_count:
+        remove_piece(board, player)
      
 def move_piece(board, player, origin, destination):
     """
@@ -99,7 +107,7 @@ def move_piece(board, player, origin, destination):
 
     if initial_mill_count != final_mill_count:
         destination = input("Choose where you want to remove your opponent.")
-        place_piece_and_remove_opponents(board, player, destination)
+        remove_piece(board, player)
     
 def points_not_in_mills(board, player):
     """
@@ -154,7 +162,7 @@ def placed(board,player):
 
     return location_list
     
-def remove_piece(board, player): #This is mostly finished
+def remove_piece(board, player):
     """
         add your function header here.
     """
@@ -174,7 +182,6 @@ def remove_piece(board, player): #This is mostly finished
             is_valid_position = True
 
 
-           
 def is_winner(board, player):
     """
         add your function header here.
