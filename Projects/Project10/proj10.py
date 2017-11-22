@@ -140,6 +140,8 @@ def placed(board,player):
 
                 location_list.append(place)
 
+    location_list = set(location_list)
+
     return location_list
     
 def remove_piece(board, player):
@@ -154,18 +156,24 @@ def is_winner(board, player):
     """
     x_count = 0
     o_count = 0
+    mill_set = set()
 
-    for mill in board:
-        for place in mill:
-            place_value = board.points[place]
+    for mill_triple in board.MILLS:
+        for mill in mill_triple:
+            mill_set.add(mill)
 
-            if place_value == 'x':
-                x_count += 1
-            elif place_value == 'o':
-                o_count += 1
+    for place in mill_set:
+        place_value = board.points[place]
 
-    if x_count == 3 or o_count == 3:
+        if place_value == 'X':
+            x_count += 1
+        elif place_value == 'O':
+            o_count += 1
+
+    if x_count <= 3 or o_count <= 3:
         return True
+    else:
+        return False
    
 def get_other_player(player):
     """
