@@ -158,10 +158,20 @@ def remove_piece(board, player):
     """
         add your function header here.
     """
+    is_valid_position = False
+    current_placed = placed(board, player)
 
-    destination = input("Where would you like to move to?")
+    while is_valid_position:
 
-    board.points[destination] = player
+        destination = input("Where would you like to move to?")
+        desired_place = board.points[destination]
+
+        if destination not in current_placed or desired_place != " ":
+            print("Hey you can't remove your own piece or remove a blank piece.")
+
+        else:
+            board.points[destination] = " "
+            is_valid_position = True
 
 
            
