@@ -75,11 +75,17 @@ def place_piece_and_remove_opponents(board, player, destination):
 
     initial_mill_count = count_mills(board, player)
 
-    if board.points[destination] == " ":
-        board.points[destination] = player
+    is_valid_move = True
 
-    else:
-        print("Error, you cannot move there")
+    while is_valid_move:
+
+
+        if board.points[destination] == " ":
+            board.points[destination] = player
+            is_valid_move = False
+
+        else:
+            raise RuntimeError("Error, you cannot move there")
 
     final_mill_count = count_mills(board, player)
 
@@ -214,8 +220,10 @@ def get_other_player(player):
     return "X" if player == "O" else "O"
     
 def main():
+
     #Loop so that we can start over on reset
     while True:
+
         #Setup stuff.
         print(RULES)
         print(MENU)
@@ -234,33 +242,38 @@ def main():
         #placed = 0
         command = input("Place a piece at :> ").strip().lower()
         print()
+
         #Until someone quits or we place all 18 pieces...
         while command != 'q' and placed_count != 18:
             try:
                 
                 place_piece_and_remove_opponents(board, player, command)
-                if player == "X":
-                    player = "O"
-                elif player == "O":
-                    player = "X"
+                placed_count += 1
+
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
                 print("{:s}\nTry again.".format(str(error_message)))
+                place_piece_and_remove_opponents(board, player, command)
             #Prompt again
 
             print(board)
+            player = get_other_player(player)
             print(player + "'s turn!")
+
             if placed_count < 18:
                 command = input("Place a piece at :> ").strip().lower()
             else:
                 print("**** Begin Phase 2: Move pieces by specifying two points")
                 command = input("Move a piece (source,destination) :> ").strip().lower()
             print()
-        
+
+            #Change player
+
         #Go back to top if reset
         if command == 'r':
             continue
+
         # PHASE 2 of game
         while command != 'q':
             # commands should have two points
