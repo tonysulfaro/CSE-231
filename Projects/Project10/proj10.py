@@ -239,12 +239,16 @@ def main():
             try:
                 
                 place_piece_and_remove_opponents(board, player, command)
+                if player == "X":
+                    player = "O"
+                elif player == "O":
+                    player = "X"
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
                 print("{:s}\nTry again.".format(str(error_message)))
             #Prompt again
-            player = "O"
+
             print(board)
             print(player + "'s turn!")
             if placed_count < 18:
