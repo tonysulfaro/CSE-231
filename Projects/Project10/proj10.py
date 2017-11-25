@@ -255,6 +255,8 @@ def main():
         if command == 'h':
             print(MENU)
             command = input("Place a piece at :> ").strip().lower()
+        elif command == 'r':
+            continue
         print()
 
         #Until someone quits or we place all 18 pieces...
@@ -280,6 +282,11 @@ def main():
 
             if placed_count < 18:
                 command = input("Place a piece at :> ").strip().lower()
+                if command == 'h':
+                    print(MENU)
+                    command = input("Place a piece at :> ").strip().lower()
+                elif command == 'r':
+                    continue
             else:
                 print("**** Begin Phase 2: Move pieces by specifying two points")
                 command = input("Move a piece (source,destination) :> ").strip().lower()
