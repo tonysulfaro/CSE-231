@@ -286,7 +286,7 @@ def main():
                     print(MENU)
                     command = input("Place a piece at :> ").strip().lower()
                 elif command == 'r':
-                    continue
+                    break
             else:
                 print("**** Begin Phase 2: Move pieces by specifying two points")
                 command = input("Move a piece (source,destination) :> ").strip().lower()
