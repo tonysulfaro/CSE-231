@@ -97,6 +97,9 @@ def move_piece(board, player, origin, destination):
     """
 
     initial_mill_count = count_mills(board, player)
+    print('initial mill count ', initial_mill_count)
+
+    print(board)
 
     if board.points[destination] == " ":
         #board.assingn_piece(destination)
@@ -109,9 +112,9 @@ def move_piece(board, player, origin, destination):
         print("Error, you cannot move there")
 
     final_mill_count = count_mills(board, player)
+    print('final mill count ', final_mill_count)
 
     if initial_mill_count != final_mill_count:
-        destination = input("Choose where you want to remove your opponent.")
         remove_piece(board, player)
     
 def points_not_in_mills(board, player):
