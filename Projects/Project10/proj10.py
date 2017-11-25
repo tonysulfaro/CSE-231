@@ -105,21 +105,30 @@ def move_piece(board, player, origin, destination):
 
     while is_valid_move:
 
-        if board.points[destination] == " ":
-            #board.assingn_piece(destination)
-            #board.clear_place(origin)
+        try:
 
-            board.points[destination] = player
-            board.points[origin] = " "
-            break
+            if board.points[destination] == " ":
+                #board.assingn_piece(destination)
+                #board.clear_place(origin)
 
-        else:
-            print("Invalid command: Point is in a mill")
+                board.points[destination] = player
+                board.points[origin] = " "
+                break
+
+            else:
+                print("Invalid command: Point is in a mill")
+                print("Try again.")
+                command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
+                origin = command[0]
+                destination = command[1]
+
+        except KeyError:
+
+            print("Invalid command: Not a valid point")
             print("Try again.")
-            command = input("Move a piece (source,destination) :> ").strip().lower()
+            command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
             origin = command[0]
             destination = command[1]
-
 
     final_mill_count = count_mills(board, player)
     if is_winner(board, player):
@@ -330,7 +339,7 @@ def main():
                 except IndexError:
                     print("Invalid number of points")
                     print("Try again.")
-                    command = input("Move a piece (source,destination) :> ").strip().lower()
+                    command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
 
             try:
 
