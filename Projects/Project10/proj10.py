@@ -207,13 +207,14 @@ def remove_piece(board, player):
         print(board)
         #desired_place = board.points[destination] #this is actually just the value at that place..
 
-        if destination == player:
+        if destination in current_placed:
             print("Hey you can't remove your own piece")
         if destination == " ":
             print("Hey you can't remove a blank piece.")
 
         player = get_other_player(player)
         not_in_mills = points_not_in_mills(board, player)
+        print("not in mills",not_in_mills)
 
         if destination not in not_in_mills:
             print("Invalid command: Point is in a mill")
