@@ -113,14 +113,7 @@ def move_piece(board, player, origin, destination):
 
                 board.points[destination] = player
                 board.points[origin] = " "
-                break
-
-            else:
-                print("Invalid command: Point is in a mill")
-                print("Try again.")
-                command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
-                origin = command[0]
-                destination = command[1]
+                is_valid_move = False
 
         except KeyError:
 
