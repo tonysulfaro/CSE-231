@@ -174,11 +174,14 @@ def remove_piece(board, player):
     is_valid_position = True
     current_placed = placed(board, player)
 
+    #when a mill is formed
+    print("A mill was formed!")
     print(board)
 
     while is_valid_position:
 
-        destination = input("Which opponent place would you like to remove?")
+        destination = input("Remove a piece at :> ")
+        print(board)
         desired_place = board.points[destination]
 
         if destination == player:
@@ -254,6 +257,10 @@ def main():
                 place_piece_and_remove_opponents(board, player, command)
                 placed_count += 1
 
+                if is_winner(board, player):
+                    print(BANNER)
+                    quit()
+
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
@@ -284,12 +291,17 @@ def main():
         # PHASE 2 of game
         while command != 'q':
             # commands should have two points
+            command = input("Move a piece (source,destination) :> ")
             command = command.split()
             initial_position = command[0]
             final_position = command[1]
             try:
-                
+
                 move_piece(board, player, initial_position, final_position)
+
+                if is_winner(board, player):
+                    print(BANNER)
+                    quit()
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
@@ -297,6 +309,7 @@ def main():
             #Display and reprompt
             print(board)
             #display_board(board)
+            player = get_other_player(player)
             print(player + "'s turn!")
             command = input("Move a piece (source,destination) :> ").strip().lower()
             print()
