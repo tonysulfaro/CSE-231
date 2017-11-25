@@ -88,7 +88,7 @@ def place_piece_and_remove_opponents(board, player, destination):
 
     final_mill_count = count_mills(board, player)
 
-    if initial_mill_count != final_mill_count:
+    if initial_mill_count < final_mill_count:
         remove_piece(board, player)
      
 def move_piece(board, player, origin, destination):
@@ -126,7 +126,7 @@ def move_piece(board, player, origin, destination):
         print(BANNER)
         quit()
 
-    if initial_mill_count != final_mill_count:
+    if initial_mill_count < final_mill_count:
         remove_piece(board, player)
 
     
