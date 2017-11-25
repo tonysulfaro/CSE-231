@@ -101,21 +101,34 @@ def move_piece(board, player, origin, destination):
 
     print(board)
 
-    if board.points[destination] == " ":
-        #board.assingn_piece(destination)
-        #board.clear_place(origin)
+    is_valid_move = True
 
-        board.points[destination] = player
-        board.points[origin] = " "
+    while is_valid_move:
 
-    else:
-        print("Error, you cannot move there")
+        if board.points[destination] == " ":
+            #board.assingn_piece(destination)
+            #board.clear_place(origin)
+
+            board.points[destination] = player
+            board.points[origin] = " "
+            break
+
+        else:
+            print("Invalid command: Point is in a mill")
+            print("Try again.")
+            command = input("Move a piece (source,destination) :> ").strip().lower()
+            origin = command[0]
+            destination = command[1]
+
 
     final_mill_count = count_mills(board, player)
-    print('final mill count ', final_mill_count)
+    if is_winner(board, player):
+        print(BANNER)
+        quit()
 
     if initial_mill_count != final_mill_count:
         remove_piece(board, player)
+
     
 def points_not_in_mills(board, player):
     """
@@ -193,7 +206,7 @@ def remove_piece(board, player):
             print("Hey you can't remove a blank piece.")
 
         else:
-            board.points[destination] = player
+            board.points[destination] = " "
             print(board)
             is_valid_position = False
 
@@ -301,22 +314,22 @@ def main():
         # PHASE 2 of game
         while command != 'q':
             # commands should have two points
+            print(command)
             command = command.split(" ")
+            print(command)
             initial_position = command[0]
             final_position = command[1]
             try:
 
                 move_piece(board, player, initial_position, final_position)
 
-                if is_winner(board, player):
-                    print(BANNER)
-                    quit()
+
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
                 print("{:s}\nTry again.".format(str(error_message)))         
             #Display and reprompt
-            print(board)
+            #print(board)
             #display_board(board)
             player = get_other_player(player)
             print(player + "'s turn!")
