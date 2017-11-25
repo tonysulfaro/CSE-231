@@ -79,7 +79,6 @@ def place_piece_and_remove_opponents(board, player, destination):
 
     while is_valid_move:
 
-
         if board.points[destination] == " ":
             board.points[destination] = player
             is_valid_move = False
@@ -172,20 +171,25 @@ def remove_piece(board, player):
     """
         add your function header here.
     """
-    is_valid_position = False
+    is_valid_position = True
     current_placed = placed(board, player)
+
+    print(board)
 
     while is_valid_position:
 
-        destination = input("Where would you like to move to?")
+        destination = input("Which opponent place would you like to remove?")
         desired_place = board.points[destination]
 
-        if destination not in current_placed or desired_place != " ":
-            print("Hey you can't remove your own piece or remove a blank piece.")
+        if destination == player:
+            print("Hey you can't remove your own piece")
+        if desired_place == " ":
+            print("Hey you can't remove a blank piece.")
 
         else:
-            board.points[destination] = " "
-            is_valid_position = True
+            board.points[destination] = player
+            print(board)
+            is_valid_position = False
 
 
 def is_winner(board, player):
@@ -253,9 +257,12 @@ def main():
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
+
                 print("{:s}\nTry again.".format(str(error_message)))
+
+                #Prompt again
                 place_piece_and_remove_opponents(board, player, command)
-            #Prompt again
+                pass
 
             print(board)
             player = get_other_player(player)
