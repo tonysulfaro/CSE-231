@@ -198,25 +198,24 @@ def remove_piece(board, player):
     is_valid_position = True
     current_placed = placed(board, player)
 
-
-    #when a mill is formed
     print("A mill was formed!")
 
     while is_valid_position:
 
-        not_in_mills = points_not_in_mills(board, player)
-
         destination = input("Remove a piece at :> ")
         print(destination)
         print(board)
-        desired_place = board.points[destination]
-        print(not_in_mills)
+        #desired_place = board.points[destination] #this is actually just the value at that place..
 
         if destination == player:
             print("Hey you can't remove your own piece")
-        if desired_place == " ":
+        if destination == " ":
             print("Hey you can't remove a blank piece.")
-        if desired_place not in not_in_mills:
+
+        player = get_other_player(player)
+        not_in_mills = points_not_in_mills(board, player)
+
+        if destination not in not_in_mills:
             print("Invalid command: Point is in a mill")
             print("Try again.")
         else:
