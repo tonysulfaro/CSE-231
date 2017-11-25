@@ -144,32 +144,31 @@ def points_not_in_mills(board, player):
         add your function header here.
     """
 
-    point_not_mill_list = list()
-    mill_list = list()
+    occupied_places = set()
+    mill_points = set()
 
+    #generates a set of where all the player values are
+    for space in board.points:
+        value = board.points[space]
+        if value == player:
+            occupied_places.add(space)
 
+    #generates a set of where all the values that are also mills are
     for mill in board.MILLS:
 
-        temp_list = list()
+        mill_values = list()
 
         for place in mill:
+            value = board.points[place]
+            mill_values.append(value)
+        #all locations have to have player for each of them
+        if player in set(mill_values) and len(set(mill_values)) == 1:
+            for item in mill:
+                mill_points.add(item)
 
-            place_value = board.points[place]
+    difference = list(occupied_places-mill_points)
 
-            if place_value == player:
-                temp_list.append(place)
-                point_not_mill_list.append(place)
-
-        if len(temp_list) == 3:
-            mill_list.extend(temp_list)
-
-    for item in point_not_mill_list:
-        if item in mill_list:
-            point_not_mill_list.remove(item)
-
-    point_not_mill_list = set(point_not_mill_list)-(set(mill_list))
-
-    return point_not_mill_list
+    return difference
 
 def placed(board,player):
     """
