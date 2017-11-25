@@ -274,7 +274,7 @@ def main():
 
                 #Prompt again
                 place_piece_and_remove_opponents(board, player, command)
-                pass
+
 
             print(board)
             player = get_other_player(player)
@@ -301,7 +301,6 @@ def main():
         # PHASE 2 of game
         while command != 'q':
             # commands should have two points
-            command = input("Move a piece (source,destination) :> ")
             command = command.split(" ")
             initial_position = command[0]
             final_position = command[1]
