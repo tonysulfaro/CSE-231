@@ -84,7 +84,7 @@ def place_piece_and_remove_opponents(board, player, destination):
             is_valid_move = False
 
         else:
-            raise RuntimeError("Error, you cannot move there")
+            print("Error, you cannot move there")
 
     final_mill_count = count_mills(board, player)
 
@@ -251,16 +251,20 @@ def main():
         print(player + "'s turn!")
         #placed = 0
         command = input("Place a piece at :> ").strip().lower()
+
+        if command == 'h':
+            print(MENU)
+            command = input("Place a piece at :> ").strip().lower()
         print()
 
         #Until someone quits or we place all 18 pieces...
         while command != 'q' and placed_count != 18:
             try:
-                
+
                 place_piece_and_remove_opponents(board, player, command)
                 placed_count += 1
 
-                
+
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
 
