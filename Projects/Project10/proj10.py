@@ -192,11 +192,11 @@ def remove_piece(board, player):
 
     #when a mill is formed
     print("A mill was formed!")
-    print(board)
 
     while is_valid_position:
 
         destination = input("Remove a piece at :> ")
+        print(destination)
         print(board)
         desired_place = board.points[destination]
 
@@ -313,16 +313,28 @@ def main():
 
         # PHASE 2 of game
         while command != 'q':
+
             # commands should have two points
             print(command)
             command = command.split(" ")
-            print(command)
-            initial_position = command[0]
-            final_position = command[1]
+            initial_position = ""
+            final_position = ""
+            command_is_valid = True
+
+            while command_is_valid:
+
+                try:
+                    initial_position = command[0]
+                    final_position = command[1]
+                    command_is_valid = False
+                except IndexError:
+                    print("Invalid number of points")
+                    print("Try again.")
+                    command = input("Move a piece (source,destination) :> ").strip().lower()
+
             try:
 
                 move_piece(board, player, initial_position, final_position)
-
 
                 
             #Any RuntimeError you raise inside this try lands here
