@@ -99,11 +99,11 @@ def move_piece(board, player, origin, destination):
     initial_mill_count = count_mills(board, player)
 
     if board.points[destination] == " ":
-        board.assingn_piece(destination)
-        board.clear_place(origin)
+        #board.assingn_piece(destination)
+        #board.clear_place(origin)
 
-        #board.points[destination] = player
-        #board.points[origin] = " "
+        board.points[destination] = player
+        board.points[origin] = " "
 
     else:
         print("Error, you cannot move there")
@@ -257,10 +257,6 @@ def main():
                 place_piece_and_remove_opponents(board, player, command)
                 placed_count += 1
 
-                if is_winner(board, player):
-                    print(BANNER)
-                    quit()
-
                 
             #Any RuntimeError you raise inside this try lands here
             except RuntimeError as error_message:
@@ -292,7 +288,7 @@ def main():
         while command != 'q':
             # commands should have two points
             command = input("Move a piece (source,destination) :> ")
-            command = command.split()
+            command = command.split(" ")
             initial_position = command[0]
             final_position = command[1]
             try:
