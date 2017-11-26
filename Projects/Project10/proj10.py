@@ -104,7 +104,7 @@ def move_piece(board, player, origin, destination):
     """
 
     initial_mill_count = count_mills(board, player)
-    print('initial mill count ', initial_mill_count)
+    #print('initial mill count ', initial_mill_count)
 
     is_valid_move = True
 
@@ -211,11 +211,9 @@ def remove_piece(board, player):
     while is_valid_position:
 
         destination = input("Remove a piece at :> ")
-        print(destination)
 
         #desired_place = board.points[destination] #this is actually just the value at that place..
         not_in_mills = points_not_in_mills(board, player)
-        print("not in mills", not_in_mills)
 
         if destination not in board.points:
             print("That is not a valid point to remove.")
