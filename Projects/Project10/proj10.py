@@ -85,6 +85,7 @@ def place_piece_and_remove_opponents(board, player, destination):
 
         else:
             print("Error, you cannot move there")
+            destination = input("Place a piece at :> ").strip().lower()
 
     final_mill_count = count_mills(board, player)
 
@@ -200,24 +201,25 @@ def remove_piece(board, player):
         print(destination)
         print(board)
         #desired_place = board.points[destination] #this is actually just the value at that place..
-
-        if destination in current_placed:
-            print("Hey you can't remove your own piece")
-        if destination == " ":
-            print("Hey you can't remove a blank piece.")
-
-
         not_in_mills = points_not_in_mills(board, player)
-        print("not in mills",not_in_mills)
+        print("not in mills", not_in_mills)
 
-        if len(not_in_mills) == 0:
+        if destination not in board.points:
+            print("That is not a valid point to remove.")
+        elif destination in current_placed:
+            print("Hey you can't remove your own piece.")
+        elif destination == " ":
+            print("Hey you can't remove a blank piece.")
+        #if destination is in a mill but its the only option to remove
+        elif destination not in not_in_mills and len(not_in_mills) == 0:
             board.points[destination] = " "
             print(board)
-            is_valid_position = False
-
-        elif destination not in not_in_mills:
+            break
+        #if the destination is in a mill and there are other options to remove
+        elif destination not in not_in_mills and len(not_in_mills) != 0:
             print("Invalid command: Point is in a mill")
             print("Try again.")
+
 
 
 def is_winner(board, player):
