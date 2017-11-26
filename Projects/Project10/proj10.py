@@ -128,7 +128,7 @@ def move_piece(board, player, origin, destination):
                 origin = command[0]
                 destination = command[1]
 
-        except KeyError:
+        except (KeyError, IndexError):
 
             print("Invalid command: Not a valid point")
             print("Try again.")
