@@ -212,25 +212,31 @@ def remove_piece(board, player):
 
         destination = input("Remove a piece at :> ")
 
+        if is_winner(board, player):
+            print(BANNER)
+            quit()
+
         #desired_place = board.points[destination] #this is actually just the value at that place..
         not_in_mills = points_not_in_mills(board, player)
 
         if destination not in board.points:
-            print("That is not a valid point to remove.")
+            print("Invalid command: Point does not belong to player")
+            print("Try again.")
         elif destination in current_placed:
             print("Invalid command: Point does not belong to player")
             print("Try again.")
         elif board.points[destination] == " ":
-            print("Hey you can't remove a blank piece.")
+            print("Invalid command: Point does not belong to player")
+            print("Try again.")
         #if destination is a valid point to remove
         elif destination in not_in_mills:
             board.points[destination] = " "
-            print(board)
+            #print(board)
             break
         #if destination is in a mill but its the only option to remove
         elif destination not in not_in_mills and len(not_in_mills) == 0:
             board.points[destination] = " "
-            print(board)
+            #print(board)
             break
         #if the destination is in a mill and there are other options to remove
         elif destination not in not_in_mills and len(not_in_mills) != 0:
@@ -258,7 +264,7 @@ def is_winner(board, player):
         elif place_value == 'O':
             o_count += 1
 
-    if x_count <= 3 or o_count <= 3:
+    if x_count < 3 or o_count < 3:
         return True
     else:
         return False
@@ -342,7 +348,7 @@ def main():
         while command != 'q':
 
             # commands should have two points
-            print(command)
+
             command = command.split(" ")
             initial_position = ""
             final_position = ""
