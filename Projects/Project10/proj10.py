@@ -121,6 +121,12 @@ def move_piece(board, player, origin, destination):
                 board.points[destination] = player
                 board.points[origin] = " "
                 is_valid_move = False
+            else:
+                print("Invalid command: Not a valid point")
+                print("Try again.")
+                command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
+                origin = command[0]
+                destination = command[1]
 
         except KeyError:
 
@@ -356,6 +362,9 @@ def main():
             try:
 
                 move_piece(board, player, initial_position, final_position)
+                if is_winner(board,player):
+                    print(BANNER)
+                    quit()
 
                 
             #Any RuntimeError you raise inside this try lands here
@@ -373,6 +382,5 @@ def main():
         if command == 'q':
             return
 
-        quit()
 if __name__ == "__main__":
     main()
