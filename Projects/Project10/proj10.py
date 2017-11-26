@@ -104,6 +104,7 @@ def move_piece(board, player, origin, destination):
     """
 
     initial_mill_count = count_mills(board, player)
+    inital_mill_list = get_mill_list(board, player)
     #print('initial mill count ', initial_mill_count)
     other_player = get_other_player(player)
 
@@ -143,6 +144,10 @@ def move_piece(board, player, origin, destination):
             destination = command[1]
 
     final_mill_count = count_mills(board, player)
+    final_mill_list = get_mill_list(board, player)
+
+    #if inital_mill_list != final_mill_list and len(inital_mill_list) >= len(final_mill_list):
+        #remove_piece(board, player)
 
     if initial_mill_count < final_mill_count:
         remove_piece(board, player)
@@ -297,6 +302,8 @@ def get_mill_list(board, player):
         # all locations have to have player for each of them
         if player in set(mill_values) and len(set(mill_values)) == 1:
             mill_points.append(mill)
+
+    return mill_points
 
 
 def main():
