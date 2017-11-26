@@ -214,7 +214,7 @@ def remove_piece(board, player):
             print("That is not a valid point to remove.")
         elif destination in current_placed:
             print("Hey you can't remove your own piece.")
-        elif destination == " ":
+        elif board.points[destination] == " ":
             print("Hey you can't remove a blank piece.")
         #if destination is a valid point to remove
         elif destination in not_in_mills:
@@ -373,6 +373,6 @@ def main():
         if command == 'q':
             return
 
-            
+        quit()
 if __name__ == "__main__":
     main()
