@@ -105,6 +105,7 @@ def move_piece(board, player, origin, destination):
 
     initial_mill_count = count_mills(board, player)
     #print('initial mill count ', initial_mill_count)
+    other_player = get_other_player(player)
 
     is_valid_move = True
 
@@ -115,10 +116,17 @@ def move_piece(board, player, origin, destination):
             if board.points[destination] == " ":
                 #board.assingn_piece(destination)
                 #board.clear_place(origin)
-
                 board.points[destination] = player
                 board.points[origin] = " "
                 is_valid_move = False
+
+            elif board.points[destination] == other_player:
+                print("Invalid command: Origin point does not belong to player")
+                print("Try again.")
+                command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
+                origin = command[0]
+                destination = command[1]
+
             else:
                 print("Invalid command: Not a valid point")
                 print("Try again.")
@@ -135,8 +143,6 @@ def move_piece(board, player, origin, destination):
             destination = command[1]
 
     final_mill_count = count_mills(board, player)
-
-
 
     if initial_mill_count < final_mill_count:
         remove_piece(board, player)
