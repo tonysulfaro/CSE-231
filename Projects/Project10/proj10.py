@@ -135,12 +135,15 @@ def move_piece(board, player, origin, destination):
             destination = command[1]
 
     final_mill_count = count_mills(board, player)
-    if is_winner(board, player):
-        print(BANNER)
-        quit()
+
+
 
     if initial_mill_count < final_mill_count:
         remove_piece(board, player)
+
+    if is_winner(board, player):
+        print(BANNER)
+        quit()
 
     print(board)
 
@@ -212,15 +215,11 @@ def remove_piece(board, player):
 
         destination = input("Remove a piece at :> ")
 
-        if is_winner(board, player):
-            print(BANNER)
-            quit()
-
         #desired_place = board.points[destination] #this is actually just the value at that place..
         not_in_mills = points_not_in_mills(board, player)
 
         if destination not in board.points:
-            print("Invalid command: Point does not belong to player")
+            print("Invalid command: Not a valid point")
             print("Try again.")
         elif destination in current_placed:
             print("Invalid command: Point does not belong to player")
