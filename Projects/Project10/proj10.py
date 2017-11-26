@@ -279,7 +279,26 @@ def get_other_player(player):
     Get the other player.
     """
     return "X" if player == "O" else "O"
-    
+
+
+def get_mill_list(board, player):
+
+    mill_points = list()
+
+    # generates a set of where all the values that are also mills are
+    for mill in board.MILLS:
+
+        mill_values = list()
+
+        for place in mill:
+            value = board.points[place]
+            mill_values.append(value)
+
+        # all locations have to have player for each of them
+        if player in set(mill_values) and len(set(mill_values)) == 1:
+            mill_points.append(mill)
+
+
 def main():
 
     #Loop so that we can start over on reset
