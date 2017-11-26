@@ -106,8 +106,6 @@ def move_piece(board, player, origin, destination):
     initial_mill_count = count_mills(board, player)
     print('initial mill count ', initial_mill_count)
 
-    print(board)
-
     is_valid_move = True
 
     while is_valid_move:
@@ -144,7 +142,9 @@ def move_piece(board, player, origin, destination):
     if initial_mill_count < final_mill_count:
         remove_piece(board, player)
 
-    
+    print(board)
+
+
 def points_not_in_mills(board, player):
     """
         add your function header here.
@@ -206,6 +206,7 @@ def remove_piece(board, player):
     player = get_other_player(player)
 
     print("A mill was formed!")
+    print(board)
 
     while is_valid_position:
 
@@ -219,7 +220,8 @@ def remove_piece(board, player):
         if destination not in board.points:
             print("That is not a valid point to remove.")
         elif destination in current_placed:
-            print("Hey you can't remove your own piece.")
+            print("Invalid command: Point does not belong to player")
+            print("Try again.")
         elif board.points[destination] == " ":
             print("Hey you can't remove a blank piece.")
         #if destination is a valid point to remove
