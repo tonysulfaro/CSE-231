@@ -114,19 +114,19 @@ def move_piece(board, player, origin, destination):
 
         try:
 
-            if board.points[destination] == " ":
-                #board.assingn_piece(destination)
-                #board.clear_place(origin)
-                board.points[destination] = player
-                board.points[origin] = " "
-                is_valid_move = False
-
-            elif board.points[destination] == other_player:
+            if board.points[origin] == other_player:
                 print("Invalid command: Origin point does not belong to player")
                 print("Try again.")
                 command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
                 origin = command[0]
                 destination = command[1]
+
+            elif board.points[destination] == " ":
+                #board.assingn_piece(destination)
+                #board.clear_place(origin)
+                board.points[destination] = player
+                board.points[origin] = " "
+                is_valid_move = False
 
             else:
                 print("Invalid command: Not a valid point")
