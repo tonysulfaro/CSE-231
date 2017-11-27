@@ -146,11 +146,11 @@ def move_piece(board, player, origin, destination):
     final_mill_count = count_mills(board, player)
     final_mill_list = get_mill_list(board, player)
 
-    #if inital_mill_list != final_mill_list and len(inital_mill_list) >= len(final_mill_list):
-        #remove_piece(board, player)
-
-    if initial_mill_count < final_mill_count:
+    if inital_mill_list != final_mill_list and len(inital_mill_list) <= len(final_mill_list):
         remove_piece(board, player)
+
+    #if initial_mill_count < final_mill_count:
+        #remove_piece(board, player)
 
     if is_winner(board, player):
         print(BANNER)
