@@ -117,6 +117,8 @@ def move_piece(board, player, origin, destination):
             if board.points[origin] == other_player:
                 print("Invalid command: Origin point does not belong to player")
                 print("Try again.")
+                print(board)
+                print(player + "'s turn!")
                 command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
                 origin = command[0]
                 destination = command[1]
@@ -131,6 +133,8 @@ def move_piece(board, player, origin, destination):
             else:
                 print("Invalid command: Not a valid point")
                 print("Try again.")
+                print(board)
+                print(player + "'s turn!")
                 command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
                 origin = command[0]
                 destination = command[1]
@@ -139,6 +143,8 @@ def move_piece(board, player, origin, destination):
 
             print("Invalid command: Not a valid point")
             print("Try again.")
+            print(board)
+            print(player + "'s turn!")
             command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
             origin = command[0]
             destination = command[1]
@@ -394,6 +400,8 @@ def main():
                 except IndexError:
                     print("Invalid number of points")
                     print("Try again.")
+                    print(board)
+                    print(player + "'s turn!")
                     command = input("Move a piece (source,destination) :> ").strip().lower().split(" ")
 
             try:
