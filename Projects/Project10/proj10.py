@@ -28,17 +28,23 @@
 #       check if its a valid place to remove and if not print error and reprompt
 #       remove the piece
 #   is_winner function
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+#       goes through the board and sees if either player has less than 3 pieces
+#       if one player has less than 3 return true
+#   get mill list function
+#       takes the board and the player
+#       returns all the mills they are in
+#   main
+#       while true
+#       print header and game information
+#       print player turn and get command
+#       if command is r,h, or q reset, print help menu, or quit
+#       while placedcount less than 18 #this is phase one of the game
+#           place piece and remove player if mill is formed
+#           catch any runtime errors and prompt again
+#       print board and get other player
+#       While command != q #this is phase two of the game
+#           get command and split it to get origin and destination
+#           move piece and check if is winner
 ######################################################################################################
 
 import NMM #This is necessary for the project
@@ -392,6 +398,16 @@ def get_other_player(player):
     return "X" if player == "O" else "O"
 
 def get_mill_list(board, player):
+    """
+    for each mill in board mills
+        for place in mills
+            add value of place to mill values
+        if player is in the mill values set or mill values set
+            append the mill to the mill list
+    :param board - board as an object:
+    :param player - player as a string:
+    :return mill_points - list of mills as a list:
+    """
 
     mill_points = list()
 
@@ -411,6 +427,20 @@ def get_mill_list(board, player):
     return mill_points
 
 def main():
+    """
+    while true
+        print header and game information
+        print player turn and get command
+        if command is r,h, or q reset, print help menu, or quit
+        while placedcount less than 18 #this is phase one of the game
+            place piece and remove player if mill is formed
+            catch any runtime errors and prompt again
+        print board and get other player
+        While command != q #this is phase two of the game
+            get command and split it to get origin and destination
+            move piece and check if is winner
+    :return <none> :
+    """
 
     #Loop so that we can start over on reset
     while True:
