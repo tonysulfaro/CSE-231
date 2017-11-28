@@ -1,7 +1,47 @@
-
+######################################################################################################
+# Project 10 - Nine Men's Morris
+#   import NMM class and initialize game banner and information
+#   count_mills function
+#       takes the board and a player and counts the number of mills the player is in
+#       returns mill count as an integer
+#   place piece and remove opponent function
+#       try to assingn a place on the board
+#       if its not valid placement print error and reprompt
+#       if a mill is formed then call the remove_piece function
+#   move piece function
+#       while is a valid move, if the move isnt valid print error and reprompt
+#       if the mills before and after the move are different
+#           if the count of mills before the movement is less than or equal to the number of mills after
+#               call the remove piece function
+#       check if there is a winner
+#           print banner and quit program if there is
+#   points not in mills function
+#       takes the board and a player
+#       finds all the places where the player is on the board and not in a mill
+#       returns the points as a list
+#   placed function
+#       takes the board and the player and finds all the places on the board where the player is
+#       returns list of places where player is
+#   remove piece function
+#       take a board and a player
+#       prompt for which place the user wants to remove an opponent
+#       check if its a valid place to remove and if not print error and reprompt
+#       remove the piece
+#   is_winner function
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+######################################################################################################
 
 import NMM #This is necessary for the project
-
 
 BANNER = """
     __        _____ _   _ _   _ _____ ____  _ _ _ 
@@ -11,7 +51,6 @@ BANNER = """
        \_/\_/  |___|_| \_|_| \_|_____|_| \_(_|_|_)
 
 """
-
 
 RULES = """
   _   _ _              __  __            _       __  __                 _     
@@ -32,7 +71,6 @@ RULES = """
 
 """
 
-
 MENU = """
 
     Game commands (first character is a letter, second is a digit):
@@ -47,7 +85,14 @@ MENU = """
         
 def count_mills(board, player):
     """
-        add your function header here.
+    for each mill in the board MILLS
+        for each place in the mill
+            if the value of the place is the player increment mill count
+        if the mill count == 3 then its a mill
+            increment the total_mill_count
+    :param board - board as a dictionary:
+    :param player - current player as a string:
+    :return - count of mills as integer:
     """
 
     total_mill_count = 0
@@ -70,7 +115,19 @@ def count_mills(board, player):
             
 def place_piece_and_remove_opponents(board, player, destination):
     """
-        add your function header here.
+    get initial mill count
+    while is a valid move
+        try to assingn the player to a place on the board
+            print error if the space is not " "
+            reprompt for destination
+        except keyerror if they move to non-existent place on the board
+            print error and reprompt.
+        get final mill count after place
+            if the count is more then call remove_piece
+    :param board - board as a dictionary:
+    :param player - player as a string:
+    :param destination - destination for placement as a string:
+    :return <none> :
     """
 
     initial_mill_count = count_mills(board, player)
@@ -100,16 +157,31 @@ def place_piece_and_remove_opponents(board, player, destination):
      
 def move_piece(board, player, origin, destination):
     """
-        add your function header here.
+    get initial mill list, and other player
+    while is valid move
+        if point to move is the other player or anything else but a blank point
+            print error and reprompt
+        catch some key and index errors
+            print error and reprompt
+    get final mill list
+    if the mill lists are different and the final is greater than or equal to the initial list
+        call the remove function
+    check if is winner
+        print banner and halt program if true
+    print board
+    :param board - board as an object:
+    :param player - player as a string:
+    :param origin - origin on board as a string:
+    :param destination - destination on board as a string:
+    :return <none> :
     """
 
-    initial_mill_count = count_mills(board, player)
     inital_mill_list = get_mill_list(board, player)
-    #print('initial mill count ', initial_mill_count)
     other_player = get_other_player(player)
 
     is_valid_move = True
 
+    #this is pretty jank sorry you have to look at this
     while is_valid_move:
 
         try:
@@ -124,10 +196,8 @@ def move_piece(board, player, origin, destination):
                 destination = command[1]
 
             elif board.points[destination] == " ":
-                #board.assingn_piece(destination)
-                #board.clear_place(origin)
-                board.points[destination] = player
-                board.points[origin] = " "
+                board.assign_piece(player,destination)
+                board.assign_piece(" ", origin)
                 is_valid_move = False
 
             else:
@@ -149,14 +219,10 @@ def move_piece(board, player, origin, destination):
             origin = command[0]
             destination = command[1]
 
-    final_mill_count = count_mills(board, player)
     final_mill_list = get_mill_list(board, player)
 
     if inital_mill_list != final_mill_list and len(inital_mill_list) <= len(final_mill_list):
         remove_piece(board, player)
-
-    #if initial_mill_count < final_mill_count:
-        #remove_piece(board, player)
 
     if is_winner(board, player):
         print(BANNER)
@@ -164,10 +230,22 @@ def move_piece(board, player, origin, destination):
 
     print(board)
 
-
 def points_not_in_mills(board, player):
     """
-        add your function header here.
+    intitialize occupied places and mill points as a set
+    for place in the board
+        if the value is the player add it to the occupied set
+    for mill in board mills
+        for place in mill
+            if the value at the place == player
+                then add it to mill values
+        if player in mill set and length of mill set == 1:
+            it means the player is in the mill
+            add it to the mill points
+    find difference of sets and make it a list
+    :param board - board as an object:
+    :param player - player as a string:
+    :return - set difference as a list:
     """
 
     occupied_places = set()
@@ -196,9 +274,16 @@ def points_not_in_mills(board, player):
 
     return difference
 
-def placed(board,player):
+def placed(board, player):
     """
-        add your function header here.
+    for each mill in mill list
+        for place in mill
+            if the player is there add it to the list
+    take the set of the list to get only unique values
+    reutrn the list from the set
+    :param board - board as an object:
+    :param player - player as a string:
+    :return location_list - list of points where a player is:
     """
 
     location_list = list()
@@ -219,7 +304,14 @@ def placed(board,player):
     
 def remove_piece(board, player):
     """
-        add your function header here.
+    get current placed and other player
+    print header and board
+    prompt where to remove piece
+    check if its a valid place to remove or if it exists
+        print error if there is a problem with the place and reprompt
+    :param board - game board as an object:
+    :param player - player as a string:
+    :return <none> :
     """
     is_valid_position = True
     current_placed = placed(board, player)
@@ -259,10 +351,18 @@ def remove_piece(board, player):
             print("Invalid command: Point is in a mill")
             print("Try again.")
 
-
 def is_winner(board, player):
     """
-        add your function header here.
+    for each mill in board mills
+        for each place in the mill
+            add place to set
+    for each place in the mill set
+        get value at that place
+        if the place is x or O add it to their counts
+    if either of the counts is less than 3 return true
+    :param board - board as an object:
+    :param player - player as a string:
+    :return boolean - status if game is won or not:
     """
     x_count = 0
     o_count = 0
@@ -291,7 +391,6 @@ def get_other_player(player):
     """
     return "X" if player == "O" else "O"
 
-
 def get_mill_list(board, player):
 
     mill_points = list()
@@ -310,7 +409,6 @@ def get_mill_list(board, player):
             mill_points.append(mill)
 
     return mill_points
-
 
 def main():
 
