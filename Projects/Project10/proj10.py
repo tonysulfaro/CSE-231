@@ -192,6 +192,8 @@ def move_piece(board, player, origin, destination):
 
         try:
 
+            #I know i'm supposed to raise a RunTimeError in here but i'm too scared to change it
+            #While loop error handling should work about the same
             if board.points[origin] == other_player:
                 print("Invalid command: Origin point does not belong to player")
                 print("Try again.")
