@@ -40,8 +40,8 @@ class Gomoku(object):
             raise ValueError('Board is not an integer')
         if type(self.__win_count) != int:
             raise ValueError('Win count is not an integer')
-        if self.__current_player != 'black' or self.__current_player != 'white':
-            raise MyError('Wrong color.')
+        #if self.__current_player != 'black' or self.__current_player != 'white' or self.__current_player != '-':
+            #raise MyError('Wrong color.')
             
     def assign_piece(self, piece, row, col):
         ''' Comment goes here.'''
