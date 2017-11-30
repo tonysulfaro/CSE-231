@@ -3,20 +3,23 @@
 
 class GoPiece(object):
     ''' Comment goes here.'''
-    def __init__(self,color):
+    def __init__(self, color = 'black'):
         ''' Comment goes here.'''
-        pass  # replace and delete
+        self.__color = color
+        if self.__color != 'black' or self.__color != 'white':
+            raise MyError('Wrong color.')
     
     def __str__(self):
         ''' Comment goes here.'''
-#  Two strings to help you
-#            return ' ● '
-#            return ' ○ '
-        pass  # replace and delete
-    
+        #  Two strings to help you
+        if self.__color == 'black':
+            return ' ● '
+        elif self.__color == 'white':
+            return ' ○ '
+
     def get_color(self):
         ''' Comment goes here.'''
-        pass  # replace and delete
+        pass
             
 class MyError(Exception):
     def __init__(self,value):
@@ -26,25 +29,35 @@ class MyError(Exception):
 
 class Gomoku(object):
     ''' Comment goes here.'''
-    def __init__(self,board_size,win_count,current_player):
+    def __init__(self, board_size = 15, win_count = 5, current_player = 'black'):
         ''' Comment goes here.'''
-        pass  # replace and delete
-#        self.__go_board = [ [ ' - ' for j in range(self.__board_size)] for i in range(self.__board_size)]
-#            raise MyError('Wrong color.')    
+        self.__board_size = board_size
+        self.__win_count = win_count
+        self.__current_player = current_player
+        self.__go_board = [ [ ' - ' for j in range(self.__board_size)] for i in range(self.__board_size)]
+
+        if type(self.__board_size) != int:
+            raise ValueError('Board is not an integer')
+        if type(self.__win_count) != int:
+            raise ValueError('Win count is not an integer')
+        if self.__current_player != 'black' or self.__current_player != 'white':
+            raise MyError('Wrong color.')
             
-    def assign_piece(self,piece,row,col):
+    def assign_piece(self, piece, row, col):
         ''' Comment goes here.'''
         pass  # replace and delete
-#            raise MyError('Invalid position.')
-#            raise MyError('Position is occupied.')
+        if row > self.__board_size or col > self.__board_size:
+            raise MyError('Invalid position.')
+        if self.__go_board[row][col] != '-':
+            raise MyError('Position is occupied.')
             
     def get_current_player(self):
         ''' Comment goes here.'''
-        pass  # replace and delete
+        return self.__current_player
     
     def switch_current_player(self):
         ''' Comment goes here.'''
-        pass  # replace and delete
+        return '○' if self.__current_player == 'black' else '●'
         
     def __str__(self):
         s = '\n'
