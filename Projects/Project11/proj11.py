@@ -1,5 +1,15 @@
-# DO NOT COPY AND PASTE FROM YOUR BROWSER. 
-# YOU MUST DOWNLOAD THIS FILE.
+########################################################################################
+#   Project 11 - Gomoku
+#
+#
+#
+#
+#
+#
+#
+#
+#
+########################################################################################
 
 class GoPiece(object):
     ''' Comment goes here.'''
@@ -50,6 +60,7 @@ class Gomoku(object):
             raise MyError('Invalid position.')
         if self.__go_board[row][col] != '-':
             raise MyError('Position is occupied.')
+        self.__go_board[row][col] = piece
             
     def get_current_player(self):
         ''' Comment goes here.'''
@@ -77,7 +88,12 @@ class Gomoku(object):
         
     def current_player_is_winner(self):
         ''' Comment goes here.'''
-        pass  # replace and delete
+        #iterate over the board, idk how to do this exactly yet
+        for row in self.__go_board:
+            #player has won a game
+            row_count = 0
+            #return self.__win_count == row_count
+            pass
         
 def main():
 
