@@ -88,12 +88,22 @@ class Gomoku(object):
         return s
 
     def current_player_is_winner(self):
-        # iterate over the board, idk how to do this exactly yet
+
+        # iterate over the board and find winner
         for row in self.__go_board:
+            horizontal_count = 0
             print(row)
-            # player has won a game
-            row_count = 0
-            # return self.__win_count == row_count
+            for item in row:
+                if item == self.__current_player:
+                    horizontal_count += 1
+                    if horizontal_count == 5:
+                        return True
+                else:
+                    horizontal_count = 0
+
+        # iterate over the columns in the board
+        for x in range(self.__board_size):
+            pass
 
 
 def main():
@@ -109,11 +119,16 @@ def main():
 
         try:
 
-            player = GoPiece()
-            board.assign_piece(player, row, column)
+            player_color = board.get_current_player()
+            player_piece = GoPiece(player_color)
+            board.assign_piece(player_piece, row, column)
 
         #                raise MyError("Incorrect input.")
-        #                print("{} Wins!".format(board.get_current_player()))
+            if board.current_player_is_winner():
+                print("{} Wins!".format(board.get_current_player()))
+                quit()
+
+            board.switch_current_player()
 
         except MyError as error_message:
             print("{:s}\nTry again.".format(str(error_message)))
