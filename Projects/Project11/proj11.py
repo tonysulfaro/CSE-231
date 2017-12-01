@@ -58,15 +58,18 @@ class Gomoku(object):
     def assign_piece(self, piece, row, col):
         if row > self.__board_size or col > self.__board_size:
             raise MyError('Invalid position.')
-        # if self.__go_board[row][col] != '-':
-        # raise MyError('Position is occupied.')
-        self.__go_board[row][col] = piece
+        if self.__go_board[row-1][col-1] != ' - ':
+            raise MyError('Position is occupied.')
+        self.__go_board[row-1][col-1] = piece
 
     def get_current_player(self):
         return self.__current_player
 
     def switch_current_player(self):
-        return '○' if self.__current_player == 'black' else '●'
+        if self.__current_player == 'black':
+            self.__current_player = 'white'
+        else:
+            self.__current_player = 'black'
 
     def __str__(self):
         s = '\n'
@@ -91,18 +94,23 @@ class Gomoku(object):
             # player has won a game
             row_count = 0
             # return self.__win_count == row_count
-            pass
 
 
 def main():
     board = Gomoku()
     print(board)
     play = input("Input a row then column separated by a comma (q to quit): ")
+
     while play.lower() != 'q':
+
         play_list = play.strip().split(',')
+        row = int(play_list[0])
+        column = int(play_list[1])
+
         try:
 
-            pass  # replace and delete
+            player = GoPiece()
+            board.assign_piece(player, row, column)
 
         #                raise MyError("Incorrect input.")
         #                print("{} Wins!".format(board.get_current_player()))
