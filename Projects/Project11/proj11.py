@@ -52,8 +52,8 @@ class Gomoku(object):
             raise ValueError('Board is not an integer')
         if type(self.__win_count) != int:
             raise ValueError('Win count is not an integer')
-        # if self.__current_player != 'black' or self.__current_player != 'white' or self.__current_player != '-':
-        # raise MyError('Wrong color.')
+        #if self.__current_player != 'black' or self.__current_player != 'white' or self.__current_player != '-':
+         #   raise MyError('Wrong color.')
 
     def assign_piece(self, piece, row, col):
         if row > self.__board_size or col > self.__board_size:
@@ -125,9 +125,7 @@ class Gomoku(object):
                     vertical_count = 0
 
 
-def get_row_column(play):
-
-    board = Gomoku()
+def get_row_column(play, board):
 
     while True:
 
@@ -158,9 +156,11 @@ def main():
     board = Gomoku()
     print(board)
     play = input("Input a row then column separated by a comma (q to quit): ")
-    row, column = get_row_column(play)
+    row, column = get_row_column(play, board)
 
     while play.lower() != 'q':
+
+
 
         try:
 
@@ -177,13 +177,13 @@ def main():
             board.switch_current_player()
             print(board)
             play = input("Input a row then column separated by a comma (q to quit): ")
-            row, column = get_row_column(play)
+            row, column = get_row_column(play, board)
 
         except MyError as error_message:
             print("{:s}\nTry again.".format(str(error_message)))
             print(board)
             play = input("Input a row then column separated by a comma (q to quit): ")
-            row, column = get_row_column(play)
+            row, column = get_row_column(play, board)
 
 if __name__ == '__main__':
     main()
