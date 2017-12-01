@@ -58,9 +58,10 @@ class Gomoku(object):
     def assign_piece(self, piece, row, col):
         if row > self.__board_size or col > self.__board_size:
             raise MyError('Invalid position.')
-        if self.__go_board[row-1][col-1] != ' - ':
+        elif self.__go_board[row-1][col-1] != ' - ':
             raise MyError('Position is occupied.')
-        self.__go_board[row-1][col-1] = piece
+        else:
+            self.__go_board[row-1][col-1] = piece
 
     def get_current_player(self):
         return self.__current_player
@@ -92,10 +93,13 @@ class Gomoku(object):
         # iterate over the board and find winner
         for row in self.__go_board:
             horizontal_count = 0
-            #print(row)
+
             for item in row:
+
                 #this is a board piece item and current_player should be same type
-                current_player = '●' if self.__current_player == 'black' else '○'
+                item = str(item)
+                current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
+
                 if item == current_player:
                     horizontal_count += 1
                     if horizontal_count == 5:
@@ -109,26 +113,40 @@ class Gomoku(object):
 
 def get_row_column(play):
 
+    board = Gomoku()
+
     while True:
+
+        if type(play) == str:
+            if play.lower() == 'q':
+                quit()
 
         try:
             play_list = play.strip().split(',')
             row = int(play_list[0])
             column = int(play_list[1])
-            return row, column
 
-        except (TypeError,ValueError):
+            if row < 1 or column < 1:
+                print('Incorrect input.')
+                print('Try again.')
+                print(board)
+                play = input("Input a row then column separated by a comma (q to quit): ")
+            else:
+                return row, column
+
+        except (TypeError, ValueError):
             print('Incorrect input.')
             print('Try again.')
+            print(board)
+            play = input("Input a row then column separated by a comma (q to quit): ")
 
 def main():
     board = Gomoku()
     print(board)
     play = input("Input a row then column separated by a comma (q to quit): ")
+    row, column = get_row_column(play)
 
     while play.lower() != 'q':
-
-        row, column = get_row_column(play)
 
         try:
 
@@ -136,18 +154,20 @@ def main():
             player_piece = GoPiece(player_color)
             board.assign_piece(player_piece, row, column)
 
-        #                raise MyError("Incorrect input.")
             if board.current_player_is_winner():
                 print("{} Wins!".format(board.get_current_player()))
                 quit()
 
+            board.switch_current_player()
+            print(board)
+            play = input("Input a row then column separated by a comma (q to quit): ")
+            row, column = get_row_column(play)
+
         except MyError as error_message:
             print("{:s}\nTry again.".format(str(error_message)))
-
-        board.switch_current_player()
-        print(board)
-        play = input("Input a row then column separated by a comma (q to quit): ")
-
+            print(board)
+            play = input("Input a row then column separated by a comma (q to quit): ")
+            row, column = get_row_column(play)
 
 if __name__ == '__main__':
     main()
