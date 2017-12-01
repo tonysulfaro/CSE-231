@@ -109,7 +109,21 @@ class Gomoku(object):
 
         # iterate over the columns in the board
         for x in range(self.__board_size):
-            pass
+            vertical_count = 0
+            #print(self.__go_board[x])
+            #iterate over the records in x number of columns
+            for i in range(self.__board_size):
+                #print(self.__go_board[i][x])
+                board_piece = str(self.__go_board[i][x])
+                current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
+                #print(board_piece,current_player)
+                if board_piece == current_player:
+                    vertical_count += 1
+                    if vertical_count == 5:
+                        return True
+                else:
+                    vertical_count = 0
+
 
 def get_row_column(play):
 
@@ -127,14 +141,14 @@ def get_row_column(play):
             column = int(play_list[1])
 
             if row < 1 or column < 1:
-                print('Incorrect input.')
+                print('Invalid position.')
                 print('Try again.')
                 print(board)
                 play = input("Input a row then column separated by a comma (q to quit): ")
             else:
                 return row, column
 
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, IndexError):
             print('Incorrect input.')
             print('Try again.')
             print(board)
@@ -155,6 +169,8 @@ def main():
             board.assign_piece(player_piece, row, column)
 
             if board.current_player_is_winner():
+                print()
+                print(board)
                 print("{} Wins!".format(board.get_current_player()))
                 quit()
 
