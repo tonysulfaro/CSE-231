@@ -92,9 +92,11 @@ class Gomoku(object):
         # iterate over the board and find winner
         for row in self.__go_board:
             horizontal_count = 0
-            print(row)
+            #print(row)
             for item in row:
-                if item == self.__current_player:
+                #this is a board piece item and current_player should be same type
+                current_player = '●' if self.__current_player == 'black' else '○'
+                if item == current_player:
                     horizontal_count += 1
                     if horizontal_count == 5:
                         return True
@@ -105,6 +107,19 @@ class Gomoku(object):
         for x in range(self.__board_size):
             pass
 
+def get_row_column(play):
+
+    while True:
+
+        try:
+            play_list = play.strip().split(',')
+            row = int(play_list[0])
+            column = int(play_list[1])
+            return row, column
+
+        except (TypeError,ValueError):
+            print('Incorrect input.')
+            print('Try again.')
 
 def main():
     board = Gomoku()
@@ -113,9 +128,7 @@ def main():
 
     while play.lower() != 'q':
 
-        play_list = play.strip().split(',')
-        row = int(play_list[0])
-        column = int(play_list[1])
+        row, column = get_row_column(play)
 
         try:
 
@@ -128,10 +141,10 @@ def main():
                 print("{} Wins!".format(board.get_current_player()))
                 quit()
 
-            board.switch_current_player()
-
         except MyError as error_message:
             print("{:s}\nTry again.".format(str(error_message)))
+
+        board.switch_current_player()
         print(board)
         play = input("Input a row then column separated by a comma (q to quit): ")
 
