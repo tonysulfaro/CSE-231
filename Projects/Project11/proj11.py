@@ -15,8 +15,8 @@ class GoPiece(object):
 
     def __init__(self, color='black'):
         self.__color = color
-        # if self.__color != 'black' or self.__color != 'white':
-        # raise MyError('Wrong color.')
+        if self.__color != 'black' and self.__color != 'white':
+            raise MyError('Wrong color.')
 
     def __repr__(self):
         return self.__str__()
@@ -43,15 +43,19 @@ class MyError(Exception):
 class Gomoku(object):
 
     def __init__(self, board_size=15, win_count=5, current_player='black'):
+
+
         self.__board_size = board_size
         self.__win_count = win_count
         self.__current_player = current_player
-        self.__go_board = [[' - ' for j in range(self.__board_size)] for i in range(self.__board_size)]
+
 
         if type(self.__board_size) != int:
             raise ValueError('Board is not an integer')
         if type(self.__win_count) != int:
             raise ValueError('Win count is not an integer')
+
+        self.__go_board = [[' - ' for j in range(self.__board_size)] for i in range(self.__board_size)]
         # if self.__current_player != 'black' or self.__current_player != 'white' or self.__current_player != '-':
         #   raise MyError('Wrong color.')
 
