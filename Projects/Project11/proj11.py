@@ -51,14 +51,17 @@ class Gomoku(object):
         self.__win_count = win_count
         self.__current_player = current_player
 
+        player = str(self.__current_player)
+
+        if player != 'black' and player != 'white':
+            raise MyError('Wrong color.')
         if type(self.__board_size) != int:
             raise ValueError('Board is not an integer')
         if type(self.__win_count) != int:
             raise ValueError('Win count is not an integer')
 
         self.__go_board = [[' - ' for j in range(self.__board_size)] for i in range(self.__board_size)]
-        # if self.__current_player != 'black' or self.__current_player != 'white' or self.__current_player != '-':
-        #   raise MyError('Wrong color.')
+
 
     def assign_piece(self, piece, row, col):
         if row > self.__board_size or col > self.__board_size:
