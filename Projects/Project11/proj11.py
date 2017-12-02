@@ -99,10 +99,11 @@ class Gomoku(object):
                 # this is a board piece item and current_player should be same type
                 item = str(item)
                 current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
+                other_player = str(' ○ ' if self.__current_player == 'black' else ' ● ')
 
                 if item == current_player:
                     horizontal_count += 1
-                    if horizontal_count == 5:
+                    if horizontal_count == self.__win_count:
                         return True
                 else:
                     horizontal_count = 0
@@ -119,10 +120,11 @@ class Gomoku(object):
                 # print(board_piece,current_player)
                 if board_piece == current_player:
                     vertical_count += 1
-                    if vertical_count == 5:
+                    if vertical_count == self.__win_count:
                         return True
                 else:
                     vertical_count = 0
+        return False
 
 
 def get_row_column(play, board):
