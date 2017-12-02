@@ -11,6 +11,8 @@
 #
 ########################################################################################
 
+import numpy as np
+
 class GoPiece(object):
 
     def __init__(self, color='black'):
@@ -94,7 +96,7 @@ class Gomoku(object):
 
     def current_player_is_winner(self):
 
-        # iterate over the board and find winner
+        # iterate over the board horizontally
         for row in self.__go_board:
             horizontal_count = 0
 
@@ -112,7 +114,7 @@ class Gomoku(object):
                 else:
                     horizontal_count = 0
 
-        # iterate over the columns in the board
+        # iterate over board vertically
         for x in range(self.__board_size):
             vertical_count = 0
             # print(self.__go_board[x])
@@ -128,6 +130,29 @@ class Gomoku(object):
                         return True
                 else:
                     vertical_count = 0
+
+        #iterate over the board diagonally both ways
+        #https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
+        matrix = np.array(self.__go_board)
+        x,y = self.__board_size, self.__board_size
+        np.arange(x * y).reshape(x, y)
+        diags = [matrix[::-1, :].diagonal(i) for i in range(-matrix.shape[0] + 1, matrix.shape[1])]
+        diags.extend(matrix.diagonal(i) for i in range(matrix.shape[1] - 1, -matrix.shape[0], -1))
+        diagonal_list = [n.tolist() for n in diags]
+
+        for diagonal in diagonal_list:
+            diagonal_count = 1
+            for space in diagonal:
+                space = str(space)
+                current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
+                # print(board_piece,current_player)
+                if space == current_player:
+                    diagonal_count += 1
+                    if diagonal_count == self.__win_count:
+                        return True
+                else:
+                    diagonal_count = 0
+
         return False
 
 
