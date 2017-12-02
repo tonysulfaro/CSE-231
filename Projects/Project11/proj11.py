@@ -108,7 +108,6 @@ class Gomoku(object):
         self.__board_size = board_size
         self.__win_count = win_count
         self.__current_player = current_player
-
         player = str(self.__current_player)
 
         if player != 'black' and player != 'white':
@@ -193,14 +192,16 @@ class Gomoku(object):
 
         # iterate over board vertically
         for x in range(self.__board_size):
+
             vertical_count = 0
+
             # print(self.__go_board[x])
             # iterate over the records in x number of columns
             for i in range(self.__board_size):
-                # print(self.__go_board[i][x])
+
                 board_piece = str(self.__go_board[i][x])
                 current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
-                # print(board_piece,current_player)
+
                 if board_piece == current_player:
                     vertical_count += 1
                     if vertical_count == self.__win_count:
@@ -218,11 +219,14 @@ class Gomoku(object):
         diagonal_list = [n.tolist() for n in diags]
 
         for diagonal in diagonal_list:
+
             diagonal_count = 1
+
             for space in diagonal:
+
                 space = str(space)
                 current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
-                # print(board_piece,current_player)
+
                 if space == current_player:
                     diagonal_count += 1
                     if diagonal_count == self.__win_count:
