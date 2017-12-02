@@ -13,6 +13,7 @@
 
 import numpy as np
 
+
 class GoPiece(object):
 
     def __init__(self, color='black'):
@@ -46,11 +47,9 @@ class Gomoku(object):
 
     def __init__(self, board_size=15, win_count=5, current_player='black'):
 
-
         self.__board_size = board_size
         self.__win_count = win_count
         self.__current_player = current_player
-
 
         if type(self.__board_size) != int:
             raise ValueError('Board is not an integer')
@@ -105,7 +104,6 @@ class Gomoku(object):
                 # this is a board piece item and current_player should be same type
                 item = str(item)
                 current_player = str(' ● ' if self.__current_player == 'black' else ' ○ ')
-                other_player = str(' ○ ' if self.__current_player == 'black' else ' ● ')
 
                 if item == current_player:
                     horizontal_count += 1
@@ -131,10 +129,10 @@ class Gomoku(object):
                 else:
                     vertical_count = 0
 
-        #iterate over the board diagonally both ways
-        #https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
+        # iterate over the board diagonally both ways
+        # https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
         matrix = np.array(self.__go_board)
-        x,y = self.__board_size, self.__board_size
+        x, y = self.__board_size, self.__board_size
         np.arange(x * y).reshape(x, y)
         diags = [matrix[::-1, :].diagonal(i) for i in range(-matrix.shape[0] + 1, matrix.shape[1])]
         diags.extend(matrix.diagonal(i) for i in range(matrix.shape[1] - 1, -matrix.shape[0], -1))
